@@ -4,48 +4,238 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sealubbers</title>
+  <link rel="icon" href="icon.png">
   <style>
+    /* Prevent text selection across all elements */
+    html, body, * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Base Reset */
+    html, body { height: 100%; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
-      font-family: system-ui, sans-serif;
-      background-color: #0b0c10;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #232a6f;
       color: #fff;
+      font-family: system-ui, sans-serif;
       text-align: center;
-      padding: 2em;
     }
-    ul.links {
+
+    a { color: inherit; text-decoration: none; }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    /* Header */
+    header { padding: 2rem 0; }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #d4af37;
+    }
+
+    /* Social Icons */
+    .social-section {
+      background-color: #1f224f;
+      padding: 1.5rem 0;
+    }
+    .social {
       list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* center icons vertically */
+      gap: 1.5rem;
       padding: 0;
-      margin: 2em auto;
-      max-width: 400px;
+      margin: 0;
     }
-    ul.links li {
-      margin: 0.5em 0;
+    .social img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.2s;
     }
-    ul.links a {
-      display: block;
-      padding: 1em;
-      background: #1f2833;
-      color: #66fcf1;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.2s, color 0.2s;
+    .social img.icon-patreon,
+    .social img.icon-discord {
+      height: 56px;
     }
-    ul.links a:hover {
-      background: #45a29e;
-      color: #0b0c10;
+    /* Override YouTube sizing */
+    .social img.icon-youtube {
+      width: 64px !important;
+      height: auto !important;
     }
+    /* Custom overrides */
+    .icon-patreon,
+    .icon-discord {
+      height: 56px;
+    }
+    .icon-youtube {
+      width: 64px;      /* fixed width for even scaling */
+      height: auto;
+    }
+    .social img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Description */
+    .description { padding: 3rem 0 0; }
+    .description .container { padding: 0 2rem; }
+    .description p { margin: 0 0 1.5rem; font-size: 1.125rem; }
+    .btn {
+      display: inline-block;
+      background-color: #d4af37;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .btn:hover { background-color: #b8942c; }
+
+    /* Separator (Gold Bar) */
+    .separator {
+      width: calc(100% + 2rem);
+      max-width: none;
+      height: 4px;
+      background-color: #d4af37;
+      margin: 3rem -1rem;
+    }
+
+    /* FAQ Section */
+    .faq-section { padding: 0 0 6rem; }
+    #faq-title {
+      font-size: 2rem;
+      color: #d4af37;
+      margin: 0 auto 1rem; /* tighter bottom margin */
+      cursor: pointer;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 2px solid #d4af37;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    #faq-title:hover { background-color: rgba(212,175,55,0.2); }
+    #faq-title::after {
+      content: '+';
+      margin-left: 0.5rem;
+      color: #d4af37;
+      font-weight: bold;
+      vertical-align: middle;
+      transition: transform 0.2s;
+    }
+    #faq-title.open::after { content: '-'; }
+    #faq-content {
+      display: none;
+      margin: 0 auto 0; /* no extra top margin */
+      text-align: left;
+      max-width: 100%;
+    }
+    #faq-content dt { margin: 0.75rem 0 0.5rem; font-weight: bold; }
+    #faq-content dd { margin: 0 0 0.5rem 1rem; color: #ddd; font-size: 0.95rem; }
+
+    /* Contact */
+    .contact-section { padding: 2rem 0; }
+    .contact-box {
+      display: inline-block;
+      background-color: #1f224f;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .contact-box .label { color: #fff; margin-right: 0.5rem; }
+    .contact-box .contact-email { color: #d4af37; }
+
+    /* Footer */
+    footer.footer-section {
+      background-color: #1f224f;
+      width: 100%;
+      padding: 2rem 0;
+    }
+    footer.footer-section p { margin: 0; font-size: 0.875rem; color: #ddd; }
   </style>
 </head>
 <body>
-  <h1>🏴‍☠️ Sealubbers</h1>
-  <p>Find us on your favorite platform:</p>
-  <ul class="links">
-    <li><a href="https://store.steampowered.com/app/123456/Sealubbers/">Steam</a></li>
-    <li><a href="https://youtube.com/@sealubbers">YouTube</a></li>
-    <li><a href="https://www.tiktok.com/@sealubbers">TikTok</a></li>
-    <li><a href="https://patreon.com/sealubbers">Patreon</a></li>
-    <li><a href="https://discord.gg/sealubbers">Discord</a></li>
-    <li><a href="mailto:contact@sealubbers.com">Email Us</a></li>
-  </ul>
+
+  <header>
+    <h1>Sealubbers</h1>
+  </header>
+
+  <section class="social-section">
+    <div class="container">
+      <ul class="social">
+        <li><a href="#"><img class="icon-patreon" src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+        <li><a href="#"><img class="icon-discord" src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+        <li><a href="#"><img class="icon-youtube" src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+        <li><a href="#"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+        <li><a href="#"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="description">
+    <div class="container">
+      <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full-crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
+      <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+      <div class="separator"></div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div id="faq-title">Frequently Asked Questions</div>
+      <div id="faq-content">
+        <dl>
+          <dt>When will the demo be available?</dt>
+          <dd>We’re aiming for Summer 2025—watch here and on our socials for the exact date.</dd>
+          <dt>What platforms will Sealubbers support?</dt>
+          <dd>PC via Steam at launch, with macOS and Linux to follow.</dd>
+          <dt>Is there multiplayer or co-op?</dt>
+          <dd>Not in the initial demo. Co-op is on our roadmap for a future update.</dd>
+          <dt>Will there be controller support?</dt>
+          <dd>Yes—full controller support is included from day one.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-box">
+        <span class="label">Business inquiries:</span>
+        <a href="mailto:contact@sealubbers.com" class="contact-email">contact@sealubbers.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section">
+    <div class="container"><p>© 2025 Sealubbers. All rights reserved.</p></div>
+  </footer>
+
+  <script>
+    // FAQ toggle
+    const faqTitle = document.getElementById('faq-title');
+    const faqContent = document.getElementById('faq-content');
+    faqTitle.addEventListener('click', () => {
+      const open = faqTitle.classList.toggle('open');
+      faqContent.style.display = open ? 'block' : 'none';
+    });
+
+    // Social icon hover swap
+    document.querySelectorAll('.social img').forEach(img => {
+      img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
+      img.addEventListener('mouseleave', () => img.src = img.dataset.white);
+    });
+  </script>
+
 </body>
 </html>
