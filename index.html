@@ -107,28 +107,39 @@
       position: relative;
       margin: 2rem auto;
       max-width: 900px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+      height: auto;
     }
     .screenshot-carousel img {
+      position: absolute;
+      top: 0;
+      left: 50%;
       border-radius: 8px;
+      transition: transform 0.6s, opacity 0.6s;
     }
-    .screenshot-carousel img.preview {
+    .screenshot-carousel img.prev {
       width: 20%;
+      transform: translateX(-150%) scale(0.8);
       opacity: 0.7;
+      z-index: 1;
     }
-    #screenshot-main {
+    .screenshot-carousel img.main {
       width: 60%;
-      transition: transform 0.6s;
+      transform: translateX(-50%) scale(1);
+      z-index: 2;
     }
-    #screenshot-main.animate {
-      animation: rotateIn 0.6s ease; /* rotate animation */
+    .screenshot-carousel img.next {
+      width: 20%;
+      transform: translateX(50%) scale(0.8);
+      opacity: 0.7;
+      z-index: 1;
     }
-    @keyframes rotateIn {
-      from { transform: rotateY(90deg); opacity: 0; }
-      to { transform: rotateY(0); opacity: 1; }
+    .screenshot-carousel img.exit-left {
+      transform: translateX(-250%) scale(0.8);
+      opacity: 0;
+    }
+    .screenshot-carousel img.exit-right {
+      transform: translateX(150%) scale(0.8);
+      opacity: 0;
     }
     .screenshot-carousel button {
       position: absolute;
@@ -231,9 +242,9 @@
       <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
       <div class="screenshot-carousel">
         <button id="prev-screenshot" class="prev">&#10094;</button>
-        <img id="screenshot-prev" class="preview" src="ss5.png" alt="Previous screenshot">
-        <img id="screenshot-main" src="ss1.png" alt="Game screenshot">
-        <img id="screenshot-next" class="preview" src="ss2.png" alt="Next screenshot">
+        <img id="screenshot-prev" class="carousel-img prev" src="ss5.jpg" alt="Previous screenshot">
+        <img id="screenshot-main" class="carousel-img main" src="ss1.jpg" alt="Game screenshot">
+        <img id="screenshot-next" class="carousel-img next" src="ss2.jpg" alt="Next screenshot">
         <button id="next-screenshot" class="next">&#10095;</button>
       </div>
       <div class="separator"></div>
@@ -287,31 +298,60 @@
     });
 
     // Screenshot carousel
-    const screenshots = ['ss1.png','ss2.png','ss3.png','ss4.png','ss5.png'];
+    const screenshots = ['ss1.jpg','ss2.jpg','ss3.jpg','ss4.jpg','ss5.jpg'];
     let currentShot = 0;
-    const screenshotMain = document.getElementById('screenshot-main');
-    const screenshotPrevImg = document.getElementById('screenshot-prev');
-    const screenshotNextImg = document.getElementById('screenshot-next');
+    let screenshotMain = document.getElementById('screenshot-main');
+    let screenshotPrevImg = document.getElementById('screenshot-prev');
+    let screenshotNextImg = document.getElementById('screenshot-next');
     const prevBtn = document.getElementById('prev-screenshot');
     const nextBtn = document.getElementById('next-screenshot');
 
-    function showShot(index) {
-      screenshotMain.classList.remove('animate');
-      void screenshotMain.offsetWidth; // restart animation
-      screenshotMain.src = screenshots[index];
-      screenshotPrevImg.src = screenshots[(index - 1 + screenshots.length) % screenshots.length];
-      screenshotNextImg.src = screenshots[(index + 1) % screenshots.length];
-      screenshotMain.classList.add('animate');
-    }
-
     function nextShot() {
+      screenshotPrevImg.classList.add('exit-left');
+      screenshotMain.classList.replace('main', 'prev');
+      screenshotNextImg.classList.replace('next', 'main');
+
       currentShot = (currentShot + 1) % screenshots.length;
-      showShot(currentShot);
+      const newNextSrc = screenshots[(currentShot + 1) % screenshots.length];
+      const oldPrev = screenshotPrevImg;
+
+      setTimeout(() => {
+        oldPrev.classList.remove('exit-left');
+        oldPrev.classList.add('exit-right');
+        oldPrev.src = newNextSrc;
+        void oldPrev.offsetWidth;
+        oldPrev.classList.remove('exit-right');
+        oldPrev.classList.add('next');
+
+        // rotate references
+        screenshotPrevImg = screenshotMain;
+        screenshotMain = screenshotNextImg;
+        screenshotNextImg = oldPrev;
+      }, 600);
     }
 
     function prevShot() {
+      screenshotNextImg.classList.add('exit-right');
+      screenshotMain.classList.replace('main', 'next');
+      screenshotPrevImg.classList.replace('prev', 'main');
+
       currentShot = (currentShot - 1 + screenshots.length) % screenshots.length;
-      showShot(currentShot);
+      const newPrevSrc = screenshots[(currentShot - 1 + screenshots.length) % screenshots.length];
+      const oldNext = screenshotNextImg;
+
+      setTimeout(() => {
+        oldNext.classList.remove('exit-right');
+        oldNext.classList.add('exit-left');
+        oldNext.src = newPrevSrc;
+        void oldNext.offsetWidth;
+        oldNext.classList.remove('exit-left');
+        oldNext.classList.add('prev');
+
+        // rotate references
+        screenshotNextImg = screenshotMain;
+        screenshotMain = screenshotPrevImg;
+        screenshotPrevImg = oldNext;
+      }, 600);
     }
 
     let shotInterval = setInterval(nextShot, 4000);
@@ -324,7 +364,10 @@
     nextBtn.addEventListener('click', () => { nextShot(); resetInterval(); });
     prevBtn.addEventListener('click', () => { prevShot(); resetInterval(); });
 
-    showShot(currentShot);
+    // Initial images
+    screenshotMain.src = screenshots[currentShot];
+    screenshotPrevImg.src = screenshots[screenshots.length - 1];
+    screenshotNextImg.src = screenshots[1];
   </script>
 
 </body>
