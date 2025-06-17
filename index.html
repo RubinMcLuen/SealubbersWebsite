@@ -107,39 +107,23 @@
       position: relative;
       margin: 2rem auto;
       max-width: 900px;
-      height: auto;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
     }
     .screenshot-carousel img {
       position: absolute;
-      top: 0;
-      left: 50%;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 8px;
-      transition: transform 0.6s, opacity 0.6s;
-    }
-    .screenshot-carousel img.prev {
-      width: 20%;
-      transform: translateX(-150%) scale(0.8);
-      opacity: 0.7;
-      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
     }
     .screenshot-carousel img.main {
-      width: 60%;
-      transform: translateX(-50%) scale(1);
+      opacity: 1;
       z-index: 2;
-    }
-    .screenshot-carousel img.next {
-      width: 20%;
-      transform: translateX(50%) scale(0.8);
-      opacity: 0.7;
-      z-index: 1;
-    }
-    .screenshot-carousel img.exit-left {
-      transform: translateX(-250%) scale(0.8);
-      opacity: 0;
-    }
-    .screenshot-carousel img.exit-right {
-      transform: translateX(150%) scale(0.8);
-      opacity: 0;
     }
     .screenshot-carousel button {
       position: absolute;
@@ -306,59 +290,59 @@
     const prevBtn = document.getElementById('prev-screenshot');
     const nextBtn = document.getElementById('next-screenshot');
 
+    function showImages() {
+      screenshotPrevImg.className = 'carousel-img prev';
+      screenshotMain.className = 'carousel-img main';
+      screenshotNextImg.className = 'carousel-img next';
+    }
+
     function nextShot() {
-      screenshotPrevImg.classList.add('exit-left');
-      screenshotMain.classList.replace('main', 'prev');
-      screenshotNextImg.classList.replace('next', 'main');
+      screenshotMain.classList.remove('main');
+      screenshotMain.classList.add('prev');
+      screenshotNextImg.classList.remove('next');
+      screenshotNextImg.classList.add('main');
 
       currentShot = (currentShot + 1) % screenshots.length;
       const newNextSrc = screenshots[(currentShot + 1) % screenshots.length];
-      const oldPrev = screenshotPrevImg;
 
-      setTimeout(() => {
-        oldPrev.classList.remove('exit-left');
-        oldPrev.classList.add('exit-right');
-        oldPrev.src = newNextSrc;
-        void oldPrev.offsetWidth;
-        oldPrev.classList.remove('exit-right');
-        oldPrev.classList.add('next');
+      screenshotPrevImg.classList.remove('prev');
+      screenshotPrevImg.classList.add('next');
+      screenshotPrevImg.src = newNextSrc;
 
-        // rotate references
-        screenshotPrevImg = screenshotMain;
-        screenshotMain = screenshotNextImg;
-        screenshotNextImg = oldPrev;
-      }, 600);
+      const temp = screenshotPrevImg;
+      screenshotPrevImg = screenshotMain;
+      screenshotMain = screenshotNextImg;
+      screenshotNextImg = temp;
+
+      showImages();
     }
 
     function prevShot() {
-      screenshotNextImg.classList.add('exit-right');
-      screenshotMain.classList.replace('main', 'next');
-      screenshotPrevImg.classList.replace('prev', 'main');
+      screenshotMain.classList.remove('main');
+      screenshotMain.classList.add('next');
+      screenshotPrevImg.classList.remove('prev');
+      screenshotPrevImg.classList.add('main');
 
       currentShot = (currentShot - 1 + screenshots.length) % screenshots.length;
       const newPrevSrc = screenshots[(currentShot - 1 + screenshots.length) % screenshots.length];
-      const oldNext = screenshotNextImg;
 
-      setTimeout(() => {
-        oldNext.classList.remove('exit-right');
-        oldNext.classList.add('exit-left');
-        oldNext.src = newPrevSrc;
-        void oldNext.offsetWidth;
-        oldNext.classList.remove('exit-left');
-        oldNext.classList.add('prev');
+      screenshotNextImg.classList.remove('next');
+      screenshotNextImg.classList.add('prev');
+      screenshotNextImg.src = newPrevSrc;
 
-        // rotate references
-        screenshotNextImg = screenshotMain;
-        screenshotMain = screenshotPrevImg;
-        screenshotPrevImg = oldNext;
-      }, 600);
+      const temp = screenshotNextImg;
+      screenshotNextImg = screenshotMain;
+      screenshotMain = screenshotPrevImg;
+      screenshotPrevImg = temp;
+
+      showImages();
     }
 
-    let shotInterval = setInterval(nextShot, 4000);
+    let shotInterval = setInterval(nextShot, 3000);
 
     function resetInterval() {
       clearInterval(shotInterval);
-      shotInterval = setInterval(nextShot, 4000);
+      shotInterval = setInterval(nextShot, 3000);
     }
 
     nextBtn.addEventListener('click', () => { nextShot(); resetInterval(); });
