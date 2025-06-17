@@ -106,11 +106,29 @@
     .screenshot-carousel {
       position: relative;
       margin: 2rem auto;
-      max-width: 800px;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
     }
     .screenshot-carousel img {
-      width: 100%;
       border-radius: 8px;
+    }
+    .screenshot-carousel img.preview {
+      width: 20%;
+      opacity: 0.7;
+    }
+    #screenshot-main {
+      width: 60%;
+      transition: transform 0.6s;
+    }
+    #screenshot-main.animate {
+      animation: rotateIn 0.6s ease; /* rotate animation */
+    }
+    @keyframes rotateIn {
+      from { transform: rotateY(90deg); opacity: 0; }
+      to { transform: rotateY(0); opacity: 1; }
     }
     .screenshot-carousel button {
       position: absolute;
@@ -122,6 +140,7 @@
       padding: 0.5rem 0.75rem;
       cursor: pointer;
       font-size: 1.5rem;
+      z-index: 2;
     }
     .screenshot-carousel button.prev { left: 10px; }
     .screenshot-carousel button.next { right: 10px; }
@@ -212,7 +231,9 @@
       <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
       <div class="screenshot-carousel">
         <button id="prev-screenshot" class="prev">&#10094;</button>
-        <img id="screenshot" src="ss1.png" alt="Game screenshot">
+        <img id="screenshot-prev" class="preview" src="ss5.png" alt="Previous screenshot">
+        <img id="screenshot-main" src="ss1.png" alt="Game screenshot">
+        <img id="screenshot-next" class="preview" src="ss2.png" alt="Next screenshot">
         <button id="next-screenshot" class="next">&#10095;</button>
       </div>
       <div class="separator"></div>
@@ -268,12 +289,19 @@
     // Screenshot carousel
     const screenshots = ['ss1.png','ss2.png','ss3.png','ss4.png','ss5.png'];
     let currentShot = 0;
-    const screenshotImg = document.getElementById('screenshot');
+    const screenshotMain = document.getElementById('screenshot-main');
+    const screenshotPrevImg = document.getElementById('screenshot-prev');
+    const screenshotNextImg = document.getElementById('screenshot-next');
     const prevBtn = document.getElementById('prev-screenshot');
     const nextBtn = document.getElementById('next-screenshot');
 
     function showShot(index) {
-      screenshotImg.src = screenshots[index];
+      screenshotMain.classList.remove('animate');
+      void screenshotMain.offsetWidth; // restart animation
+      screenshotMain.src = screenshots[index];
+      screenshotPrevImg.src = screenshots[(index - 1 + screenshots.length) % screenshots.length];
+      screenshotNextImg.src = screenshots[(index + 1) % screenshots.length];
+      screenshotMain.classList.add('animate');
     }
 
     function nextShot() {
