@@ -102,6 +102,30 @@
     }
     .btn:hover { background-color: #b8942c; }
 
+    /* Screenshot Carousel */
+    .screenshot-carousel {
+      position: relative;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .screenshot-carousel img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .screenshot-carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    .screenshot-carousel button.prev { left: 10px; }
+    .screenshot-carousel button.next { right: 10px; }
+
     /* Separator (Gold Bar) */
     .separator {
       width: calc(100% + 2rem);
@@ -186,6 +210,11 @@
     <div class="container">
       <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full-crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
       <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+      <div class="screenshot-carousel">
+        <button id="prev-screenshot" class="prev">&#10094;</button>
+        <img id="screenshot" src="ss1.png" alt="Game screenshot">
+        <button id="next-screenshot" class="next">&#10095;</button>
+      </div>
       <div class="separator"></div>
     </div>
   </section>
@@ -235,6 +264,39 @@
       img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
       img.addEventListener('mouseleave', () => img.src = img.dataset.white);
     });
+
+    // Screenshot carousel
+    const screenshots = ['ss1.png','ss2.png','ss3.png','ss4.png','ss5.png'];
+    let currentShot = 0;
+    const screenshotImg = document.getElementById('screenshot');
+    const prevBtn = document.getElementById('prev-screenshot');
+    const nextBtn = document.getElementById('next-screenshot');
+
+    function showShot(index) {
+      screenshotImg.src = screenshots[index];
+    }
+
+    function nextShot() {
+      currentShot = (currentShot + 1) % screenshots.length;
+      showShot(currentShot);
+    }
+
+    function prevShot() {
+      currentShot = (currentShot - 1 + screenshots.length) % screenshots.length;
+      showShot(currentShot);
+    }
+
+    let shotInterval = setInterval(nextShot, 4000);
+
+    function resetInterval() {
+      clearInterval(shotInterval);
+      shotInterval = setInterval(nextShot, 4000);
+    }
+
+    nextBtn.addEventListener('click', () => { nextShot(); resetInterval(); });
+    prevBtn.addEventListener('click', () => { prevShot(); resetInterval(); });
+
+    showShot(currentShot);
   </script>
 
 </body>
