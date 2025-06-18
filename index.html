@@ -6,366 +6,161 @@
   <title>Sealubbers</title>
   <link rel="icon" href="icon.png">
   <style>
-    /* Prevent text selection across all elements */
-    html, body, * {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+    /* Prevent text selection */
+    html, body, * { -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none; }
 
-    /* Base Reset */
-    html, body { height: 100%; margin: 0; }
-    *, *::before, *::after { box-sizing: border-box; }
+    /* Base reset */
+    html,body{height:100%;margin:0;} *,*:before,*:after{box-sizing:border-box;}
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #232a6f;
-      color: #fff;
-      font-family: system-ui, sans-serif;
-      text-align: center;
+    body{
+      display:flex;flex-direction:column;min-height:100vh;margin:0;
+      background:#232a6f;color:#fff;font-family:system-ui,sans-serif;text-align:center;
     }
-
-    a { color: inherit; text-decoration: none; }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      width: 100%;
-    }
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1000px;margin:0 auto;padding:0 1rem;width:100%;}
 
     /* Header */
-    header { padding: 2rem 0; }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      color: #d4af37;
-    }
+    header{padding:2rem 0;} header h1{margin:0;font-size:3rem;color:#d4af37;}
 
     /* Social Icons */
-    .social-section {
-      background-color: #1f224f;
-      padding: 1.5rem 0;
-    }
-    .social {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      align-items: center; /* center icons vertically */
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-    }
-    .social img {
-      height: 48px;
-      width: auto;
-      object-fit: contain;
-      transition: transform 0.2s;
-    }
-    .social img.icon-patreon,
-    .social img.icon-discord {
-      height: 56px;
-    }
-    /* Override YouTube sizing */
-    .social img.icon-youtube {
-      width: 64px !important;
-      height: auto !important;
-    }
-    /* Custom overrides */
-    .icon-patreon,
-    .icon-discord {
-      height: 56px;
-    }
-    .icon-youtube {
-      width: 64px;      /* fixed width for even scaling */
-      height: auto;
-    }
-    .social img:hover {
-      transform: scale(1.1);
-    }
+    .social-section{background:#1f224f;padding:1.5rem 0;}
+    .social{list-style:none;display:flex;justify-content:center;align-items:center;gap:1.5rem;padding:0;margin:0;}
+    .social img{height:48px;transition:transform .2s;}
+    .social img.icon-patreon,.social img.icon-discord{height:56px;}
+    .social img.icon-youtube{width:64px!important;height:auto!important;}
+    .social img:hover{transform:scale(1.1);}
 
     /* Description */
-    .description { padding: 3rem 0 0; }
-    .description .container { padding: 0 2rem; }
-    .description p { margin: 0 0 1.5rem; font-size: 1.125rem; }
-    .btn {
-      display: inline-block;
-      background-color: #d4af37;
-      color: #000;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.2s;
-    }
-    .btn:hover { background-color: #b8942c; }
+    .description{padding:3rem 0 0;}
+    .description p{margin:0 0 1.5rem;font-size:1.125rem;}
+    .btn{display:inline-block;background:#d4af37;color:#000;padding:.75rem 1.5rem;border:none;border-radius:8px;font-weight:bold;cursor:pointer;transition:background-color .2s;}
+    .btn:hover{background:#b8942c;}
 
-    /* Screenshot Carousel */
-    .screenshot-carousel {
-      position: relative;
-      margin: 2rem auto;
-      max-width: 900px;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-    }
-    .screenshot-carousel img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-    .screenshot-carousel img.main {
-      opacity: 1;
-      z-index: 2;
-    }
-    .screenshot-carousel button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      padding: 0.5rem 0.75rem;
-      cursor: pointer;
-      font-size: 1.5rem;
-      z-index: 2;
-    }
-    .screenshot-carousel button.prev { left: 10px; }
-    .screenshot-carousel button.next { right: 10px; }
+    /* Carousel */
+    .screenshot-carousel{position:relative;margin:2rem auto;max-width:900px;width:100%;aspect-ratio:16/9;overflow:hidden;}
+    .screenshot-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;opacity:0;transition:opacity .3s ease-in-out;}
+    .screenshot-carousel img.main{opacity:1;z-index:2;}
+    .screenshot-carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;padding:.5rem .75rem;font-size:1.5rem;cursor:pointer;z-index:3;}
+    .screenshot-carousel button.prev{left:10px;}
+    .screenshot-carousel button.next{right:10px;}
 
-    /* Separator (Gold Bar) */
-    .separator {
-      width: calc(100% + 2rem);
-      max-width: none;
-      height: 4px;
-      background-color: #d4af37;
-      margin: 3rem -1rem;
-    }
+    /* Separator */
+    .separator{width:calc(100% + 2rem);height:4px;background:#d4af37;margin:3rem -1rem;}
 
-    /* FAQ Section */
-    .faq-section { padding: 0 0 6rem; }
-    #faq-title {
-      font-size: 2rem;
-      color: #d4af37;
-      margin: 0 auto 1rem; /* tighter bottom margin */
-      cursor: pointer;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 2px solid #d4af37;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-    }
-    #faq-title:hover { background-color: rgba(212,175,55,0.2); }
-    #faq-title::after {
-      content: '+';
-      margin-left: 0.5rem;
-      color: #d4af37;
-      font-weight: bold;
-      vertical-align: middle;
-      transition: transform 0.2s;
-    }
-    #faq-title.open::after { content: '-'; }
-    #faq-content {
-      display: none;
-      margin: 0 auto 0; /* no extra top margin */
-      text-align: left;
-      max-width: 100%;
-    }
-    #faq-content dt { margin: 0.75rem 0 0.5rem; font-weight: bold; }
-    #faq-content dd { margin: 0 0 0.5rem 1rem; color: #ddd; font-size: 0.95rem; }
+    /* FAQ */
+    .faq-section{padding:0 0 6rem;}
+    #faq-title{font-size:2rem;color:#d4af37;margin:0 auto 1rem;cursor:pointer;display:inline-block;padding:.5rem 1rem;border:2px solid #d4af37;border-radius:4px;transition:background-color .2s;}
+    #faq-title:hover{background:rgba(212,175,55,.2);} #faq-title:after{content:"+";margin-left:.5rem;font-weight:bold;}
+    #faq-title.open:after{content:"-";}
+    #faq-content{display:none;text-align:left;max-width:100%;margin:0 auto;}
+    #faq-content dt{margin:.75rem 0 .5rem;font-weight:bold;}
+    #faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;font-size:.95rem;}
 
-        /* Subscribe */
-    .subscribe-section { padding: 2rem 0; }
-    .subscribe-section h2 { margin: 0 0 1rem; color: #d4af37; }
-    .subscribe-section iframe.beehiiv-embed { width: 100%; max-width: 480px; height: 52px; margin: 0 auto; }
-    /* Contact */
-    .contact-section { padding: 2rem 0; }
-    .contact-box {
-      display: inline-block;
-      background-color: #1f224f;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      text-align: center;
-    }
-    .contact-box .label { color: #fff; margin-right: 0.5rem; }
-    .contact-box .contact-email { color: #d4af37; }
+    /* Subscribe */
+    .subscribe-section{padding:2.5rem 0;}
+    .subscribe-section h2{margin:0 0 1rem;color:#d4af37;font-size:1.75rem;}
+    #subscribe-form{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+    .email-input{width:100%;max-width:340px;padding:.75rem 1rem;border:none;border-radius:8px;font-size:1rem;text-align:center;background:#fff;color:#000;}
+    .email-input::placeholder{color:#666;}
+    #subscribe-message{font-size:1rem;margin-top:.5rem;}
+    #subscribe-message.success{color:#d4af37;} #subscribe-message.error{color:#ff5a5a;}
 
-    /* Footer */
-    footer.footer-section {
-      background-color: #1f224f;
-      width: 100%;
-      padding: 2rem 0;
-    }
-    footer.footer-section p { margin: 0; font-size: 0.875rem; color: #ddd; }
+    /* Contact & Footer */
+    .contact-section{padding:2rem 0;}
+    .contact-box{display:inline-block;background:#1f224f;padding:1rem 1.5rem;font-size:1rem;border-radius:8px;}
+    .contact-box .label{color:#fff;margin-right:.5rem;} .contact-box .contact-email{color:#d4af37;}
+    footer.footer-section{background:#1f224f;padding:2rem 0;} footer.footer-section p{margin:0;font-size:.875rem;color:#ddd;}
   </style>
 </head>
 <body>
+  <header><h1>Sealubbers</h1></header>
 
-  <header>
-    <h1>Sealubbers</h1>
-  </header>
+  <!-- Social -->
+  <section class="social-section"><div class="container"><ul class="social">
+    <li><a href="#"><img class="icon-patreon" src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+    <li><a href="#"><img class="icon-discord" src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+    <li><a href="#"><img class="icon-youtube" src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+    <li><a href="#"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+    <li><a href="#"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+  </ul></div></section>
 
-  <section class="social-section">
-    <div class="container">
-      <ul class="social">
-        <li><a href="#"><img class="icon-patreon" src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-        <li><a href="#"><img class="icon-discord" src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-        <li><a href="#"><img class="icon-youtube" src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-        <li><a href="#"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-        <li><a href="#"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
-      </ul>
+  <!-- Description / Carousel -->
+  <section class="description"><div class="container">
+    <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full‑crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
+    <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+
+    <div class="screenshot-carousel">
+      <button id="prev-screenshot" class="prev">&#10094;</button>
+      <img id="screenshot-prev" class="carousel-img prev" src="ss5.jpg" alt="Previous screenshot">
+      <img id="screenshot-main" class="carousel-img main" src="ss1.jpg" alt="Game screenshot">
+      <img id="screenshot-next" class="carousel-img next" src="ss2.jpg" alt="Next screenshot">
+      <button id="next-screenshot" class="next">&#10095;</button>
     </div>
-  </section>
 
-  <section class="description">
-    <div class="container">
-      <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full-crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
-      <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
-      <div class="screenshot-carousel">
-        <button id="prev-screenshot" class="prev">&#10094;</button>
-        <img id="screenshot-prev" class="carousel-img prev" src="ss5.jpg" alt="Previous screenshot">
-        <img id="screenshot-main" class="carousel-img main" src="ss1.jpg" alt="Game screenshot">
-        <img id="screenshot-next" class="carousel-img next" src="ss2.jpg" alt="Next screenshot">
-        <button id="next-screenshot" class="next">&#10095;</button>
-      </div>
-      <div class="separator"></div>
-    </div>
-  </section>
+    <div class="separator"></div>
+  </div></section>
 
-  <section class="subscribe-section">
-    <div class="container">
-      <h2>Subscribe for Updates</h2>
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe src="https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
-      <div class="separator"></div>
-    </div>
-  </section>
+  <!-- Subscribe -->
+  <section class="subscribe-section"><div class="container">
+    <h2>Join the Crew for Updates</h2>
+    <form id="subscribe-form" action="https://embeds.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48" method="POST">
+      <input type="email" name="email" class="email-input" placeholder="Enter your email" required>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+    <p id="subscribe-message"></p>
+    <div class="separator"></div>
+  </div></section>
 
-  <section class="faq-section">
-    <div class="container">
-      <div id="faq-title">Frequently Asked Questions</div>
-      <div id="faq-content">
-        <dl>
-          <dt>When will the demo be available?</dt>
-          <dd>We’re aiming for Summer 2025—watch here and on our socials for the exact date.</dd>
-          <dt>What platforms will Sealubbers support?</dt>
-          <dd>PC via Steam at launch, with macOS and Linux to follow.</dd>
-          <dt>Is there multiplayer or co-op?</dt>
-          <dd>Not in the initial demo. Co-op is on our roadmap for a future update.</dd>
-          <dt>Will there be controller support?</dt>
-          <dd>Yes—full controller support is included from day one.</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
+  <!-- FAQ -->
+  <section class="faq-section"><div class="container">
+    <div id="faq-title">Frequently Asked Questions</div>
+    <div id="faq-content"><dl>
+      <dt>When will the demo be available?</dt><dd>We’re aiming for Summer 2025—watch here and on our socials for the exact date.</dd>
+      <dt>What platforms will Sealubbers support?</dt><dd>PC via Steam at launch, with macOS and Linux to follow.</dd>
+      <dt>Is there multiplayer or co‑op?</dt><dd>Not in the initial demo. Co‑op is on our roadmap for a future update.</dd>
+      <dt>Will there be controller support?</dt><dd>Yes—full controller support is included from day one.</dd>
+    </dl></div>
+  </div></section>
 
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-box">
-        <span class="label">Business inquiries:</span>
-        <a href="mailto:contact@sealubbers.com" class="contact-email">contact@sealubbers.com</a>
-      </div>
-    </div>
-  </section>
+  <!-- Contact -->
+  <section class="contact-section"><div class="container"><div class="contact-box"><span class="label">Business inquiries:</span><a href="mailto:contact@sealubbers.com" class="contact-email">contact@sealubbers.com</a></div></div></section>
 
-  <footer class="footer-section">
-    <div class="container"><p>© 2025 Sealubbers. All rights reserved.</p></div>
-  </footer>
+  <!-- Footer -->
+  <footer class="footer-section"><div class="container"><p>© 2025 Sealubbers. All rights reserved.</p></div></footer>
 
   <script>
     // FAQ toggle
-    const faqTitle = document.getElementById('faq-title');
-    const faqContent = document.getElementById('faq-content');
-    faqTitle.addEventListener('click', () => {
-      const open = faqTitle.classList.toggle('open');
-      faqContent.style.display = open ? 'block' : 'none';
-    });
+    const faqTitle=document.getElementById('faq-title');
+    const faqContent=document.getElementById('faq-content');
+    faqTitle.addEventListener('click',()=>{const o=faqTitle.classList.toggle('open');faqContent.style.display=o?'block':'none'});
 
     // Social icon hover swap
-    document.querySelectorAll('.social img').forEach(img => {
-      img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
-      img.addEventListener('mouseleave', () => img.src = img.dataset.white);
+    document.querySelectorAll('.social img').forEach(img=>{
+      img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+      img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
     });
 
-    // Screenshot carousel
-    const screenshots = ['ss1.jpg','ss2.jpg','ss3.jpg','ss4.jpg','ss5.jpg'];
-    let currentShot = 0;
-    let screenshotMain = document.getElementById('screenshot-main');
-    let screenshotPrevImg = document.getElementById('screenshot-prev');
-    let screenshotNextImg = document.getElementById('screenshot-next');
-    const prevBtn = document.getElementById('prev-screenshot');
-    const nextBtn = document.getElementById('next-screenshot');
+    // Carousel functionality
+    const screenshots=['ss1.jpg','ss2.jpg','ss3.jpg','ss4.jpg','ss5.jpg'];
+    let current=0;
+    let main=document.getElementById('screenshot-main');
+    let prevImg=document.getElementById('screenshot-prev');
+    let nextImg=document.getElementById('screenshot-next');
+    function updateSources(){main.src=screenshots[current];prevImg.src=screenshots[(current-1+screenshots.length)%screenshots.length];nextImg.src=screenshots[(current+1)%screenshots.length];}
+    function nextShot(){current=(current+1)%screenshots.length;updateSources();}
+    function prevShot(){current=(current-1+screenshots.length)%screenshots.length;updateSources();}
+    document.getElementById('next-screenshot').addEventListener('click',()=>{nextShot();resetInterval()});
+    document.getElementById('prev-screenshot').addEventListener('click',()=>{prevShot();resetInterval()});
+    updateSources(); let interval=setInterval(nextShot,3000);function resetInterval(){clearInterval(interval);interval=setInterval(nextShot,3000);}
 
-    function showImages() {
-      screenshotPrevImg.className = 'carousel-img prev';
-      screenshotMain.className = 'carousel-img main';
-      screenshotNextImg.className = 'carousel-img next';
-    }
-
-    function nextShot() {
-      screenshotMain.classList.remove('main');
-      screenshotMain.classList.add('prev');
-      screenshotNextImg.classList.remove('next');
-      screenshotNextImg.classList.add('main');
-
-      currentShot = (currentShot + 1) % screenshots.length;
-      const newNextSrc = screenshots[(currentShot + 1) % screenshots.length];
-
-      screenshotPrevImg.classList.remove('prev');
-      screenshotPrevImg.classList.add('next');
-      screenshotPrevImg.src = newNextSrc;
-
-      const temp = screenshotPrevImg;
-      screenshotPrevImg = screenshotMain;
-      screenshotMain = screenshotNextImg;
-      screenshotNextImg = temp;
-
-      showImages();
-    }
-
-    function prevShot() {
-      screenshotMain.classList.remove('main');
-      screenshotMain.classList.add('next');
-      screenshotPrevImg.classList.remove('prev');
-      screenshotPrevImg.classList.add('main');
-
-      currentShot = (currentShot - 1 + screenshots.length) % screenshots.length;
-      const newPrevSrc = screenshots[(currentShot - 1 + screenshots.length) % screenshots.length];
-
-      screenshotNextImg.classList.remove('next');
-      screenshotNextImg.classList.add('prev');
-      screenshotNextImg.src = newPrevSrc;
-
-      const temp = screenshotNextImg;
-      screenshotNextImg = screenshotMain;
-      screenshotMain = screenshotPrevImg;
-      screenshotPrevImg = temp;
-
-      showImages();
-    }
-
-    let shotInterval = setInterval(nextShot, 3000);
-
-    function resetInterval() {
-      clearInterval(shotInterval);
-      shotInterval = setInterval(nextShot, 3000);
-    }
-
-    nextBtn.addEventListener('click', () => { nextShot(); resetInterval(); });
-    prevBtn.addEventListener('click', () => { prevShot(); resetInterval(); });
-
-    // Initial images
-    screenshotMain.src = screenshots[currentShot];
-    screenshotPrevImg.src = screenshots[screenshots.length - 1];
-    screenshotNextImg.src = screenshots[1];
+    // Subscribe form handler
+    document.getElementById('subscribe-form').addEventListener('submit',async e=>{
+      e.preventDefault();const form=e.target;const data=new FormData(form);const msg=document.getElementById('subscribe-message');msg.textContent='Subscribing...';msg.className='';
+      try{
+        const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+        if(res.ok){msg.textContent='Thanks for subscribing!';msg.className='success';form.reset();}else{const r=await res.json();msg.textContent=r.error||'Oops! Try again.';msg.className='error';}
+      }catch(err){msg.textContent='Network error. Please try later.';msg.className='error';}
+    });
   </script>
-
 </body>
 </html>
