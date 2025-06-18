@@ -37,19 +37,15 @@
     .btn{display:inline-block;background:#d4af37;color:#000;padding:.75rem 1.5rem;border:none;border-radius:8px;font-weight:bold;font-size:1rem;cursor:pointer;transition:background-color .2s;}
     .btn:hover{background:#b8942c;}
 
-    /* Carousel */
-    .screenshot-carousel{position:relative;margin:2rem auto;max-width:900px;width:100%;aspect-ratio:16/9;overflow:hidden;}
-    .screenshot-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;opacity:0;transition:opacity .3s ease-in-out;}
-    .screenshot-carousel img.main{opacity:1;z-index:2;}
-    .screenshot-carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;padding:.5rem .75rem;font-size:1.5rem;cursor:pointer;z-index:3;}
-    .screenshot-carousel button.prev{left:10px;}
-    .screenshot-carousel button.next{right:10px;}
+    /* Screenshots Row */
+    .screenshot-row{display:flex;justify-content:center;gap:1rem;margin:2rem auto;max-width:900px;}
+    .screenshot-row img{width:100%;border-radius:8px;object-fit:cover;flex:1;aspect-ratio:16/9;}
 
     /* Separator */
     .separator{width:100vw;height:4px;background:#d4af37;margin:3rem calc(-50vw + 50%);}
 
     /* FAQ */
-    .faq-section{padding-bottom:6rem;}
+    .faq-section{padding:0 0 3rem;}
     #faq-title{font-size:2rem;color:#d4af37;margin:0 auto 1rem;cursor:pointer;display:inline-block;padding:.5rem 1rem;border:2px solid #d4af37;border-radius:4px;transition:background-color .2s;}
     #faq-title:hover{background:rgba(212,175,55,.2);} #faq-title:after{content:"+";margin-left:.5rem;font-weight:bold;}
     #faq-title.open:after{content:"-";}
@@ -58,7 +54,7 @@
     #faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;font-size:.95rem;}
 
     /* Subscribe */
-    .subscribe-section{padding:2.5rem 0;}
+    .subscribe-section{padding:1.5rem 0;}
 
     /* Contact & Footer */
     .contact-section{padding:2rem 0;}
@@ -84,12 +80,12 @@
     <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full‑crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
     <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
 
-    <div class="screenshot-carousel">
-      <button id="prev-screenshot" class="prev">&#10094;</button>
-      <img id="screenshot-prev" class="carousel-img prev" src="ss5.jpg" alt="Previous screenshot">
-      <img id="screenshot-main" class="carousel-img main" src="ss1.jpg" alt="Game screenshot">
-      <img id="screenshot-next" class="carousel-img next" src="ss2.jpg" alt="Next screenshot">
-      <button id="next-screenshot" class="next">&#10095;</button>
+    <div class="screenshot-row">
+      <img src="ss1.jpg" alt="Screenshot 1">
+      <img src="ss2.jpg" alt="Screenshot 2">
+      <img src="ss3.jpg" alt="Screenshot 3">
+      <img src="ss4.jpg" alt="Screenshot 4">
+      <img src="ss5.jpg" alt="Screenshot 5">
     </div>
 
     <div class="separator"></div>
@@ -132,18 +128,6 @@
     });
 
 
-    // Carousel functionality
-    const screenshots=['ss1.jpg','ss2.jpg','ss3.jpg','ss4.jpg','ss5.jpg'];
-    let current=0;
-    let main=document.getElementById('screenshot-main');
-    let prevImg=document.getElementById('screenshot-prev');
-    let nextImg=document.getElementById('screenshot-next');
-    function updateSources(){main.src=screenshots[current];prevImg.src=screenshots[(current-1+screenshots.length)%screenshots.length];nextImg.src=screenshots[(current+1)%screenshots.length];}
-    function nextShot(){current=(current+1)%screenshots.length;updateSources();}
-    function prevShot(){current=(current-1+screenshots.length)%screenshots.length;updateSources();}
-    document.getElementById('next-screenshot').addEventListener('click',()=>{nextShot();resetInterval()});
-    document.getElementById('prev-screenshot').addEventListener('click',()=>{prevShot();resetInterval()});
-    updateSources(); let interval=setInterval(nextShot,3000);function resetInterval(){clearInterval(interval);interval=setInterval(nextShot,3000);}
 
   </script>
 </body>
