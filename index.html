@@ -71,6 +71,7 @@
     .contact-box .label{color:#fff;margin-right:.5rem;} .contact-box .contact-email{color:#d4af37;}
     footer.footer-section{background:#1f224f;padding:2rem 0;} footer.footer-section p{margin:0;font-size:.875rem;color:#ddd;}
   </style>
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
 <body>
   <header><h1>Sealubbers</h1></header>
@@ -108,6 +109,8 @@
       <button type="submit" class="btn">Subscribe</button>
     </form>
     <div id="subscribe-message"></div>
+    <!-- Hidden iframe used to submit to Beehiiv without leaving the page -->
+    <iframe id="subscribe-iframe" style="display:none;"></iframe>
   </div>
   <div class="separator"></div>
   </section>
@@ -143,11 +146,15 @@
 
     // Subscribe form
     const subscribeForm=document.getElementById('subscribe-form');
+    const subscribeIframe=document.getElementById('subscribe-iframe');
+    const subscribeMessage=document.getElementById('subscribe-message');
     subscribeForm.addEventListener('submit',e=>{
       e.preventDefault();
       const email=document.getElementById('subscribe-email').value;
-      const url='https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48?email='+encodeURIComponent(email);
-      window.open(url,'_blank');
+      subscribeIframe.src='https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48?email='+encodeURIComponent(email);
+      subscribeMessage.textContent='Almost there! Check your email to confirm your subscription.';
+      subscribeMessage.className='success';
+      subscribeForm.reset();
     });
 
     // Carousel functionality
