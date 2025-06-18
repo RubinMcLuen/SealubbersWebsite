@@ -102,9 +102,12 @@
 
   <!-- Subscribe -->
   <section class="subscribe-section"><div class="container">
-    <h2>Join the Crew for Updates</h2>
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: ; height: ; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000;"></iframe>
+    <h2>Join the Crew!</h2>
+    <form id="subscribe-form">
+      <input type="email" id="subscribe-email" class="email-input" placeholder="Enter your email" required>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+    <div id="subscribe-message"></div>
   </div>
   <div class="separator"></div>
   </section>
@@ -136,6 +139,15 @@
     document.querySelectorAll('.social img').forEach(img=>{
       img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
       img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+    });
+
+    // Subscribe form
+    const subscribeForm=document.getElementById('subscribe-form');
+    subscribeForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=document.getElementById('subscribe-email').value;
+      const url='https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48?email='+encodeURIComponent(email);
+      window.open(url,'_blank');
     });
 
     // Carousel functionality
