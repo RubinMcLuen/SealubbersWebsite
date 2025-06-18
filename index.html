@@ -184,13 +184,24 @@
         /* Subscribe */
     .subscribe-section { padding: 2rem 0; }
     .subscribe-section h2 { margin: 0 0 1rem; color: #d4af37; }
-    .subscribe-section iframe.beehiiv-embed {
-      width: 100%;
+    .subscribe-form {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
       max-width: 480px;
-      min-height: 200px;
       margin: 0 auto;
-      border: none;
     }
+    .subscribe-form input[type="email"] {
+      flex: 1;
+      max-width: 300px;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #d4af37;
+      background-color: #1f224f;
+      color: #fff;
+    }
+    .subscribe-form input::placeholder { color: #ddd; }
+    .subscribe-form button.btn { margin: 0; }
 
     /* Contact */
     .contact-section { padding: 2rem 0; }
@@ -249,7 +260,10 @@
   <section class="subscribe-section">
     <div class="container">
       <h2>Subscribe for Updates</h2>
-      <iframe src="https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+      <form class="subscribe-form" action="https://subscribe-forms.beehiiv.com/df28b05e-8688-4c5c-ae9e-ef96dd8e6b48" method="post" target="_blank">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
       <div class="separator"></div>
     </div>
   </section>
