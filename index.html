@@ -41,7 +41,16 @@ section{padding:var(--space) 0;}
 .separator{width:100%;height:4px;background:var(--gold);margin:var(--space) 0;}
 
 header{padding:var(--space) 0;}
-header h1{margin:0;font-size:3rem;color:var(--gold);}
+.site-title {
+  width: clamp(150px, 30%, 300px);
+  height: auto;
+}
+@media (max-width: 900px) {
+  .site-title { width: 50%; }
+}
+@media (max-width: 600px) {
+  .site-title { width: 70%; }
+}
 
 .social-section{background:var(--navy-d);}
 .social{display:flex;justify-content:center;gap:1.5rem;margin:0;padding:0;list-style:none;}
@@ -82,9 +91,8 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 
 <body>
 <header>
-  <img src="title.png" alt="Sealubbers Title" style="width:30%;height:auto;">
+  <img src="title.png" alt="Sealubbers Title" class="site-title">
 </header>
-
 
 <!-- Social -->
 <section class="social-section">
