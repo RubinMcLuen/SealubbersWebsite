@@ -1,134 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sealubbers</title>
-  <link rel="icon" href="icon.png">
+  <link rel="icon" href="icon.png" />
   <style>
-    /* Prevent text selection */
-    html, body, * { -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none; }
+    :root{
+      --space:2rem;
+      --gold:#d4af37;
+      --navy:#232a6f;
+      --navy-d:#1f224f;
+    }
 
-    /* Base reset */
-    html,body{height:100%;margin:0;} *,*:before,*:after{box-sizing:border-box;}
-
+    /* ---------- base ---------- */
+    html,body{height:100%;margin:0;}
+    *,*::before,*::after{box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
     body{
-      display:flex;flex-direction:column;min-height:100vh;margin:0;
-      background:#232a6f;color:#fff;font-family:system-ui,sans-serif;text-align:center;
+      display:flex;flex-direction:column;min-height:100vh;
+      background:var(--navy);color:#fff;font-family:system-ui,sans-serif;text-align:center;
     }
     a{color:inherit;text-decoration:none;}
-    .container{max-width:1000px;margin:0 auto;padding:0 1rem;width:100%;}
-    section{padding:3rem 0;}
+    .container{max-width:1000px;width:100%;margin:0 auto;padding:0 1rem;}
+    section{padding:var(--space) 0;}
 
-    /* Header */
-    header{padding:2rem 0;} header h1{margin:0;font-size:3rem;color:#d4af37;}
+    /* ---------- separators ---------- */
+    .separator{
+      width:100vw;height:4px;background:var(--gold);
+      margin:var(--space) calc(-50vw + 50%);
+    }
+    /* tighter bars for subscribe (margin only) */
+    .subscribe-section .separator{margin:0 calc(-50vw + 50%);}
 
-    /* Social Icons */
-    .social-section{background:#1f224f;padding:2rem 0;}
-    .social{list-style:none;display:flex;justify-content:center;align-items:center;gap:1.5rem;padding:0;margin:0;}
+    /* ---------- header ---------- */
+    header{padding:var(--space) 0;}
+    header h1{margin:0;font-size:3rem;color:var(--gold);}
+
+    /* ---------- social ---------- */
+    .social-section{background:var(--navy-d);}
+    .social{
+      list-style:none;display:flex;justify-content:center;align-items:center;
+      gap:1.5rem;margin:0;padding:0;
+    }
     .social img{height:48px;transition:transform .2s;}
-    .social img.icon-patreon,.social img.icon-discord{height:56px;}
+    .social img.icon-patreon,
+    .social img.icon-discord{height:56px;}
     .social img.icon-youtube{width:64px!important;height:auto!important;}
     .social img:hover{transform:scale(1.1);}
 
-    /* Description */
-    .description{padding-top:3rem;padding-bottom:0;}
-    .description p{margin:0 0 1.5rem;font-size:1.125rem;}
-    .btn{display:inline-block;background:#d4af37;color:#000;padding:.75rem 1.5rem;border:none;border-radius:8px;font-weight:bold;font-size:1rem;cursor:pointer;transition:background-color .2s;}
+    /* ---------- description ---------- */
+    .description p{margin:0 0 1.25rem;font-size:1.125rem;}
+    .btn{
+      display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:1rem;
+      padding:.75rem 1.5rem;border:none;border-radius:8px;cursor:pointer;transition:background .2s;
+    }
     .btn:hover{background:#b8942c;}
 
-    /* Screenshots Row */
-    .screenshot-row{display:flex;justify-content:center;gap:1rem;margin:2rem auto;max-width:900px;}
-    .screenshot-row img{width:100%;border-radius:8px;object-fit:cover;flex:1;aspect-ratio:16/9;}
+    /* ---------- carousel ---------- */
+    .carousel{
+      position:relative;
+      max-width:640px;                     /* restore original thumbnail width */
+      margin:var(--space) auto;
+    }
+    .carousel img{
+      width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:cover;display:none;
+    }
+    .carousel img.active{display:block;}
 
-    /* Separator */
-    .separator{width:100vw;height:4px;background:#d4af37;margin:3rem calc(-50vw + 50%);}
+    .carousel-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(0,0,0,.45);border:none;color:#fff;font-size:2rem;
+      padding:.25rem .75rem;border-radius:4px;cursor:pointer;
+    }
+    .carousel-btn:hover{background:rgba(0,0,0,.7);}
+    .carousel-btn.prev{left:10px;}
+    .carousel-btn.next{right:10px;}
 
-    /* FAQ */
-    .faq-section{padding:0 0 3rem;}
-    #faq-title{font-size:2rem;color:#d4af37;margin:0 auto 1rem;cursor:pointer;display:inline-block;padding:.5rem 1rem;border:2px solid #d4af37;border-radius:4px;transition:background-color .2s;}
-    #faq-title:hover{background:rgba(212,175,55,.2);} #faq-title:after{content:"+";margin-left:.5rem;font-weight:bold;}
-    #faq-title.open:after{content:"-";}
-    #faq-content{display:none;text-align:left;max-width:100%;margin:0 auto;}
-    #faq-content dt{margin:.75rem 0 .5rem;font-weight:bold;}
+    /* ---------- faq ---------- */
+    #faq-title{
+      font-size:2rem;color:var(--gold);cursor:pointer;padding:.5rem 1rem;
+      border:2px solid var(--gold);border-radius:4px;transition:background .2s;
+      display:inline-block;margin:0 auto 1rem;
+    }
+    #faq-title:hover{background:rgba(212,175,55,.2);}
+    #faq-title::after{content:"+";margin-left:.5rem;font-weight:700;}
+    #faq-title.open::after{content:"-";}
+    #faq-content{display:none;text-align:left;margin:0 auto;}
+    #faq-content dt{margin:.75rem 0 .5rem;font-weight:700;}
     #faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;font-size:.95rem;}
 
-    /* Subscribe */
-    .subscribe-section{padding:1.5rem 0;}
+    /* ---------- subscribe ---------- */
+    .subscribe-section{padding:0;}
+    .subscribe-section .container{padding:1rem 0;}
 
-    /* Contact & Footer */
-    .contact-section{padding:2rem 0;}
-    .contact-box{display:inline-block;background:#1f224f;padding:1rem 1.5rem;font-size:1rem;border-radius:8px;}
-    .contact-box .label{color:#fff;margin-right:.5rem;} .contact-box .contact-email{color:#d4af37;}
-    footer.footer-section{background:#1f224f;padding:2rem 0;} footer.footer-section p{margin:0;font-size:.875rem;color:#ddd;}
+    /* ---------- contact / footer ---------- */
+    .contact-box{
+      display:inline-block;background:var(--navy-d);padding:1rem 1.5rem;border-radius:8px;font-size:1rem;
+    }
+    .contact-box .label{margin-right:.5rem;}
+    .contact-box .contact-email{color:var(--gold);}
+    footer.footer-section{background:var(--navy-d);padding:2rem 0;}
+    footer.footer-section p{margin:0;font-size:.875rem;color:#ddd;}
   </style>
 </head>
 <body>
   <header><h1>Sealubbers</h1></header>
 
-  <!-- Social -->
-  <section class="social-section"><div class="container"><ul class="social">
-    <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img class="icon-patreon" src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-    <li><a href="https://discord.gg/sealubbers" target="_blank" rel="noopener"><img class="icon-discord" src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-    <li><a href="https://www.youtube.com/@sealubbers" target="_blank" rel="noopener"><img class="icon-youtube" src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-    <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-    <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
-  </ul></div></section>
-
-  <!-- Description / Carousel -->
-  <section class="description"><div class="container">
-    <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full‑crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
-    <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
-
-    <div class="screenshot-row">
-      <img src="ss1.jpg" alt="Screenshot 1">
-      <img src="ss2.jpg" alt="Screenshot 2">
-      <img src="ss3.jpg" alt="Screenshot 3">
-      <img src="ss4.jpg" alt="Screenshot 4">
-      <img src="ss5.jpg" alt="Screenshot 5">
+  <!-- social -->
+  <section class="social-section">
+    <div class="container">
+      <ul class="social">
+        <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img class="icon-patreon" src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+        <li><a href="https://discord.gg/x48s3zU8" target="_blank" rel="noopener"><img class="icon-discord" src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+        <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img class="icon-youtube" src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+        <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+        <li><a href="https://www.tiktok.com/@sealubbers"  target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+      </ul>
     </div>
+  </section>
 
-    <div class="separator"></div>
-  </div></section>
+  <!-- description & carousel -->
+  <section class="description">
+    <div class="container">
+      <p>Sealubbers rallies you and your fearless crew to conquer treacherous seas, engage in epic ship battles and full-crew sword fights—all to amass legendary gold and secure your tale among the stars.</p>
+      <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
 
-  <!-- Subscribe -->
-    <section class="subscribe-section"><div class="container">
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script><iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: ; height: ; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000;"></iframe>
+      <div class="carousel">
+        <button class="carousel-btn prev" aria-label="Previous screenshot">&#10094;</button>
+
+        <img src="ss1.jpg" alt="Screenshot 1" class="active">
+        <img src="ss2.jpg" alt="Screenshot 2">
+        <img src="ss3.jpg" alt="Screenshot 3">
+        <img src="ss4.jpg" alt="Screenshot 4">
+        <img src="ss5.jpg" alt="Screenshot 5">
+
+        <button class="carousel-btn next" aria-label="Next screenshot">&#10095;</button>
+      </div>
     </div>
-    <div class="separator"></div>
-    </section>
+  </section>
 
-  <!-- FAQ -->
-  <section class="faq-section"><div class="container">
-    <div id="faq-title">Frequently Asked Questions</div>
-    <div id="faq-content"><dl>
-      <dt>When will the demo be available?</dt><dd>We’re aiming for Summer 2025—watch here and on our socials for the exact date.</dd>
-      <dt>What platforms will Sealubbers support?</dt><dd>PC via Steam at launch, with macOS and Linux to follow.</dd>
-      <dt>Is there multiplayer or co‑op?</dt><dd>Not in the initial demo. Co‑op is on our roadmap for a future update.</dd>
-      <dt>Will there be controller support?</dt><dd>Yes—full controller support is included from day one.</dd>
-    </dl></div>
-  </div></section>
+  <!-- subscribe framed by single bars above & below -->
+  <section class="subscribe-section">
+    <div class="separator"></div>   <!-- top bar -->
+    <div class="container">
+      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+      <iframe
+        src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
+        class="beehiiv-embed" data-test-id="beehiiv-embed"
+        frameborder="0" scrolling="no"
+        style="width:100%;height:250px;margin:0;border-radius:0;background:transparent;box-shadow:0 0 #0000;">
+      </iframe>
+    </div>
+    <div class="separator"></div>   <!-- bottom bar -->
+  </section>
 
-  <!-- Contact -->
-  <section class="contact-section"><div class="container"><div class="contact-box"><span class="label">Business inquiries:</span><a href="mailto:contact@sealubbers.com" class="contact-email">contact@sealubbers.com</a></div></div></section>
+  <!-- faq -->
+  <section class="faq-section">
+    <div class="container">
+      <div id="faq-title">Frequently Asked Questions</div>
+      <div id="faq-content">
+        <dl>
+          <dt>When will the demo be available?</dt>
+          <dd>We’re aiming for Summer&nbsp;2025—watch here and on our socials for the exact date.</dd>
 
-  <!-- Footer -->
-  <footer class="footer-section"><div class="container"><p>© 2025 Sealubbers. All rights reserved.</p></div></footer>
+          <dt>What platforms will Sealubbers support?</dt>
+          <dd>PC via Steam at launch, with macOS and Linux to follow.</dd>
+
+          <dt>Is there multiplayer or co-op?</dt>
+          <dd>Not in the initial demo. Co-op is on our roadmap for a future update.</dd>
+
+          <dt>Will there be controller support?</dt>
+          <dd>Yes—full controller support is included from day one.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-box">
+        <span class="label">Business inquiries:</span>
+        <a href="mailto:contact@sealubbers.com" class="contact-email">contact@sealubbers.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer-section">
+    <div class="container"><p>© 2025 Sealubbers. All rights reserved.</p></div>
+  </footer>
 
   <script>
-    // FAQ toggle
-    const faqTitle=document.getElementById('faq-title');
-    const faqContent=document.getElementById('faq-content');
-    faqTitle.addEventListener('click',()=>{const o=faqTitle.classList.toggle('open');faqContent.style.display=o?'block':'none'});
-
-    // Social icon hover swap
-    document.querySelectorAll('.social img').forEach(img=>{
-      img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-      img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+    /* FAQ toggle */
+    const faqTitle   = document.getElementById('faq-title');
+    const faqContent = document.getElementById('faq-content');
+    faqTitle.addEventListener('click', () => {
+      const open = faqTitle.classList.toggle('open');
+      faqContent.style.display = open ? 'block' : 'none';
     });
 
+    /* social icon hover swap */
+    document.querySelectorAll('.social img').forEach(img => {
+      img.addEventListener('mouseenter', () => (img.src = img.dataset.gold));
+      img.addEventListener('mouseleave', () => (img.src = img.dataset.white));
+    });
 
+    /* carousel logic */
+    const carousel = document.querySelector('.carousel');
+    const slides   = carousel.querySelectorAll('img');
+    const prevBtn  = carousel.querySelector('.prev');
+    const nextBtn  = carousel.querySelector('.next');
+    let idx = 0, timer;
 
+    function show(i){
+      slides.forEach((img,k)=>img.classList.toggle('active',k===i));
+    }
+    function next(){ idx=(idx+1)%slides.length; show(idx);}
+    function prev(){ idx=(idx-1+slides.length)%slides.length; show(idx);}
+    function resetTimer(){
+      clearInterval(timer);
+      timer=setInterval(next,5000);
+    }
+
+    prevBtn.addEventListener('click',()=>{prev();resetTimer();});
+    nextBtn.addEventListener('click',()=>{next();resetTimer();});
+    timer=setInterval(next,5000);
   </script>
 </body>
 </html>
