@@ -1,1 +1,196 @@
-<!doctype html><meta charset="utf-8"><title>Sealubbers</title><h1>Sealubbers</h1><p>GitHub Pages branch ready.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+:root{--space:2rem;--gold:#d4af37;--navy:#232a6f;--navy-d:#1f224f;}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: var(--navy);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+*, *::before, *::after {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  box-sizing:border-box;
+}
+
+.container{max-width:1000px;margin:0 auto;padding:0 1rem;}
+section{padding:var(--space) 0;}
+.separator{width:100%;height:4px;background:var(--gold);margin:var(--space) 0;}
+
+header{padding:var(--space) 0;}
+.site-title {
+  width: clamp(150px, 30%, 300px);
+  height: auto;
+}
+@media (max-width: 900px) {
+  .site-title { width: 50%; }
+}
+@media (max-width: 600px) {
+  .site-title { width: 70%; }
+}
+
+.social-section{background:var(--navy-d);}
+.social{display:flex;justify-content:center;gap:1.5rem;margin:0;padding:0;list-style:none;}
+.social img{height:48px;transition:transform .2s;}
+.social img:hover{transform:scale(1.1);}
+
+.description p{margin:0 0 1.25rem;font-size:1.125rem;}
+.btn{display:inline-block;background:var(--gold);color:#000;font-weight:700;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;}
+
+.screenshots{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:var(--space) auto;}
+.screenshots figure{margin:0;cursor:pointer;transition:transform .3s;}
+.screenshots figure:hover{transform:scale(1.03);}
+.screenshots img{width:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.4);}
+.screenshots figcaption{margin-top:.75rem;font-size:1.125rem;}
+@media(max-width:900px){.screenshots{grid-template-columns:1fr;}}
+
+#faq-title{cursor:pointer;font-size:2rem;color:var(--gold);padding:.5rem 1rem;border:2px solid var(--gold);border-radius:4px;display:inline-block;margin-bottom:1rem;transition:background .2s;}
+#faq-title:hover{background:rgba(212,175,55,.2);}
+#faq-title::after{content:"+";margin-left:.5rem;font-weight:700;}
+#faq-title.open::after{content:"-";}
+#faq-content{display:none;text-align:center;}
+#faq-content dl{display:inline-block;text-align:left;}
+#faq-content dt{margin:.75rem 0 .5rem;font-weight:700;}
+#faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;}
+
+.subscribe-section{padding:0;}
+.subscribe-wrapper{padding:2rem 0;display:flex;justify-content:center;overflow-x:auto;}
+
+.contact-box{display:inline-block;background:var(--navy-d);padding:1rem 1.5rem;border-radius:8px;}
+.contact-box a{color:var(--gold);text-decoration:none;}
+
+footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
+
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.subscribe-wrapper.pulse{animation:pulse 1s 2;}
+</style>
+</head>
+
+<body>
+<header>
+  <img src="title.png" alt="Sealubbers Title" class="site-title">
+</header>
+
+<!-- Social -->
+<section class="social-section">
+  <div class="container">
+    <ul class="social">
+      <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+      <li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+      <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+      <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+      <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Description + screenshots -->
+<section class="description">
+  <div class="container">
+    <p>Sealubbers is an open-world pirate RPG. Build your crew, battle rival ships, hunt treasure, and write your legend in the stars.</p>
+    <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+    <div class="screenshots">
+      <figure><img src="ss1.png" alt="Creating your pirate"><figcaption>Create your pirate and customize your crew.</figcaption></figure>
+      <figure><img src="ss2.png" alt="Explore the world"><figcaption>Sail around and discover a vast open world.</figcaption></figure>
+      <figure><img src="ss3.png" alt="Ship combat"><figcaption>Battle rival vessels in thrilling ship combat.</figcaption></figure>
+      <figure><img src="ss4.png" alt="Board enemy ships"><figcaption>Board foes to steal their precious treasure.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe -->
+<section class="subscribe-section">
+  <div class="separator"></div>
+  <div class="subscribe-wrapper">
+    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
+      class="beehiiv-embed"
+      data-test-id="beehiiv-embed"
+      frameborder="0"
+      scrolling="no"
+      style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
+    </iframe>
+  </div>
+  <div class="separator"></div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div id="faq-title">Frequently Asked Questions</div>
+    <div id="faq-content">
+      <dl>
+        <dt>When can I play Sealubbers?</dt>
+        <dd>I'm aiming to release the demo to the public by the end of September. I hope to release the full game sometime in 2026.</dd>
+        <dt>What platforms will Sealubbers support?</dt>
+        <dd>I want to release the game on PC, Mac, iOS, and Android. Possibly on console.</dd>
+        <dt>How much will Sealubbers cost?</dt>
+        <dd>The game will be free-to-play. There will be cosmetics available for purchase, but nothing that affects gameplay.</dd>
+        <dt>Is there multiplayer or co-op?</dt>
+        <dd>Not in the initial game. But I'm planning on making a multiplayer PvP gamemode inspired by games like Agar.io and Slither.io.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-box">Business inquiries: <a href="mailto:contact@sealubbers.com">contact@sealubbers.com</a></div>
+  </div>
+</section>
+
+<footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
+
+<script>
+/* FAQ toggle with smooth scroll */
+const faqBtn=document.getElementById('faq-title');
+const faqBox=document.getElementById('faq-content');
+faqBtn.onclick=()=>{
+  faqBtn.classList.toggle('open');
+  if(faqBox.style.display){
+    faqBox.style.display='';
+  }else{
+    faqBox.style.display='block';
+    faqBox.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+};
+
+/* Pulse once when subscribe comes into view */
+const subWrap=document.querySelector('.subscribe-wrapper');
+new IntersectionObserver(e=>{if(e[0].isIntersecting){subWrap.classList.add('pulse')}}).observe(subWrap);
+
+/* Swap icons to gold on hover */
+document.querySelectorAll('.social img').forEach(img=>{
+  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+});
+</script>
+</body>
+</html>
