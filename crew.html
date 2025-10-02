@@ -89,36 +89,10 @@ header {
 	transition: color 0.2s;
 }
 .nav-links a:hover {color: var(--gold);}
-
-/* Mobile merged nav hidden by default */
-.nav-all {
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 0.5rem;
-}
+.nav-all {display: none; flex-direction: column; align-items: center; margin-top: 0.5rem;}
 .nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
-
-/* Hamburger button */
-.menu-btn {
-	display: none;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	background: none;
-	border: none;
-	cursor: pointer;
-}
-.menu-btn span {
-	display: block;
-	width: 28px;
-	height: 3px;
-	background: #fff;
-	margin: 6px 0;
-	transition: 0.3s;
-}
-
-/* Mobile styles */
+.menu-btn {display: none; position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;}
+.menu-btn span {display: block; width: 28px; height: 3px; background: #fff; margin: 6px 0; transition: 0.3s;}
 @media (max-width: 1100px) {
 	.nav-left, .nav-right { display: none; }
 	.nav-container { height: auto; }
@@ -131,194 +105,53 @@ header {
 /* =========================
 	 Coming Soon Popup
 	 ========================= */
-.popup-overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.7);
-	z-index: 1000;
-	justify-content: center;
-	align-items: center;
-}
-.popup-overlay.active {
-	display: flex;
-}
-.popup-content {
-	background: var(--navy-d);
-	border: 3px solid var(--gold);
-	border-radius: 12px;
-	padding: 2rem 3rem;
-	text-align: center;
-	max-width: 400px;
-	animation: popupSlide 0.3s ease-out;
-}
-@keyframes popupSlide {
-	from {
-		transform: translateY(-50px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-.popup-content h2 {
-	color: var(--gold);
-	margin: 0 0 1rem;
-	font-size: 2rem;
-}
-.popup-content p {
-	color: #ddd;
-	margin: 0 0 1.5rem;
-	font-size: 1.1rem;
-}
-.popup-close {
-	background: var(--gold);
-	color: var(--navy);
-	border: none;
-	padding: 0.75rem 2rem;
-	font-size: 1rem;
-	font-weight: 600;
-	border-radius: 6px;
-	cursor: pointer;
-	transition: transform 0.2s;
-}
-.popup-close:hover {
-	transform: scale(1.05);
-}
-
+.popup-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;}
+.popup-overlay.active {display: flex;}
+.popup-content {background: var(--navy-d); border: 3px solid var(--gold); border-radius: 12px; padding: 2rem 3rem; text-align: center; max-width: 400px; animation: popupSlide 0.3s ease-out;}
+@keyframes popupSlide {from {transform: translateY(-50px);opacity: 0;} to {transform: translateY(0);opacity: 1;}}
+.popup-content h2 {color: var(--gold); margin: 0 0 1rem; font-size: 2rem;}
+.popup-content p {color: #ddd; margin: 0 0 1.5rem; font-size: 1.1rem;}
+.popup-close {background: var(--gold); color: var(--navy); border: none; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: transform 0.2s;}
+.popup-close:hover {transform: scale(1.05);}
 
 /* =========================
 	 Social bar
 	 ========================= */
 .social-section {background: var(--navy-d); padding: 0.75rem 0;}
-.social {
-	display: flex;
-	justify-content: center;
-	gap: 1.5rem;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
+.social {display: flex; justify-content: center; gap: 1.5rem; margin: 0; padding: 0; list-style: none;}
 .social img {height: 48px; transition: transform .2s;}
 .social img:hover {transform: scale(1.1);}
 
 /* =========================
 	 Parchment
 	 ========================= */
-.parchment {
-	max-width: 1200px;
-	margin: 0 auto;
-	position: relative;
-	line-height: 0;
-	margin-bottom: 2rem;
-}
-.parchment-top,
-.parchment-bottom {
-	display: block;
-	width: 100%;
-	height: auto;
-	image-rendering: pixelated;
-}
-.parchment-middle {
-	background-image: url("page_middle.png");
-	background-repeat: repeat-y;
-	background-size: 100% auto;
-	image-rendering: pixelated;
-	display: block;
-	width: 100%;
-	position: relative;
-}
-.parchment-content {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 92%;
-	max-width: 92%;
-	padding: 2rem;
-	color: #3c3629;
-	text-align: center;
-	font-size: 1.25rem;
-	line-height: 1.7;
-}
-.parchment-content h1 {
-	font-size: 2.5rem;
-	margin: 1rem 0;
-	color: #3c3629;
-}
-.parchment-content h2 {
-	font-size: 1.75rem;
-	margin: 2rem 0 1rem;
-	color: #3c3629;
-}
-.parchment-content p {
-	margin: 0 0 1.25rem;
-	font-size: 1.1rem;
-	line-height: 1.6;
-}
+.parchment {max-width: 1200px; margin: 0 auto 2rem; position: relative; line-height: 0;}
+.parchment-top, .parchment-bottom {display: block; width: 100%; height: auto; image-rendering: pixelated;}
+.parchment-middle {background-image: url("page_middle.png"); background-repeat: repeat-y; background-size: 100% auto; image-rendering: pixelated; display: block; width: 100%; position: relative;}
+.parchment-content {position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 92%; max-width: 92%; padding: 2rem; color: #3c3629; text-align: center; font-size: 1.25rem; line-height: 1.7;}
+.parchment-content h1 {font-size: 2.5rem; margin: 1rem 0; color: #3c3629;}
+.parchment-content h2 {font-size: 1.75rem; margin: 2rem 0 1rem; color: #3c3629;}
+.parchment-content p {margin: 0 0 1.25rem; font-size: 1.1rem; line-height: 1.6;}
+
+/* Dual-column lists */
+.dual-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;}
+.dual-title {text-align: center;}
+.dual-list {list-style: none; padding: 0; margin: 0;}
+.dual-list li {margin: 0.9rem 0; font-size: 1.1rem; line-height: 1.6; padding-left: 2rem; position: relative;}
+.dual-list li::before {content: ""; position: absolute; left: 0; top: 0.9em; width: 14px; height: 3px; background: #3c3629; border-radius: 2px;}
+@media (max-width: 1050px) {.dual-grid {grid-template-columns: 1fr;}}
 
 /* =========================
-         Page Navigation
-         ========================= */
-.page-nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 1400px;
-	margin: 1rem auto 2rem;
-	padding: 0 3rem;
-	gap: 2rem;
-}
-.page-nav-link {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	text-decoration: none;
-	color: var(--gold);
-	font-size: 1.1rem;
-	font-weight: 600;
-	transition: transform 0.2s, color 0.2s;
-	padding: 0.75rem 1.25rem;
-	border: 2px solid var(--gold);
-	border-radius: 8px;
-	background: rgba(212, 175, 55, 0.1);
-}
-.page-nav-link:hover {
-	transform: translateY(-2px);
-	background: rgba(212, 175, 55, 0.2);
-}
-.page-nav-arrow {
-	font-size: 1.5rem;
-	line-height: 1;
-}
-.page-nav-text {
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-}
-.page-nav-label {
-	font-size: 0.85rem;
-	opacity: 0.8;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-.page-nav-title {
-	font-size: 1.1rem;
-}
-@media (max-width: 600px) {
-	.page-nav {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	.page-nav-link {
-		width: 100%;
-		justify-content: center;
-	}
-}
+	 Page Navigation
+	 ========================= */
+.page-nav {display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 1rem auto 2rem; padding: 0 3rem; gap: 2rem;}
+.page-nav-link {display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--gold); font-size: 1.1rem; font-weight: 600; transition: transform 0.2s, color 0.2s; padding: 0.75rem 1.25rem; border: 2px solid var(--gold); border-radius: 8px; background: rgba(212,175,55,0.1);}
+.page-nav-link:hover {transform: translateY(-2px); background: rgba(212,175,55,0.2);}
+.page-nav-arrow {font-size: 1.5rem; line-height: 1;}
+.page-nav-text {display: flex; flex-direction: column; gap: 0.25rem;}
+.page-nav-label {font-size: 0.85rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px;}
+.page-nav-title {font-size: 1.1rem;}
+@media (max-width: 600px) {.page-nav {flex-direction: column; gap: 1rem;} .page-nav-link {width: 100%; justify-content: center;}}
 
 /* =========================
 	 Footer
@@ -343,11 +176,7 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 			<a class="coming-soon-link">Testing</a>
 			<a class="coming-soon-link">Support</a>
 		</div>
-		<!-- Hamburger -->
-		<button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
-			<span></span><span></span><span></span>
-		</button>
-		<!-- Mobile merged nav -->
+		<button class="menu-btn" id="menu-btn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 		<div class="nav-all nav-links" id="mobile-nav">
 			<a href="index.html">Home</a>
 			<a href="development.html">Development</a>
@@ -370,11 +199,11 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 <section class="social-section">
 	<div class="container">
 		<ul class="social">
-			<li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-			<li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-			<li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-			<li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-			<li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+			<li><a href="https://www.patreon.com/sealubbers" target="_blank"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+			<li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+			<li><a href="https://www.youtube.com/@playsealubbers" target="_blank"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+			<li><a href="https://www.instagram.com/sealubbers" target="_blank"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+			<li><a href="https://www.tiktok.com/@sealubbers" target="_blank"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
 		</ul>
 	</div>
 </section>
@@ -387,33 +216,49 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 		<img src="page_bottom.png" alt="" class="parchment-bottom">
 		<div class="parchment-content">
 			<h1>The Crew of Krucia</h1>
-			<p>A captain is only as strong as their crew. In Krucia, your shipmates aren’t just background figures — they’re living characters who shape your journey. Each crewmate brings their own skills, quirks, and stories, making your crew one of the most important parts of the game.</p>
+			<p>A captain is only as strong as their crew. In Krucia, your shipmates are not just background figures. They are living characters who shape your journey. Each crewmate brings their own skills, quirks, and stories, making your crew one of the most important parts of the game.</p>
 
 			<h2>Recruiting Your Crew</h2>
-			<p>Crewmates can be found everywhere: in taverns, on the docks, wandering beaches, or rescued from shipwrecks. Some will join you for gold, others for favors or out of sheer curiosity. If you don’t hire them right away, they remain part of the world. You might spot them again in another port, or even see them serving on rival ships.</p>
+			<p>Crewmates can be found everywhere: in taverns, on the docks, wandering beaches, or rescued from shipwrecks. Some will join you for gold, others for favors or out of sheer curiosity. If you do not hire them right away, they remain part of the world. You might spot them again in another port, or even see them serving on rival ships.</p>
 
 			<h2>Crew Traits and Gifts</h2>
-			<p>Every crewmate is unique, defined by three qualities: <strong>Personality</strong>, <strong>Stats</strong>, and a <strong>Gift</strong>. Stats cover things like health, strength, sailing, and speed. Gifts are special traits tied to sailing, fighting, or exploration — ranging from faster cannon reloads to uncanny treasure-sense. No two crewmates are alike, and finding the right mix is key to surviving the seas.</p>
+			<p>Every crewmate is unique, defined by three qualities: <strong>Personality</strong>, <strong>Stats</strong>, and a <strong>Gift</strong>. Stats cover things like health, strength, sailing, and speed. Gifts are special traits tied to sailing, fighting, or exploration, ranging from faster cannon reloads to uncanny treasure sense. No two crewmates are alike, and finding the right mix is key to surviving the seas.</p>
 
-			<h2>Crew Progression</h2>
-			<p>Crewmates grow stronger over time. Leveling them up increases stats and strengthens their gifts. Progression is straightforward — no complicated branches, just steady improvement as they sail and fight by your side.</p>
-
-			<h2>Managing Your Crew</h2>
-			<p>The number of crewmates you can hire depends on the size of your ship: smaller ships carry fewer, while larger vessels can hold more. Your roster is flexible — you’ll frequently hire and replace sailors depending on your goals. Firing a crewmate can be done with a simple dismissal, or with flair by making them walk the plank. You can also reward loyal crewmates with gold or rum to raise their morale. Dialogue options let you order cosmetic tasks, like scrubbing the deck, adding flavor without changing gameplay.</p>
+			<div class="dual-grid">
+				<div>
+					<h2 class="dual-title">Crew Progression</h2>
+					<ul class="dual-list">
+						<li>Crew gain XP from battles and voyages.</li>
+						<li>Level ups increase stats and enhance gifts.</li>
+						<li>Higher levels may unlock personal quest steps or small bonuses.</li>
+						<li>Progress sticks with them. You can rehire former crew later.</li>
+					</ul>
+				</div>
+				<div>
+					<h2 class="dual-title">Managing Your Crew</h2>
+					<ul class="dual-list">
+						<li>Crew cap is based on ship size. Smaller ships mean fewer crew. Larger ships mean more.</li>
+						<li>Hire, replace, and rehire to match your current goals.</li>
+						<li>Reward with gold or rum to keep morale high.</li>
+						<li>Dialogue-only orders for cosmetic tasks (for example, scrubbing the deck).</li>
+						<li>Dismiss politely, or make them walk the plank.</li>
+					</ul>
+				</div>
+			</div>
 
 			<h2>Crew Quests and Stories</h2>
 			<p>Many crewmates have personal quests that reveal their past or ambitions. Completing these quests can unlock stronger gifts, unique rewards, or special opportunities. These stories give every crewmate a place in the larger world of Krucia.</p>
 
 			<h2>Loyalty and Mutiny</h2>
-			<p>Crew loyalty rises and falls with your success. Winning battles and rewarding your crew keeps spirits high. Repeated losses strain morale. If morale falls too low, mutiny becomes a real threat. A mutiny is a special event where your own crew turns against you, seeking your gold and your ship. To survive, you’ll have to fight back and reclaim command.</p>
+			<p>Crew loyalty rises and falls with your success. Winning battles and rewarding your crew keeps spirits high. Repeated losses strain morale. If morale falls too low, mutiny becomes a real threat. A mutiny is a special event where your own crew turns against you, seeking your gold and your ship. To survive, you will have to fight back and reclaim command.</p>
 
 			<h2>The Captain’s Legacy</h2>
-			<p>Building your crew is one of the core loops of Krucia. From recruiting fresh faces in distant taverns to leveling up your most trusted shipmates, your crew defines your strength on the seas. Gold may buy ships, but it’s the people aboard who will carry your story into legend.</p>
+			<p>Building your crew is one of the core loops of Krucia. From recruiting fresh faces in distant taverns to leveling up your most trusted shipmates, your crew defines your strength on the seas. Gold may buy ships, but it is the people aboard who will carry your story into legend.</p>
 		</div>
 	</div>
 </section>
 
-
+<!-- Page Navigation -->
 <nav class="page-nav">
 	<a href="world.html" class="page-nav-link">
 		<span class="page-nav-arrow">←</span>
@@ -437,9 +282,7 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 /* Mobile menu toggle */
 const menuBtn=document.getElementById('menu-btn');
 const mobileNav=document.getElementById('mobile-nav');
-menuBtn.addEventListener('click',()=>{
-	mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
-});
+menuBtn.addEventListener('click',()=>{mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';});
 
 /* Position menu button */
 function positionMenuBtn(){
@@ -452,9 +295,7 @@ function positionMenuBtn(){
 		btn.style.left=midpoint+"px";
 		btn.style.transform="translateX(-50%) translateY(-50%)";
 	}else{
-		btn.style.left="";
-		btn.style.transform="translateY(-50%)";
-		mobileNav.style.display="";
+		btn.style.left=""; btn.style.transform="translateY(-50%)"; mobileNav.style.display="";
 	}
 }
 window.addEventListener('resize',positionMenuBtn);
@@ -485,26 +326,12 @@ window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
 window.addEventListener('resize',adjustParchmentHeight);
 
 /* Coming Soon Popup */
-const popup = document.getElementById('popup');
-const popupClose = document.getElementById('popup-close');
-const comingSoonLinks = document.querySelectorAll('.coming-soon-link');
-
-comingSoonLinks.forEach(link => {
-	link.addEventListener('click', (e) => {
-		e.preventDefault();
-		popup.classList.add('active');
-	});
-});
-
-popupClose.addEventListener('click', () => {
-	popup.classList.remove('active');
-});
-
-popup.addEventListener('click', (e) => {
-	if (e.target === popup) {
-		popup.classList.remove('active');
-	}
-});
+const popup=document.getElementById('popup');
+const popupClose=document.getElementById('popup-close');
+const comingSoonLinks=document.querySelectorAll('.coming-soon-link');
+comingSoonLinks.forEach(link=>{link.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active');});});
+popupClose.addEventListener('click',()=>{popup.classList.remove('active');});
+popup.addEventListener('click',e=>{if(e.target===popup){popup.classList.remove('active');}});
 </script>
 </body>
 </html>

@@ -14,6 +14,7 @@
 	--gold: #d4af37;
 	--navy: #232a6f;
 	--navy-d: #1f224f;
+	--copy-width: 820px;
 }
 
 html, body {height: 100%;}
@@ -143,9 +144,7 @@ header {
 	justify-content: center;
 	align-items: center;
 }
-.popup-overlay.active {
-	display: flex;
-}
+.popup-overlay.active { display: flex; }
 .popup-content {
 	background: var(--navy-d);
 	border: 3px solid var(--gold);
@@ -156,14 +155,8 @@ header {
 	animation: popupSlide 0.3s ease-out;
 }
 @keyframes popupSlide {
-	from {
-		transform: translateY(-50px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
+	from { transform: translateY(-50px); opacity: 0; }
+	to   { transform: translateY(0);     opacity: 1; }
 }
 .popup-content h2 {
 	color: var(--gold);
@@ -186,10 +179,7 @@ header {
 	cursor: pointer;
 	transition: transform 0.2s;
 }
-.popup-close:hover {
-	transform: scale(1.05);
-}
-
+.popup-close:hover { transform: scale(1.05); }
 
 /* =========================
 	 Social bar
@@ -255,15 +245,30 @@ header {
 	margin: 2rem 0 1rem;
 	color: #3c3629;
 }
-.parchment-content p {
-	margin: 0 0 1.25rem;
+
+/* Copy blocks */
+.parchment-content p,
+.parchment-content ul,
+.parchment-content ol {
+	max-width: var(--copy-width);
+	margin: 0 auto 1.25rem;
+	text-align: left;
+}
+.parchment-content p,
+.parchment-content li {
 	font-size: 1.1rem;
 	line-height: 1.6;
 }
+.parchment-content ul,
+.parchment-content ol {
+	list-style-position: outside;
+	padding-left: 1.25rem;
+}
+.parchment-content li { margin-bottom: 0.5rem; }
 
 /* =========================
-         Page Navigation
-         ========================= */
+	 Page Navigation
+	 ========================= */
 .page-nav {
 	display: flex;
 	justify-content: space-between;
@@ -291,33 +296,19 @@ header {
 	transform: translateY(-2px);
 	background: rgba(212, 175, 55, 0.2);
 }
-.page-nav-arrow {
-	font-size: 1.5rem;
-	line-height: 1;
-}
-.page-nav-text {
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-}
+.page-nav-arrow { font-size: 1.5rem; line-height: 1; }
+.page-nav-text { display: flex; flex-direction: column; gap: 0.25rem; }
 .page-nav-label {
 	font-size: 0.85rem;
 	opacity: 0.8;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-.page-nav-title {
-	font-size: 1.1rem;
-}
+.page-nav-title { font-size: 1.1rem; }
+
 @media (max-width: 600px) {
-	.page-nav {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	.page-nav-link {
-		width: 100%;
-		justify-content: center;
-	}
+	.page-nav { flex-direction: column; gap: 1rem; }
+	.page-nav-link { width: 100%; justify-content: center; }
 }
 
 /* =========================
@@ -343,11 +334,9 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 			<a class="coming-soon-link">Testing</a>
 			<a class="coming-soon-link">Support</a>
 		</div>
-		<!-- Hamburger -->
 		<button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
 			<span></span><span></span><span></span>
 		</button>
-		<!-- Mobile merged nav -->
 		<div class="nav-all nav-links" id="mobile-nav">
 			<a href="index.html">Home</a>
 			<a href="development.html">Development</a>
@@ -387,31 +376,27 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 		<img src="page_bottom.png" alt="" class="parchment-bottom">
 		<div class="parchment-content">
 			<h1>Progress in Krucia</h1>
-			<p>Progress in Krucia isn’t measured by a single number — it’s a web of goals, growth, and achievements that all tie back to your legend as a captain. Gold is the most obvious marker of success, but your journey will also be shaped by how your crew grows, how your ship evolves, and how the world remembers you.</p>
+			<p>Progress in Krucia is not tracked by a single number. It is measured through multiple systems that show your growth as a captain. Gold is one measure, but progress also comes from the growth of your crew, the upgrades to your ship, and how the world recognizes your actions.</p>
 
 			<h2>The Main Objective</h2>
-			<p>At the heart of the game lies a simple promise: bring <strong>10,000 gold</strong> to Asteros, and he will write your story into the stars. This is the soft ending of the game — the moment your tale is immortalized. But gold comes and goes, and reaching it is only one measure of progress. True completion lies beyond.</p>
+			<p>The central objective is to deliver <strong>10,000 gold</strong> to Asteros. Doing so secures a soft ending where your story is written into the stars. This marks a major milestone but is not full completion of the game.</p>
 
 			<h2>Short-Term Progression</h2>
-			<p><strong>Captain Levels</strong> — Earn XP from battles, quests, and exploration. Leveling grants perks that let you refine your playstyle — whether that means becoming a sharper strategist, a stronger fighter, or a more cunning sailor.</p>
-			<p><strong>Crew Levels</strong> — Your crewmates gain XP as they sail and fight with you. Their stats increase and their gifts grow stronger, improving performance at sea and in combat.</p>
-			<p><strong>Ship Upgrades</strong> — Permanently improve your vessel with modular parts. Different cannons, sails, and reinforcements excel in different situations, letting you adapt your ship to the challenges ahead.</p>
+			<p><strong>Captain Levels</strong>: Earn experience points from battles, quests, and exploration. Leveling up grants perks that change your playstyle. You can focus on strategy, combat strength, or sailing skill.</p>
+			<p><strong>Crew Levels</strong>: Crew members also gain experience. Their stats increase and their gifts become stronger, improving their performance in combat and at sea.</p>
+			<p><strong>Ship Upgrades</strong>: Your ship can be improved with modular upgrades. Cannons, sails, and reinforcements provide advantages in different situations, allowing your vessel to adapt to new challenges.</p>
 
 			<h2>World Progression</h2>
-			<p><strong>Factions</strong> — Your reputation rises and falls based on your actions. Favor unlocks quests, ports, and opportunities; betrayal can kindle rivalries and close doors.</p>
-			<p><strong>Exploration</strong> — Progress is visible on your maps as you chart seas and islands. Every port visited, landmark discovered, and hazard recorded deepens your mastery of Krucia.</p>
-			<p><strong>Cosmetics</strong> — Visual progress that reflects your journey. Customizations for ship, captain, and crew show the world how far you’ve come — not in stats, but in style.</p>
+			<p><strong>Factions</strong>: Your reputation with factions changes based on your choices. Gaining favor unlocks quests, ports, and support. Betrayal can create rivalries and block opportunities.</p>
+			<p><strong>Exploration</strong>: Maps expand as you explore seas and islands. Ports, landmarks, and hazards are recorded, showing the depth of your knowledge of Krucia.</p>
+			<p><strong>Cosmetics</strong>: Cosmetic progress is unlocked through gameplay. Customizations for your ship, captain, and crew show your journey visually, separate from statistics.</p>
 
 			<h2>Completion Goals</h2>
-			<p><strong>Stars in the Sky</strong> — Beyond the 10,000 gold soft ending, true completion means filling the entire sky with stars. Stars are awarded for milestones, achievements, and hidden challenges across the game, encouraging multiple journeys to light the heavens fully.</p>
-			<p><strong>Completionist Content</strong> — For those who want everything: a vast collection of cosmetics, achievements tied to quests, battles, and exploration, and optional goals that reward deep dives into every corner of the world.</p>
-
-			<h2>Conclusion</h2>
-			<p>Gold may be the spark that lights your way, but progress in Krucia is about more than riches. It’s about how your captain grows, how your crew evolves, how your ship is forged, and how many stars you can claim in the sky. Every milestone pushes your story further — and every star marks your legacy.</p>
+			<p><strong>Stars in the Sky</strong>: After reaching 10,000 gold, full completion involves filling the sky with stars. Stars are earned through milestones, achievements, and hidden challenges. Collecting them all requires multiple playthroughs.</p>
+			<p><strong>Completionist Content</strong>: The game is designed with a deep end game. Players can pursue all achievements, cosmetics, and optional goals. This includes challenges tied to quests, battles, and exploration, rewarding those who want to master every corner of the world.</p>
 		</div>
 	</div>
 </section>
-
 
 <nav class="page-nav">
 	<a href="combat.html" class="page-nav-link">
@@ -434,54 +419,54 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 
 <script>
 /* Mobile menu toggle */
-const menuBtn=document.getElementById('menu-btn');
-const mobileNav=document.getElementById('mobile-nav');
-menuBtn.addEventListener('click',()=>{
-	mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
+const menuBtn = document.getElementById('menu-btn');
+const mobileNav = document.getElementById('mobile-nav');
+menuBtn.addEventListener('click', () => {
+	mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
 });
 
 /* Position menu button */
 function positionMenuBtn(){
-	const btn=document.getElementById('menu-btn');
-	const title=document.getElementById('site-title');
-	if(window.innerWidth<=1100){
-		const titleRight=title.getBoundingClientRect().right;
-		const screenRight=window.innerWidth;
-		const midpoint=(titleRight+screenRight)/2;
-		btn.style.left=midpoint+"px";
-		btn.style.transform="translateX(-50%) translateY(-50%)";
+	const btn = document.getElementById('menu-btn');
+	const title = document.getElementById('site-title');
+	if(window.innerWidth <= 1100){
+		const titleRight = title.getBoundingClientRect().right;
+		const screenRight = window.innerWidth;
+		const midpoint = (titleRight + screenRight) / 2;
+		btn.style.left = midpoint + "px";
+		btn.style.transform = "translateX(-50%) translateY(-50%)";
 	}else{
-		btn.style.left="";
-		btn.style.transform="translateY(-50%)";
-		mobileNav.style.display="";
+		btn.style.left = "";
+		btn.style.transform = "translateY(-50%)";
+		mobileNav.style.display = "";
 	}
 }
-window.addEventListener('resize',positionMenuBtn);
-window.addEventListener('load',positionMenuBtn);
+window.addEventListener('resize', positionMenuBtn);
+window.addEventListener('load', positionMenuBtn);
 
 /* Swap social icons */
 document.querySelectorAll('.social img').forEach(img=>{
-	img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-	img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+	img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
+	img.addEventListener('mouseleave', () => img.src = img.dataset.white);
 });
 
 /* Adjust parchment height */
 function adjustParchmentHeight() {
 	document.querySelectorAll('.parchment').forEach(parchment=>{
-		const content=parchment.querySelector('.parchment-content');
-		const middle=parchment.querySelector('.parchment-middle');
-		const top=parchment.querySelector('.parchment-top');
-		const bottom=parchment.querySelector('.parchment-bottom');
-		if (!content||!middle||!top||!bottom) return;
-		const contentHeight=content.scrollHeight;
-		const topHeight=top.offsetHeight;
-		const bottomHeight=bottom.offsetHeight;
-		const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
-		middle.style.height=middleHeight+'px';
+		const content = parchment.querySelector('.parchment-content');
+		const middle  = parchment.querySelector('.parchment-middle');
+		const top     = parchment.querySelector('.parchment-top');
+		const bottom  = parchment.querySelector('.parchment-bottom');
+		if (!content || !middle || !top || !bottom) return;
+		const contentHeight = content.scrollHeight;
+		const topHeight     = top.offsetHeight;
+		const bottomHeight  = bottom.offsetHeight;
+		const middleHeight  = Math.max(100, contentHeight - topHeight - bottomHeight);
+		middle.style.height = middleHeight + 'px';
 	});
 }
-window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
-window.addEventListener('resize',adjustParchmentHeight);
+window.addEventListener('load', () => setTimeout(adjustParchmentHeight, 100));
+window.addEventListener('resize', adjustParchmentHeight);
 
 /* Coming Soon Popup */
 const popup = document.getElementById('popup');

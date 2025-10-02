@@ -14,6 +14,7 @@
 	--gold: #d4af37;
 	--navy: #232a6f;
 	--navy-d: #1f224f;
+	--copy-width: 820px; /* shared width for paragraphs and lists so left edges line up */
 }
 
 html, body {height: 100%;}
@@ -143,9 +144,7 @@ header {
 	justify-content: center;
 	align-items: center;
 }
-.popup-overlay.active {
-	display: flex;
-}
+.popup-overlay.active { display: flex; }
 .popup-content {
 	background: var(--navy-d);
 	border: 3px solid var(--gold);
@@ -156,14 +155,8 @@ header {
 	animation: popupSlide 0.3s ease-out;
 }
 @keyframes popupSlide {
-	from {
-		transform: translateY(-50px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
+	from { transform: translateY(-50px); opacity: 0; }
+	to   { transform: translateY(0);     opacity: 1; }
 }
 .popup-content h2 {
 	color: var(--gold);
@@ -186,10 +179,7 @@ header {
 	cursor: pointer;
 	transition: transform 0.2s;
 }
-.popup-close:hover {
-	transform: scale(1.05);
-}
-
+.popup-close:hover { transform: scale(1.05); }
 
 /* =========================
 	 Social bar
@@ -241,7 +231,7 @@ header {
 	max-width: 92%;
 	padding: 2rem;
 	color: #3c3629;
-	text-align: center;
+	text-align: center; /* headings stay centered */
 	font-size: 1.25rem;
 	line-height: 1.7;
 }
@@ -255,15 +245,34 @@ header {
 	margin: 2rem 0 1rem;
 	color: #3c3629;
 }
-.parchment-content p {
-	margin: 0 0 1.25rem;
+
+/* Copy blocks: paragraphs and lists share the same width and left edge */
+.parchment-content p,
+.parchment-content ul,
+.parchment-content ol {
+	max-width: var(--copy-width);
+	margin: 0 auto 1.25rem; /* center the block as a whole */
+	text-align: left;        /* left-justify the text inside */
+}
+
+/* Consistent typography for paragraphs and list items */
+.parchment-content p,
+.parchment-content li {
 	font-size: 1.1rem;
 	line-height: 1.6;
 }
 
+/* List presentation */
+.parchment-content ul,
+.parchment-content ol {
+	list-style-position: outside;
+	padding-left: 1.25rem;   /* standard bullet indent inside the shared block */
+}
+.parchment-content li { margin-bottom: 0.5rem; }
+
 /* =========================
-         Page Navigation
-         ========================= */
+	 Page Navigation
+	 ========================= */
 .page-nav {
 	display: flex;
 	justify-content: space-between;
@@ -291,10 +300,7 @@ header {
 	transform: translateY(-2px);
 	background: rgba(212, 175, 55, 0.2);
 }
-.page-nav-arrow {
-	font-size: 1.5rem;
-	line-height: 1;
-}
+.page-nav-arrow { font-size: 1.5rem; line-height: 1; }
 .page-nav-text {
 	display: flex;
 	flex-direction: column;
@@ -306,18 +312,11 @@ header {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-.page-nav-title {
-	font-size: 1.1rem;
-}
+.page-nav-title { font-size: 1.1rem; }
+
 @media (max-width: 600px) {
-	.page-nav {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	.page-nav-link {
-		width: 100%;
-		justify-content: center;
-	}
+	.page-nav { flex-direction: column; gap: 1rem; }
+	.page-nav-link { width: 100%; justify-content: center; }
 }
 
 /* =========================
@@ -387,41 +386,46 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 		<img src="page_bottom.png" alt="" class="parchment-bottom">
 		<div class="parchment-content">
 			<h1>Combat in Krucia</h1>
-			<p>Combat in Krucia is split between the clash of ships on the open sea and the chaos of crews fighting blade to blade. Battles can unfold in many different ways depending on who you face, how your crew is built, and the choices you make as captain.</p>
+			<p>Combat in Krucia is divided into ship battles on the sea and crew battles during boarding. The outcome depends on your opponents, your crew, and your choices as captain.</p>
 
 			<h2>Types of Battles</h2>
-			<p><strong>Ship-to-Ship Combat</strong> — Long-range engagements with cannons, sails, and maneuvering.</p>
-			<p><strong>Boarding Battles</strong> — Close-quarters fights where crews clash across the decks.</p>
-			<p><strong>Boss Battles</strong> — Large encounters that test your ability to command at sea and on foot.</p>
+			<ul>
+				<li><strong>Ship-to-Ship Combat</strong>: Long-range engagements using cannons, sails, and maneuvering.</li>
+				<li><strong>Boarding Battles</strong>: Close-quarters combat when crews fight across the decks.</li>
+				<li><strong>Boss Battles</strong>: Large encounters that test both naval command and personal combat.</li>
+			</ul>
 
 			<h2>Enemy Ships and Behavior</h2>
-			<p>Not every ship you encounter will fight the same way. Some will flee or surrender, some will try to pay you off, and others attack aggressively on sight. Certain captains will hunt you based on your past actions, and some ships only target you depending on your reputation with their faction. Ships also appear along predictable routes — patrol lines, trade lanes, and ambush points — letting you plan where and when to pick your fights.</p>
+			<p>Enemy ships do not all act the same. Some will flee or surrender, others may attempt to bribe you, and some will attack immediately. Certain captains will track you based on your actions, while others react to your reputation with their faction. Ships often follow predictable patterns such as patrol routes, trade lanes, or ambush points, allowing you to choose when and where to engage.</p>
 
 			<h2>Scouting and Information</h2>
-			<p>Before combat, you can scout an enemy ship. The details you learn depend on your crew’s abilities: ship health, crew size and abilities, and what cargo or treasure they’re carrying. With the right information, you can choose to fight, flee, or pursue a different target. Some quests will also send you after specific ships at specific times.</p>
+			<p>You can scout enemy ships before committing to combat. Information depends on your crew’s skills and may include ship health, crew size, abilities, and cargo. With this knowledge you can decide whether to fight, flee, or seek another target. Some quests also direct you toward specific ships at specific times.</p>
 
 			<h2>Naval Combat</h2>
-			<p><strong>Maneuvering</strong> — Positioning is everything. Angle your ship for broadsides while dodging return fire.</p>
-			<p><strong>Cannons</strong> — Time your salvos, manage reloads, and aim for vulnerable moments to control the flow of battle.</p>
-			<p><strong>Environmental Hazards</strong> — Waves, reefs, fog, and storms can all turn the tide.</p>
-			<p><strong>Upgrades</strong> — Permanent improvements like stronger hulls, faster sails, and reinforced cannons raise your power.</p>
-			<p><strong>Crew Impact</strong> — Reload speed, repair efficiency, turning sharpness, and accuracy all scale with your crew’s skills.</p>
+			<ul>
+				<li><strong>Maneuvering</strong>: Position your ship for broadside attacks while avoiding enemy fire.</li>
+				<li><strong>Cannons</strong>: Manage reloads, time your shots, and strike during vulnerable moments.</li>
+				<li><strong>Environmental Hazards</strong>: Waves, reefs, fog, and storms can influence the fight.</li>
+				<li><strong>Upgrades</strong>: Permanent improvements such as stronger hulls, faster sails, and reinforced cannons.</li>
+				<li><strong>Crew Impact</strong>: Crew skills affect reload speed, repairs, turning, and accuracy.</li>
+			</ul>
 
 			<h2>Boarding Combat</h2>
-			<p>When you close in, you can board the enemy ship. Your sailors and theirs clash across the decks while you direct the fight.</p>
-			<p><strong>Captain’s Orders</strong> — Certain crewmates grant active abilities such as tossing sand to blind enemies, healing an ally, rallying morale, or drawing attention to a specific fighter.</p>
-			<p><strong>Hazards</strong> — Expect falling masts, spreading fires, explosions, and collapsing decks.</p>
-			<p><strong>Positioning</strong> — Move your crew to avoid danger and press advantages as the battlefield shifts.</p>
+			<p>Once in range, you can board the enemy ship. Your crew fights theirs directly, and you can influence the battle.</p>
+			<ul>
+				<li><strong>Captain’s Orders</strong>: Crewmates may grant active abilities such as blinding enemies, healing allies, boosting morale, or distracting foes.</li>
+				<li><strong>Hazards</strong>: Fires, explosions, falling masts, and collapsing decks can appear mid-battle.</li>
+				<li><strong>Positioning</strong>: Moving crew members strategically helps avoid hazards and exploit openings.</li>
+			</ul>
 
 			<h2>Strategy and Playstyles</h2>
-			<p>Build the crew that fits your plan: expert sailors who dominate the sea, fearsome fighters who excel in boarding, or a versatile mix that adapts on the fly. Some encounters — especially bosses — will challenge both your sailing and swordplay.</p>
+			<p>You can build your crew to fit different strategies: expert sailors for dominance at sea, strong fighters for boarding combat, or balanced crews that adapt to multiple situations. Certain encounters, especially boss battles, require both naval and boarding strength.</p>
 
 			<h2>Rewards of Victory</h2>
-			<p>Winning battles brings clear rewards: gold and cargo, weapons and artifacts, new quests and story progress — and sometimes new recruits from defeated foes. Each victory also opens the path to permanent ship upgrades and a growing reputation on the seas.</p>
+			<p>Winning battles grants gold, cargo, weapons, artifacts, new quests, and sometimes new crew members. Victories also provide permanent ship upgrades and increase your reputation across the seas.</p>
 		</div>
 	</div>
 </section>
-
 
 <nav class="page-nav">
 	<a href="loot.html" class="page-nav-link">
@@ -444,54 +448,54 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 
 <script>
 /* Mobile menu toggle */
-const menuBtn=document.getElementById('menu-btn');
-const mobileNav=document.getElementById('mobile-nav');
-menuBtn.addEventListener('click',()=>{
-	mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
+const menuBtn = document.getElementById('menu-btn');
+const mobileNav = document.getElementById('mobile-nav');
+menuBtn.addEventListener('click', () => {
+	mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
 });
 
 /* Position menu button */
 function positionMenuBtn(){
-	const btn=document.getElementById('menu-btn');
-	const title=document.getElementById('site-title');
-	if(window.innerWidth<=1100){
-		const titleRight=title.getBoundingClientRect().right;
-		const screenRight=window.innerWidth;
-		const midpoint=(titleRight+screenRight)/2;
-		btn.style.left=midpoint+"px";
-		btn.style.transform="translateX(-50%) translateY(-50%)";
+	const btn = document.getElementById('menu-btn');
+	const title = document.getElementById('site-title');
+	if(window.innerWidth <= 1100){
+		const titleRight = title.getBoundingClientRect().right;
+		const screenRight = window.innerWidth;
+		const midpoint = (titleRight + screenRight) / 2;
+		btn.style.left = midpoint + "px";
+		btn.style.transform = "translateX(-50%) translateY(-50%)";
 	}else{
-		btn.style.left="";
-		btn.style.transform="translateY(-50%)";
-		mobileNav.style.display="";
+		btn.style.left = "";
+		btn.style.transform = "translateY(-50%)";
+		mobileNav.style.display = "";
 	}
 }
-window.addEventListener('resize',positionMenuBtn);
-window.addEventListener('load',positionMenuBtn);
+window.addEventListener('resize', positionMenuBtn);
+window.addEventListener('load', positionMenuBtn);
 
 /* Swap social icons */
 document.querySelectorAll('.social img').forEach(img=>{
-	img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-	img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+	img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
+	img.addEventListener('mouseleave', () => img.src = img.dataset.white);
 });
 
 /* Adjust parchment height */
 function adjustParchmentHeight() {
 	document.querySelectorAll('.parchment').forEach(parchment=>{
-		const content=parchment.querySelector('.parchment-content');
-		const middle=parchment.querySelector('.parchment-middle');
-		const top=parchment.querySelector('.parchment-top');
-		const bottom=parchment.querySelector('.parchment-bottom');
-		if (!content||!middle||!top||!bottom) return;
-		const contentHeight=content.scrollHeight;
-		const topHeight=top.offsetHeight;
-		const bottomHeight=bottom.offsetHeight;
-		const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
-		middle.style.height=middleHeight+'px';
+		const content = parchment.querySelector('.parchment-content');
+		const middle  = parchment.querySelector('.parchment-middle');
+		const top     = parchment.querySelector('.parchment-top');
+		const bottom  = parchment.querySelector('.parchment-bottom');
+		if (!content || !middle || !top || !bottom) return;
+		const contentHeight = content.scrollHeight;
+		const topHeight     = top.offsetHeight;
+		const bottomHeight  = bottom.offsetHeight;
+		const middleHeight  = Math.max(100, contentHeight - topHeight - bottomHeight);
+		middle.style.height = middleHeight + 'px';
 	});
 }
-window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
-window.addEventListener('resize',adjustParchmentHeight);
+window.addEventListener('load', () => setTimeout(adjustParchmentHeight, 100));
+window.addEventListener('resize', adjustParchmentHeight);
 
 /* Coming Soon Popup */
 const popup = document.getElementById('popup');

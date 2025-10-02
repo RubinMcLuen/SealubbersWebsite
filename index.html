@@ -82,8 +82,32 @@ header {
 	font-size: 1.25rem;
 	white-space: nowrap;
 	transition: color 0.2s;
+	position: relative;
 }
 .nav-links a:hover {color: var(--gold);}
+
+/* Development link highlight */
+.nav-links a[href="development.html"]::before {
+	content: 'NEW';
+	position: absolute;
+	top: -1.2rem;
+	right: -0.5rem;
+	background: var(--gold);
+	color: var(--navy);
+	font-size: 0.65rem;
+	font-weight: 700;
+	padding: 0.15rem 0.4rem;
+	border-radius: 3px;
+	animation: pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.1); }
+}
+@keyframes bounce-arrow {
+	0%, 100% { transform: translateY(-50%) translateX(0); }
+	50% { transform: translateY(-50%) translateX(5px); }
+}
 
 /* Mobile merged nav hidden by default */
 .nav-all {
@@ -121,6 +145,24 @@ header {
 	.site-title { width: clamp(300px, 80%, 500px); }
 	.menu-btn { display: block; }
 	header { padding: 1.5rem 0 0.75rem; }
+	
+	/* Mobile development link highlight */
+	.nav-all a[href="development.html"] {
+		position: relative;
+	}
+	.nav-all a[href="development.html"]::before {
+		content: 'NEW';
+		position: absolute;
+		top: -0.5rem;
+		right: -0.5rem;
+		background: var(--gold);
+		color: var(--navy);
+		font-size: 0.65rem;
+		font-weight: 700;
+		padding: 0.15rem 0.4rem;
+		border-radius: 3px;
+		animation: pulse-badge 2s ease-in-out infinite;
+	}
 }
 
 /* =========================
@@ -184,7 +226,6 @@ header {
 .popup-close:hover {
 	transform: scale(1.05);
 }
-
 
 /* =========================
 	 Social bar
@@ -325,6 +366,7 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 	<div class="container">
 		<p>Sealubbers is an open-world pirate RPG. Build your crew, battle rival ships, hunt treasure, and write your legend in the stars.</p>
 		<a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+
 		<div class="screenshots">
 			<figure><img src="ss1.png" alt="Creating your pirate"><figcaption>Create your pirate and customize your crew.</figcaption></figure>
 			<figure><img src="ss2.png" alt="Explore the world"><figcaption>Sail around and discover a vast open world.</figcaption></figure>
