@@ -87,6 +87,7 @@ header {
   font-size: 1.25rem;
   white-space: nowrap;
   transition: color 0.2s;
+  cursor: pointer;
 }
 .nav-links a:hover {color: var(--gold);}
 
@@ -126,6 +127,68 @@ header {
   .site-title { width: clamp(300px, 80%, 500px); }
   .menu-btn { display: block; }
   header { padding: 1.5rem 0 0.75rem; }
+}
+
+/* =========================
+   Coming Soon Popup
+   ========================= */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.popup-overlay.active {
+  display: flex;
+}
+.popup-content {
+  background: var(--navy-d);
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  text-align: center;
+  max-width: 400px;
+  animation: popupSlide 0.3s ease-out;
+}
+@keyframes popupSlide {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.popup-content h2 {
+  color: var(--gold);
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+.popup-content p {
+  color: #ddd;
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+}
+.popup-close {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.popup-close:hover {
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -193,7 +256,7 @@ header {
 .plan-title {
   font-size:2.5rem;
   color:var(--gold);
-  margin:3rem 0 0.75rem; /* adds vertical space above */
+  margin:3rem 0 0.75rem;
   font-weight:700;
 }
 
@@ -249,8 +312,8 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
       </a>
     </div>
     <div class="nav-right nav-links">
-      <a href="testing.html">Testing</a>
-      <a href="support.html">Support</a>
+      <a class="coming-soon-link">Testing</a>
+      <a class="coming-soon-link">Support</a>
     </div>
     <!-- Hamburger -->
     <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
@@ -260,11 +323,20 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
     <div class="nav-all nav-links" id="mobile-nav">
       <a href="index.html">Home</a>
       <a href="development.html">Development</a>
-      <a href="testing.html">Testing</a>
-      <a href="support.html">Support</a>
+      <a class="coming-soon-link">Testing</a>
+      <a class="coming-soon-link">Support</a>
     </div>
   </div>
 </header>
+
+<!-- Coming Soon Popup -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-content">
+    <h2>Coming Soon</h2>
+    <p>This page is currently under development and will be available soon!</p>
+    <button class="popup-close" id="popup-close">Close</button>
+  </div>
+</div>
 
 <!-- Social -->
 <section class="social-section">
@@ -309,7 +381,7 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
     </div>
 
     <h2 class="plan-title">The Plan</h2>
-    <p class="plan-sub">Explore the roadmap by clicking each tile to view detailed information about Sealubbers’ features, goals, and development progress.</p>
+    <p class="plan-sub">Explore the roadmap by clicking each tile to view detailed information about Sealubbers' features, goals, and development progress.</p>
 
     <div class="roadmap-tiles">
       <a class="roadmap-tile" href="story.html"><img src="RoadmapTile1.png" alt="Story"><div class="tooltip">Narrative and lore of Sealubbers</div></a>
@@ -358,6 +430,28 @@ function positionMenuBtn(){
 }
 window.addEventListener('resize',positionMenuBtn);
 window.addEventListener('load',positionMenuBtn);
+
+/* Coming Soon Popup */
+const popup = document.getElementById('popup');
+const popupClose = document.getElementById('popup-close');
+const comingSoonLinks = document.querySelectorAll('.coming-soon-link');
+
+comingSoonLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.classList.add('active');
+  });
+});
+
+popupClose.addEventListener('click', () => {
+  popup.classList.remove('active');
+});
+
+popup.addEventListener('click', (e) => {
+  if (e.target === popup) {
+    popup.classList.remove('active');
+  }
+});
 </script>
 </body>
 </html>
