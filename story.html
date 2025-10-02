@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sealubbers</title>
+<title>Story - Sealubbers</title>
 <link rel="icon" href="icon.png" />
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
@@ -132,76 +132,86 @@ header {
 .social img:hover{transform:scale(1.1);}
 
 /* =========================
-   Description
+   Parchment (3-slice system)
    ========================= */
-.description p{margin:0 0 1.25rem;font-size:1.125rem;}
-.btn{display:inline-block;background:var(--gold);color:#000;font-weight:700;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;}
-
-/* =========================
-   Screenshots
-   ========================= */
-.screenshots{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:var(--space) auto;}
-.screenshots figure{margin:0;cursor:pointer;transition:transform .3s;}
-.screenshots figure:hover{transform:scale(1.03);}
-.screenshots img{width:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.4);}
-.screenshots figcaption{margin-top:.75rem;font-size:1.125rem;}
-@media(max-width:900px){.screenshots{grid-template-columns:1fr;}}
-
-/* =========================
-   FAQ
-   ========================= */
-#faq-title{cursor:pointer;font-size:2rem;color:var(--gold);padding:.5rem 1rem;border:2px solid var(--gold);border-radius:4px;display:inline-block;margin-bottom:1rem;transition:background .2s;}
-#faq-title:hover{background:rgba(212,175,55,.2);}
-#faq-title::after{content:"+";margin-left:.5rem;font-weight:700;}
-#faq-title.open::after{content:"-";}
-#faq-content{display:none;text-align:center;}
-#faq-content dl{display:inline-block;text-align:left;}
-#faq-content dt{margin:.75rem 0 .5rem;font-weight:700;}
-#faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;}
-
-/* =========================
-   Subscribe
-   ========================= */
-.subscribe-section{padding:0;}
-.subscribe-wrapper{
-  padding:2rem 0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
-}
-.subscribe-wrapper iframe {
-  width: 100% !important;
-  max-width: 423px;
-  height: 182px !important;
+.parchment {
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  line-height: 0;
+}
+
+/* Top & bottom as <img> - remove inline gaps */
+.parchment-top,
+.parchment-bottom {
   display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  line-height: 0;
+}
+
+/* Middle repeats vertically and fills full width */
+.parchment-middle {
+  background-image: url("page_middle.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  image-rendering: pixelated;
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+/* Content wrapper */
+.parchment-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 92%;
+  padding: 2rem;
+  color: #3c3629;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  pointer-events: none;
+}
+
+.parchment-content h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #3c3629;
+}
+
+.parchment-content p {
+  margin: 0 0 1.25rem;
 }
 
 /* =========================
-   Contact
+   Asteros image below parchment
    ========================= */
-.contact-box{display:inline-block;background:var(--navy-d);padding:1rem 1.5rem;border-radius:8px;}
-.contact-box a{color:var(--gold);text-decoration:none;}
+.asteros-figure {
+  margin: 2rem auto 0;
+  max-width: 1200px;
+}
+.asteros-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+}
+.asteros-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #ccc;
+  font-style: italic;
+}
 
 /* =========================
    Footer
    ========================= */
 footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
-
-/* =========================
-   Animation
-   ========================= */
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
-.subscribe-wrapper.pulse{animation:pulse 1s 2;}
-
-/* =========================
-   Desktop screenshot expansion
-   ========================= */
-@media (min-width: 1101px) {
-  .description .container { max-width: 1400px; }
-  .screenshots { max-width: 1400px; }
-}
 </style>
 </head>
 
@@ -209,7 +219,6 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 <header>
   <div class="nav-container">
     <div class="nav-left nav-links">
-      <a href="about.html">About</a>
       <a href="development.html">Development</a>
     </div>
     <div class="nav-center">
@@ -217,20 +226,14 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
         <img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
       </a>
     </div>
-    <div class="nav-right nav-links">
-      <a href="crew.html">Crew</a>
-      <a href="world.html">World</a>
-    </div>
+    <div class="nav-right nav-links"><!-- empty --></div>
     <!-- Hamburger -->
     <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
     <!-- Mobile merged nav -->
     <div class="nav-all nav-links" id="mobile-nav">
-      <a href="about.html">About</a>
       <a href="development.html">Development</a>
-      <a href="crew.html">Crew</a>
-      <a href="world.html">World</a>
     </div>
   </div>
 </header>
@@ -248,86 +251,36 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
   </div>
 </section>
 
-<!-- Description + screenshots -->
-<section class="description">
-  <div class="container">
-    <p>Sealubbers is an open-world pirate RPG. Build your crew, battle rival ships, hunt treasure, and write your legend in the stars.</p>
-    <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
-    <div class="screenshots">
-      <figure><img src="ss1.png" alt="Creating your pirate"><figcaption>Create your pirate and customize your crew.</figcaption></figure>
-      <figure><img src="ss2.png" alt="Explore the world"><figcaption>Sail around and discover a vast open world.</figcaption></figure>
-      <figure><img src="ss3.png" alt="Ship combat"><figcaption>Battle naval vessels in thrilling ship combat.</figcaption></figure>
-      <figure><img src="ss4.png" alt="Board enemy ships"><figcaption>Board foes to steal their precious treasure.</figcaption></figure>
+<!-- Story -->
+<section class="story">
+  <div class="parchment">
+    <img src="page_top.png" alt="" class="parchment-top">
+    <div class="parchment-middle"></div>
+    <img src="page_bottom.png" alt="" class="parchment-bottom">
+    
+    <div class="parchment-content">
+      <h1>The Story of Sealubbers</h1>
+
+      <p>At the beginning of all things, there was a god named Asteros, the Starwright. Asteros had an obsession with stories: daring adventures, tragic betrayals, and foolish comedies. For ages he poured his imagination into the void, writing his stories into the stars themselves, painting the sky with constellations of epic tales.</p>
+      <p>But in time, the Starwright’s imagination ran dry. The stars grew dull and uninspired. His stories no longer stirred the heavens. For the best stories are not imagined: they are lived.</p>
+      <p>A good story is unpredictable. It takes shape as beings, each with strengths and flaws, collide in destiny. Some join together, others destroy each other. Ambition pushes them into danger for hope of reward. A good story is born from real life.</p>
+      <p>So Asteros knew what he must do. He created a world called <strong>Krucia</strong>: a crucible of seas, storms, islands, and gold. He filled it with mortals and gave them a single challenge:<br><strong>Bring me ten thousand gold, and I will write your story into the stars forever.</strong></p>
+      <p>To make things more interesting, Asteros gave each mortal a gift. Yours is the greatest of all: an immortal ship in a bottle. Uncork it, and the ship leaps to the waves, ready to sail. It cannot be destroyed. It will always return.</p>
+      <p>Now, across Krucia, mortals fight and scheme for their chance to be immortalized in the heavens. Some build fortunes through trade, sailing from port to port with holds full of goods. Others rise through politics, where power and gold are quietly won. Finally, there are those who take to plunder, tearing riches from the hands of others.</p>
+      <p>Asteros watches with anticipation, eager for the tale that unfolds.</p>
+      <p><em>When your story is written, what will the stars say about you?</em></p>
     </div>
   </div>
-</section>
 
-<!-- Subscribe -->
-<section class="subscribe-section">
-  <div class="separator"></div>
-  <div class="subscribe-wrapper">
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
-      class="beehiiv-embed"
-      data-test-id="beehiiv-embed"
-      frameborder="0"
-      scrolling="no"
-      style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
-    </iframe>
-  </div>
-  <div class="separator"></div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="container">
-    <div id="faq-title">Frequently Asked Questions</div>
-    <div id="faq-content">
-      <dl>
-        <dt>When can I play Sealubbers?</dt>
-        <dd>I'm aiming to release the demo to the public by the end of September. I hope to release the full game sometime in 2026.</dd>
-        <dt>What platforms will Sealubbers support?</dt>
-        <dd>I want to release the game on PC, Mac, iOS, and Android. Possibly on console.</dd>
-        <dt>How much will Sealubbers cost?</dt>
-        <dd>The game will be free-to-play. There will be cosmetics available for purchase, but nothing that affects gameplay.</dd>
-        <dt>Is there multiplayer or co-op?</dt>
-        <dd>Not in the initial game. But I'm planning on making a multiplayer PvP gamemode inspired by games like Agar.io and Slither.io.</dd>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-box">Business inquiries: <a href="mailto:contact@sealubbers.com">contact@sealubbers.com</a></div>
-  </div>
+  <figure class="asteros-figure">
+    <img src="asteros.png" alt="Asteros illustration" width="1600" height="850">
+    <figcaption>Concept art for Asteros, the Starwright.</figcaption>
+  </figure>
 </section>
 
 <footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
 
 <script>
-/* FAQ toggle */
-const faqBtn=document.getElementById('faq-title');
-const faqBox=document.getElementById('faq-content');
-faqBtn.onclick=()=>{
-  faqBtn.classList.toggle('open');
-  faqBox.style.display = faqBox.style.display === 'block' ? '' : 'block';
-  if(faqBox.style.display==='block'){
-    faqBox.scrollIntoView({behavior:"smooth", block:"start"});
-  }
-};
-
-/* Pulse once when subscribe comes into view */
-const subWrap=document.querySelector('.subscribe-wrapper');
-new IntersectionObserver(e=>{if(e[0].isIntersecting){subWrap.classList.add('pulse')}}).observe(subWrap);
-
-/* Swap icons to gold on hover */
-document.querySelectorAll('.social img').forEach(img=>{
-  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
-});
-
 /* Mobile menu toggle */
 const menuBtn=document.getElementById('menu-btn');
 const mobileNav=document.getElementById('mobile-nav');
@@ -348,12 +301,40 @@ function positionMenuBtn(){
   }else{
     btn.style.left="";
     btn.style.transform="translateY(-50%)";
-    /* Reset mobile nav when back to desktop */
     mobileNav.style.display="";
   }
 }
 window.addEventListener('resize',positionMenuBtn);
 window.addEventListener('load',positionMenuBtn);
+
+/* Swap icons to gold on hover */
+document.querySelectorAll('.social img').forEach(img=>{
+  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+});
+
+/* Adjust parchment middle height based on content */
+function adjustParchmentHeight() {
+  const parchment = document.querySelector('.parchment');
+  const content = document.querySelector('.parchment-content');
+  const middle = document.querySelector('.parchment-middle');
+  const top = document.querySelector('.parchment-top');
+  const bottom = document.querySelector('.parchment-bottom');
+  
+  if (!parchment || !content || !middle || !top || !bottom) return;
+  
+  const contentHeight = content.scrollHeight;
+  const topHeight = top.offsetHeight;
+  const bottomHeight = bottom.offsetHeight;
+  const middleHeight = Math.max(100, contentHeight - topHeight - bottomHeight);
+  
+  middle.style.height = middleHeight + 'px';
+}
+
+window.addEventListener('load', () => {
+  setTimeout(adjustParchmentHeight, 100);
+});
+window.addEventListener('resize', adjustParchmentHeight);
 </script>
 </body>
 </html>

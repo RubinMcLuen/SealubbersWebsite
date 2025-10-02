@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Combat - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+:root {
+  --space: 2rem;
+  --gold: #d4af37;
+  --navy: #232a6f;
+  --navy-d: #1f224f;
+}
+
+html, body {height: 100%;}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: var(--navy);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {margin-top: auto;}
+*, *::before, *::after {user-select:none;box-sizing:border-box;}
+
+.container {max-width: 1000px; margin: 0 auto; padding: 0 1rem;}
+section {padding: var(--space) 0;}
+.separator {width: 100%; height: 4px; background: var(--gold); margin: var(--space) 0;}
+
+/* =========================
+   Header
+   ========================= */
+header {
+  padding: 2rem 0;
+  position: relative;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  position: relative;
+}
+.nav-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.site-title {
+  width: clamp(500px, 65%, 800px);
+  height: auto;
+  transition: transform 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+.site-title:hover {transform: scale(1.05);}
+.nav-left {
+  position: absolute;
+  right: 50%;
+  transform: translateX(-320px) translateY(-50%);
+  top: 50%;
+  display: flex;
+  gap: 4rem;
+}
+.nav-right {
+  position: absolute;
+  left: 50%;
+  transform: translateX(320px) translateY(-50%);
+  top: 50%;
+  display: flex;
+  gap: 4rem;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.nav-links a:hover {color: var(--gold);}
+
+/* Mobile merged nav hidden by default */
+.nav-all {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
+
+/* Hamburger button */
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 1100px) {
+  .nav-left, .nav-right { display: none; }
+  .nav-container { height: auto; }
+  .nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
+  .site-title { width: clamp(300px, 80%, 500px); }
+  .menu-btn { display: block; }
+  header { padding: 1.5rem 0 0.75rem; }
+}
+
+/* =========================
+   Social bar
+   ========================= */
+.social-section {background: var(--navy-d); padding: 0.75rem 0;}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.social img {height: 48px; transition: transform .2s;}
+.social img:hover {transform: scale(1.1);}
+
+/* =========================
+   Parchment
+   ========================= */
+.parchment {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  line-height: 0;
+  margin-bottom: 2rem;
+}
+.parchment-top,
+.parchment-bottom {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+.parchment-middle {
+  background-image: url("page_middle.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  image-rendering: pixelated;
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.parchment-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 92%;
+  padding: 2rem;
+  color: #3c3629;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+.parchment-content h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #3c3629;
+}
+.parchment-content h2 {
+  font-size: 1.75rem;
+  margin: 2rem 0 1rem;
+  color: #3c3629;
+}
+.parchment-content p {
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   Footer
+   ========================= */
+footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #ddd;}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="nav-container">
+    <div class="nav-left nav-links">
+      <a href="development.html">Development</a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html">
+        <img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
+      </a>
+    </div>
+    <div class="nav-right nav-links"></div>
+    <!-- Hamburger -->
+    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-all nav-links" id="mobile-nav">
+      <a href="development.html">Development</a>
+    </div>
+  </div>
+</header>
+
+<!-- Social -->
+<section class="social-section">
+  <div class="container">
+    <ul class="social">
+      <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+      <li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+      <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+      <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+      <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Combat Content -->
+<section>
+  <div class="parchment">
+    <img src="page_top.png" alt="" class="parchment-top">
+    <div class="parchment-middle"></div>
+    <img src="page_bottom.png" alt="" class="parchment-bottom">
+    <div class="parchment-content">
+      <h1>Combat in Krucia</h1>
+      <p>Combat in Krucia is split between the clash of ships on the open sea and the chaos of crews fighting blade to blade. Battles can unfold in many different ways depending on who you face, how your crew is built, and the choices you make as captain.</p>
+
+      <h2>Types of Battles</h2>
+      <p><strong>Ship-to-Ship Combat</strong> — Long-range engagements with cannons, sails, and maneuvering.</p>
+      <p><strong>Boarding Battles</strong> — Close-quarters fights where crews clash across the decks.</p>
+      <p><strong>Boss Battles</strong> — Large encounters that test your ability to command at sea and on foot.</p>
+
+      <h2>Enemy Ships and Behavior</h2>
+      <p>Not every ship you encounter will fight the same way. Some will flee or surrender, some will try to pay you off, and others attack aggressively on sight. Certain captains will hunt you based on your past actions, and some ships only target you depending on your reputation with their faction. Ships also appear along predictable routes — patrol lines, trade lanes, and ambush points — letting you plan where and when to pick your fights.</p>
+
+      <h2>Scouting and Information</h2>
+      <p>Before combat, you can scout an enemy ship. The details you learn depend on your crew’s abilities: ship health, crew size and abilities, and what cargo or treasure they’re carrying. With the right information, you can choose to fight, flee, or pursue a different target. Some quests will also send you after specific ships at specific times.</p>
+
+      <h2>Naval Combat</h2>
+      <p><strong>Maneuvering</strong> — Positioning is everything. Angle your ship for broadsides while dodging return fire.</p>
+      <p><strong>Cannons</strong> — Time your salvos, manage reloads, and aim for vulnerable moments to control the flow of battle.</p>
+      <p><strong>Environmental Hazards</strong> — Waves, reefs, fog, and storms can all turn the tide.</p>
+      <p><strong>Upgrades</strong> — Permanent improvements like stronger hulls, faster sails, and reinforced cannons raise your power.</p>
+      <p><strong>Crew Impact</strong> — Reload speed, repair efficiency, turning sharpness, and accuracy all scale with your crew’s skills.</p>
+
+      <h2>Boarding Combat</h2>
+      <p>When you close in, you can board the enemy ship. Your sailors and theirs clash across the decks while you direct the fight.</p>
+      <p><strong>Captain’s Orders</strong> — Certain crewmates grant active abilities such as tossing sand to blind enemies, healing an ally, rallying morale, or drawing attention to a specific fighter.</p>
+      <p><strong>Hazards</strong> — Expect falling masts, spreading fires, explosions, and collapsing decks.</p>
+      <p><strong>Positioning</strong> — Move your crew to avoid danger and press advantages as the battlefield shifts.</p>
+
+      <h2>Strategy and Playstyles</h2>
+      <p>Build the crew that fits your plan: expert sailors who dominate the sea, fearsome fighters who excel in boarding, or a versatile mix that adapts on the fly. Some encounters — especially bosses — will challenge both your sailing and swordplay.</p>
+
+      <h2>Rewards of Victory</h2>
+      <p>Winning battles brings clear rewards: gold and cargo, weapons and artifacts, new quests and story progress — and sometimes new recruits from defeated foes. Each victory also opens the path to permanent ship upgrades and a growing reputation on the seas.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
+
+<script>
+/* Mobile menu toggle */
+const menuBtn=document.getElementById('menu-btn');
+const mobileNav=document.getElementById('mobile-nav');
+menuBtn.addEventListener('click',()=>{
+  mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
+});
+
+/* Position menu button */
+function positionMenuBtn(){
+  const btn=document.getElementById('menu-btn');
+  const title=document.getElementById('site-title');
+  if(window.innerWidth<=1100){
+    const titleRight=title.getBoundingClientRect().right;
+    const screenRight=window.innerWidth;
+    const midpoint=(titleRight+screenRight)/2;
+    btn.style.left=midpoint+"px";
+    btn.style.transform="translateX(-50%) translateY(-50%)";
+  }else{
+    btn.style.left="";
+    btn.style.transform="translateY(-50%)";
+    mobileNav.style.display="";
+  }
+}
+window.addEventListener('resize',positionMenuBtn);
+window.addEventListener('load',positionMenuBtn);
+
+/* Swap social icons */
+document.querySelectorAll('.social img').forEach(img=>{
+  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+});
+
+/* Adjust parchment height */
+function adjustParchmentHeight() {
+  document.querySelectorAll('.parchment').forEach(parchment=>{
+    const content=parchment.querySelector('.parchment-content');
+    const middle=parchment.querySelector('.parchment-middle');
+    const top=parchment.querySelector('.parchment-top');
+    const bottom=parchment.querySelector('.parchment-bottom');
+    if (!content||!middle||!top||!bottom) return;
+    const contentHeight=content.scrollHeight;
+    const topHeight=top.offsetHeight;
+    const bottomHeight=bottom.offsetHeight;
+    const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
+    middle.style.height=middleHeight+'px';
+  });
+}
+window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
+window.addEventListener('resize',adjustParchmentHeight);
+</script>
+</body>
+</html>

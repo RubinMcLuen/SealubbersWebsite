@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explore - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+:root {
+  --space: 2rem;
+  --gold: #d4af37;
+  --navy: #232a6f;
+  --navy-d: #1f224f;
+}
+
+html, body {height: 100%;}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: var(--navy);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {margin-top: auto;}
+*, *::before, *::after {user-select:none;box-sizing:border-box;}
+
+.container {max-width: 1000px; margin: 0 auto; padding: 0 1rem;}
+section {padding: var(--space) 0;}
+.separator {width: 100%; height: 4px; background: var(--gold); margin: var(--space) 0;}
+
+/* =========================
+   Header
+   ========================= */
+header {
+  padding: 2rem 0;
+  position: relative;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  position: relative;
+}
+.nav-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.site-title {
+  width: clamp(500px, 65%, 800px);
+  height: auto;
+  transition: transform 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+.site-title:hover {transform: scale(1.05);}
+.nav-left {
+  position: absolute;
+  right: 50%;
+  transform: translateX(-320px) translateY(-50%);
+  top: 50%;
+  display: flex;
+  gap: 4rem;
+}
+.nav-right {
+  position: absolute;
+  left: 50%;
+  transform: translateX(320px) translateY(-50%);
+  top: 50%;
+  display: flex;
+  gap: 4rem;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.nav-links a:hover {color: var(--gold);}
+
+/* Mobile merged nav hidden by default */
+.nav-all {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
+
+/* Hamburger button */
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 1100px) {
+  .nav-left, .nav-right { display: none; }
+  .nav-container { height: auto; }
+  .nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
+  .site-title { width: clamp(300px, 80%, 500px); }
+  .menu-btn { display: block; }
+  header { padding: 1.5rem 0 0.75rem; }
+}
+
+/* =========================
+   Social bar
+   ========================= */
+.social-section {background: var(--navy-d); padding: 0.75rem 0;}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.social img {height: 48px; transition: transform .2s;}
+.social img:hover {transform: scale(1.1);}
+
+/* =========================
+   Parchment
+   ========================= */
+.parchment {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  line-height: 0;
+  margin-bottom: 2rem;
+}
+.parchment-top,
+.parchment-bottom {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+.parchment-middle {
+  background-image: url("page_middle.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  image-rendering: pixelated;
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.parchment-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 92%;
+  padding: 2rem;
+  color: #3c3629;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+.parchment-content h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #3c3629;
+}
+.parchment-content h2 {
+  font-size: 1.75rem;
+  margin: 2rem 0 1rem;
+  color: #3c3629;
+}
+.parchment-content p {
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   Footer
+   ========================= */
+footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #ddd;}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="nav-container">
+    <div class="nav-left nav-links">
+      <a href="development.html">Development</a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html">
+        <img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
+      </a>
+    </div>
+    <div class="nav-right nav-links"></div>
+    <!-- Hamburger -->
+    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-all nav-links" id="mobile-nav">
+      <a href="development.html">Development</a>
+    </div>
+  </div>
+</header>
+
+<!-- Social -->
+<section class="social-section">
+  <div class="container">
+    <ul class="social">
+      <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+      <li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+      <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+      <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+      <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Explore Content -->
+<section>
+  <div class="parchment">
+    <img src="page_top.png" alt="" class="parchment-top">
+    <div class="parchment-middle"></div>
+    <img src="page_bottom.png" alt="" class="parchment-bottom">
+    <div class="parchment-content">
+      <h1>Exploration in Krucia</h1>
+      <p>The seas of Krucia are endless, and every voyage is your own to chart. Exploration is not just about sailing from one port to another — it’s about uncovering stories, solving mysteries, and carving your path across unmarked waters. The world does not hand you a map; you create it as you go.</p>
+
+      <h2>Quests Across the Seas</h2>
+      <p>Quests are scattered everywhere, waiting to be discovered. A tavern keeper might whisper about trouble brewing on the next island. A sailor on the docks may offer you a job. Your own crew could ask for help with a personal matter. Sometimes you’ll find a note washed up on shore, pointing toward hidden riches.</p>
+      <p>Quests take many forms. Some will send you chasing pirates or delivering goods through dangerous waters. Others may lead you into the service of factions, shaping their power across Krucia. But the most tempting quests are the ones that dangle treasure — promises of forgotten gold, locked chests, and secrets buried long ago.</p>
+
+      <h2>Exploring and Charting</h2>
+      <p>From the very beginning, every horizon is open. There are no locked gates or invisible walls — only the natural dangers of storms, reefs, fog, and hostile ships. As you sail, you chart the seas yourself. Islands, towns, hazards, and landmarks are added to your map only once you find them. No two maps are the same, because every captain explores differently.</p>
+      <p>Exploration is more than filling blank spaces. You’ll stumble upon strange ruins, shipwrecks, and caves. Some hold nothing but bones and stories. Others conceal gold, artifacts, or clues that point you onward. The seas are alive with drifting barrels, derelict rafts, and passing convoys — chance encounters that can help or hinder your voyage.</p>
+
+      <h2>The Hunt for Treasure</h2>
+      <p>Treasure is never simply handed to you. Clues come in fragments — a torn map, a riddle carved into wood, a half-remembered song. Following them may lead you across half the ocean, piecing together hints until the final secret is revealed. Some clues are straightforward, others twist and deceive, rewarding only those who pay attention.</p>
+      <p>The treasures themselves vary. You might unearth a chest of gold, a weapon with history, or a strange artifact left behind by Asteros. Each discovery feels earned, because it was you who puzzled out the trail and braved the seas to reach it.</p>
+
+      <h2>Landmarks and Wonders</h2>
+      <p>The world of Krucia is filled with landmarks, both natural and man-made. A volcano that shakes the seas around it. Coral reefs that stretch like mazes beneath the waves. Ancient forts, toppled statues, or shrines to the stars, waiting on forgotten islands.</p>
+      <p>These places aren’t just scenery — they’re markers of progress, destinations that make the seas feel alive. Some hold secrets, others stand only as reminders of those who came before. Either way, each landmark you chart makes your map, and your story, richer.</p>
+
+      <h2>Rewards of Exploration</h2>
+      <p>Exploration always carries risk, but the rewards go beyond gold. Every port unlocked gives you new places to rest, trade, and recruit. Every landmark you find deepens your knowledge of the world. Every treasure uncovered adds to your legend. The more you explore, the more Krucia opens itself to you — a sea of stories, waiting to be told.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
+
+<script>
+/* Mobile menu toggle */
+const menuBtn=document.getElementById('menu-btn');
+const mobileNav=document.getElementById('mobile-nav');
+menuBtn.addEventListener('click',()=>{
+  mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
+});
+
+/* Position menu button */
+function positionMenuBtn(){
+  const btn=document.getElementById('menu-btn');
+  const title=document.getElementById('site-title');
+  if(window.innerWidth<=1100){
+    const titleRight=title.getBoundingClientRect().right;
+    const screenRight=window.innerWidth;
+    const midpoint=(titleRight+screenRight)/2;
+    btn.style.left=midpoint+"px";
+    btn.style.transform="translateX(-50%) translateY(-50%)";
+  }else{
+    btn.style.left="";
+    btn.style.transform="translateY(-50%)";
+    mobileNav.style.display="";
+  }
+}
+window.addEventListener('resize',positionMenuBtn);
+window.addEventListener('load',positionMenuBtn);
+
+/* Swap social icons */
+document.querySelectorAll('.social img').forEach(img=>{
+  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+});
+
+/* Adjust parchment height */
+function adjustParchmentHeight() {
+  document.querySelectorAll('.parchment').forEach(parchment=>{
+    const content=parchment.querySelector('.parchment-content');
+    const middle=parchment.querySelector('.parchment-middle');
+    const top=parchment.querySelector('.parchment-top');
+    const bottom=parchment.querySelector('.parchment-bottom');
+    if (!content||!middle||!top||!bottom) return;
+    const contentHeight=content.scrollHeight;
+    const topHeight=top.offsetHeight;
+    const bottomHeight=bottom.offsetHeight;
+    const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
+    middle.style.height=middleHeight+'px';
+  });
+}
+window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
+window.addEventListener('resize',adjustParchmentHeight);
+</script>
+</body>
+</html>
