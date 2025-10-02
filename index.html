@@ -13,15 +13,15 @@
 
 html, body {height: 100%;}
 body {
-  margin: 0;
-  overflow-x: hidden;
-  font-family: system-ui, sans-serif;
-  color: #fff;
-  background: var(--navy);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	margin: 0;
+	overflow-x: hidden;
+	font-family: system-ui, sans-serif;
+	color: #fff;
+	background: var(--navy);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 footer {margin-top: auto;}
 *, *::before, *::after {user-select:none;box-sizing:border-box;}
@@ -31,115 +31,178 @@ section{padding:var(--space) 0;}
 .separator{width:100%;height:4px;background:var(--gold);margin:var(--space) 0;}
 
 /* =========================
-   Header
-   ========================= */
+	 Header
+	 ========================= */
 header {
-  padding: 2rem 0;
-  position: relative;
+	padding: 2rem 0;
+	position: relative;
 }
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 70px;
-  position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	height: 70px;
+	position: relative;
 }
 .nav-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 .site-title {
-  width: clamp(500px, 65%, 800px);
-  height: auto;
-  transition: transform 0.2s;
-  display: block;
-  margin: 0 auto;
+	width: clamp(500px, 65%, 800px);
+	height: auto;
+	transition: transform 0.2s;
+	display: block;
+	margin: 0 auto;
 }
 .site-title:hover {transform: scale(1.05);}
 .nav-left {
-  position: absolute;
-  right: 50%;
-  transform: translateX(-320px) translateY(-50%);
-  top: 50%;
-  display: flex;
-  gap: 4rem;
+	position: absolute;
+	right: 50%;
+	transform: translateX(-320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
 }
 .nav-right {
-  position: absolute;
-  left: 50%;
-  transform: translateX(320px) translateY(-50%);
-  top: 50%;
-  display: flex;
-  gap: 4rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
 }
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.25rem;
-  white-space: nowrap;
-  transition: color 0.2s;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.25rem;
+	white-space: nowrap;
+	transition: color 0.2s;
 }
 .nav-links a:hover {color: var(--gold);}
 
 /* Mobile merged nav hidden by default */
 .nav-all {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 0.5rem;
 }
 .nav-all a { margin: 0.5rem 0; font-size: 1.1rem; }
 
 /* Hamburger button */
 .menu-btn {
-  display: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 .menu-btn span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: #fff;
-  margin: 6px 0;
-  transition: 0.3s;
+	display: block;
+	width: 28px;
+	height: 3px;
+	background: #fff;
+	margin: 6px 0;
+	transition: 0.3s;
 }
 
 /* Mobile styles */
 @media (max-width: 1100px) {
-  .nav-left, .nav-right { display: none; }
-  .nav-container { height: auto; }
-  .nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
-  .site-title { width: clamp(300px, 80%, 500px); }
-  .menu-btn { display: block; }
-  header { padding: 1.5rem 0 0.75rem; }
+	.nav-left, .nav-right { display: none; }
+	.nav-container { height: auto; }
+	.nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
+	.site-title { width: clamp(300px, 80%, 500px); }
+	.menu-btn { display: block; }
+	header { padding: 1.5rem 0 0.75rem; }
 }
 
 /* =========================
-   Social bar
-   ========================= */
+	 Coming Soon Popup
+	 ========================= */
+.popup-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1000;
+	justify-content: center;
+	align-items: center;
+}
+.popup-overlay.active {
+	display: flex;
+}
+.popup-content {
+	background: var(--navy-d);
+	border: 3px solid var(--gold);
+	border-radius: 12px;
+	padding: 2rem 3rem;
+	text-align: center;
+	max-width: 400px;
+	animation: popupSlide 0.3s ease-out;
+}
+@keyframes popupSlide {
+	from {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+.popup-content h2 {
+	color: var(--gold);
+	margin: 0 0 1rem;
+	font-size: 2rem;
+}
+.popup-content p {
+	color: #ddd;
+	margin: 0 0 1.5rem;
+	font-size: 1.1rem;
+}
+.popup-close {
+	background: var(--gold);
+	color: var(--navy);
+	border: none;
+	padding: 0.75rem 2rem;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+.popup-close:hover {
+	transform: scale(1.05);
+}
+
+
+/* =========================
+	 Social bar
+	 ========================= */
 .social-section {background: var(--navy-d);padding: 0.75rem 0;}
 .social {display:flex;justify-content:center;gap:1.5rem;margin:0;padding:0;list-style:none;}
 .social img{height:48px;transition:transform .2s;}
 .social img:hover{transform:scale(1.1);}
 
 /* =========================
-   Description
-   ========================= */
+	 Description
+	 ========================= */
 .description p{margin:0 0 1.25rem;font-size:1.125rem;}
 .btn{display:inline-block;background:var(--gold);color:#000;font-weight:700;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;}
 
 /* =========================
-   Screenshots
-   ========================= */
+	 Screenshots
+	 ========================= */
 .screenshots{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:var(--space) auto;}
 .screenshots figure{margin:0;cursor:pointer;transition:transform .3s;}
 .screenshots figure:hover{transform:scale(1.03);}
@@ -148,8 +211,8 @@ header {
 @media(max-width:900px){.screenshots{grid-template-columns:1fr;}}
 
 /* =========================
-   FAQ
-   ========================= */
+	 FAQ
+	 ========================= */
 #faq-title{cursor:pointer;font-size:2rem;color:var(--gold);padding:.5rem 1rem;border:2px solid var(--gold);border-radius:4px;display:inline-block;margin-bottom:1rem;transition:background .2s;}
 #faq-title:hover{background:rgba(212,175,55,.2);}
 #faq-title::after{content:"+";margin-left:.5rem;font-weight:700;}
@@ -160,148 +223,157 @@ header {
 #faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;}
 
 /* =========================
-   Subscribe
-   ========================= */
+	 Subscribe
+	 ========================= */
 .subscribe-section{padding:0;}
 .subscribe-wrapper{
-  padding:2rem 0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
+	padding:2rem 0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width:100%;
 }
 .subscribe-wrapper iframe {
-  width: 100% !important;
-  max-width: 423px;
-  height: 182px !important;
-  margin: 0 auto;
-  display: block;
+	width: 100% !important;
+	max-width: 423px;
+	height: 182px !important;
+	margin: 0 auto;
+	display: block;
 }
 
 /* =========================
-   Contact
-   ========================= */
+	 Contact
+	 ========================= */
 .contact-box{display:inline-block;background:var(--navy-d);padding:1rem 1.5rem;border-radius:8px;}
 .contact-box a{color:var(--gold);text-decoration:none;}
 
 /* =========================
-   Footer
-   ========================= */
+	 Footer
+	 ========================= */
 footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 
 /* =========================
-   Animation
-   ========================= */
+	 Animation
+	 ========================= */
 @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
 .subscribe-wrapper.pulse{animation:pulse 1s 2;}
 
 /* =========================
-   Desktop screenshot expansion
-   ========================= */
+	 Desktop screenshot expansion
+	 ========================= */
 @media (min-width: 1101px) {
-  .description .container { max-width: 1400px; }
-  .screenshots { max-width: 1400px; }
+	.description .container { max-width: 1400px; }
+	.screenshots { max-width: 1400px; }
 }
 </style>
 </head>
 
 <body>
 <header>
-  <div class="nav-container">
-    <div class="nav-left nav-links">
-      <a href="about.html">About</a>
-      <a href="development.html">Development</a>
-    </div>
-    <div class="nav-center">
-      <a href="index.html">
-        <img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
-      </a>
-    </div>
-    <div class="nav-right nav-links">
-      <a href="crew.html">Crew</a>
-      <a href="world.html">World</a>
-    </div>
-    <!-- Hamburger -->
-    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <!-- Mobile merged nav -->
-    <div class="nav-all nav-links" id="mobile-nav">
-      <a href="about.html">About</a>
-      <a href="development.html">Development</a>
-      <a href="crew.html">Crew</a>
-      <a href="world.html">World</a>
-    </div>
-  </div>
+	<div class="nav-container">
+		<div class="nav-left nav-links">
+			<a href="index.html">Home</a>
+			<a href="development.html">Development</a>
+		</div>
+		<div class="nav-center">
+			<a href="index.html">
+				<img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
+			</a>
+		</div>
+		<div class="nav-right nav-links">
+			<a class="coming-soon-link">Testing</a>
+			<a class="coming-soon-link">Support</a>
+		</div>
+		<!-- Hamburger -->
+		<button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+			<span></span><span></span><span></span>
+		</button>
+		<!-- Mobile merged nav -->
+		<div class="nav-all nav-links" id="mobile-nav">
+			<a href="index.html">Home</a>
+			<a href="development.html">Development</a>
+			<a class="coming-soon-link">Testing</a>
+			<a class="coming-soon-link">Support</a>
+		</div>
+	</div>
 </header>
+
+<!-- Coming Soon Popup -->
+<div class="popup-overlay" id="popup">
+	<div class="popup-content">
+		<h2>Coming Soon</h2>
+		<p>This page is currently under development and will be available soon!</p>
+		<button class="popup-close" id="popup-close">Close</button>
+	</div>
+</div>
 
 <!-- Social -->
 <section class="social-section">
-  <div class="container">
-    <ul class="social">
-      <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-      <li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-      <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-      <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-      <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
-    </ul>
-  </div>
+	<div class="container">
+		<ul class="social">
+			<li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+			<li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+			<li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+			<li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+			<li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+		</ul>
+	</div>
 </section>
 
 <!-- Description + screenshots -->
 <section class="description">
-  <div class="container">
-    <p>Sealubbers is an open-world pirate RPG. Build your crew, battle rival ships, hunt treasure, and write your legend in the stars.</p>
-    <a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
-    <div class="screenshots">
-      <figure><img src="ss1.png" alt="Creating your pirate"><figcaption>Create your pirate and customize your crew.</figcaption></figure>
-      <figure><img src="ss2.png" alt="Explore the world"><figcaption>Sail around and discover a vast open world.</figcaption></figure>
-      <figure><img src="ss3.png" alt="Ship combat"><figcaption>Battle naval vessels in thrilling ship combat.</figcaption></figure>
-      <figure><img src="ss4.png" alt="Board enemy ships"><figcaption>Board foes to steal their precious treasure.</figcaption></figure>
-    </div>
-  </div>
+	<div class="container">
+		<p>Sealubbers is an open-world pirate RPG. Build your crew, battle rival ships, hunt treasure, and write your legend in the stars.</p>
+		<a class="btn" href="https://store.steampowered.com/app/3126990/Sealubbers/" target="_blank" rel="noopener">Add to Wishlist on Steam</a>
+		<div class="screenshots">
+			<figure><img src="ss1.png" alt="Creating your pirate"><figcaption>Create your pirate and customize your crew.</figcaption></figure>
+			<figure><img src="ss2.png" alt="Explore the world"><figcaption>Sail around and discover a vast open world.</figcaption></figure>
+			<figure><img src="ss3.png" alt="Ship combat"><figcaption>Battle naval vessels in thrilling ship combat.</figcaption></figure>
+			<figure><img src="ss4.png" alt="Board enemy ships"><figcaption>Board foes to steal their precious treasure.</figcaption></figure>
+		</div>
+	</div>
 </section>
 
 <!-- Subscribe -->
 <section class="subscribe-section">
-  <div class="separator"></div>
-  <div class="subscribe-wrapper">
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
-      class="beehiiv-embed"
-      data-test-id="beehiiv-embed"
-      frameborder="0"
-      scrolling="no"
-      style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
-    </iframe>
-  </div>
-  <div class="separator"></div>
+	<div class="separator"></div>
+	<div class="subscribe-wrapper">
+		<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+		<iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
+			class="beehiiv-embed"
+			data-test-id="beehiiv-embed"
+			frameborder="0"
+			scrolling="no"
+			style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
+		</iframe>
+	</div>
+	<div class="separator"></div>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section">
-  <div class="container">
-    <div id="faq-title">Frequently Asked Questions</div>
-    <div id="faq-content">
-      <dl>
-        <dt>When can I play Sealubbers?</dt>
-        <dd>I'm aiming to release the demo to the public by the end of September. I hope to release the full game sometime in 2026.</dd>
-        <dt>What platforms will Sealubbers support?</dt>
-        <dd>I want to release the game on PC, Mac, iOS, and Android. Possibly on console.</dd>
-        <dt>How much will Sealubbers cost?</dt>
-        <dd>The game will be free-to-play. There will be cosmetics available for purchase, but nothing that affects gameplay.</dd>
-        <dt>Is there multiplayer or co-op?</dt>
-        <dd>Not in the initial game. But I'm planning on making a multiplayer PvP gamemode inspired by games like Agar.io and Slither.io.</dd>
-      </dl>
-    </div>
-  </div>
+	<div class="container">
+		<div id="faq-title">Frequently Asked Questions</div>
+		<div id="faq-content">
+			<dl>
+				<dt>When can I play Sealubbers?</dt>
+				<dd>I'm aiming to release the demo to the public by the end of September. I hope to release the full game sometime in 2026.</dd>
+				<dt>What platforms will Sealubbers support?</dt>
+				<dd>I want to release the game on PC, Mac, iOS, and Android. Possibly on console.</dd>
+				<dt>How much will Sealubbers cost?</dt>
+				<dd>The game will be free-to-play. There will be cosmetics available for purchase, but nothing that affects gameplay.</dd>
+				<dt>Is there multiplayer or co-op?</dt>
+				<dd>Not in the initial game. But I'm planning on making a multiplayer PvP gamemode inspired by games like Agar.io and Slither.io.</dd>
+			</dl>
+		</div>
+	</div>
 </section>
 
 <!-- Contact -->
 <section class="contact-section">
-  <div class="container">
-    <div class="contact-box">Business inquiries: <a href="mailto:contact@sealubbers.com">contact@sealubbers.com</a></div>
-  </div>
+	<div class="container">
+		<div class="contact-box">Business inquiries: <a href="mailto:contact@sealubbers.com">contact@sealubbers.com</a></div>
+	</div>
 </section>
 
 <footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
@@ -311,11 +383,11 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 const faqBtn=document.getElementById('faq-title');
 const faqBox=document.getElementById('faq-content');
 faqBtn.onclick=()=>{
-  faqBtn.classList.toggle('open');
-  faqBox.style.display = faqBox.style.display === 'block' ? '' : 'block';
-  if(faqBox.style.display==='block'){
-    faqBox.scrollIntoView({behavior:"smooth", block:"start"});
-  }
+	faqBtn.classList.toggle('open');
+	faqBox.style.display = faqBox.style.display === 'block' ? '' : 'block';
+	if(faqBox.style.display==='block'){
+		faqBox.scrollIntoView({behavior:"smooth", block:"start"});
+	}
 };
 
 /* Pulse once when subscribe comes into view */
@@ -324,36 +396,58 @@ new IntersectionObserver(e=>{if(e[0].isIntersecting){subWrap.classList.add('puls
 
 /* Swap icons to gold on hover */
 document.querySelectorAll('.social img').forEach(img=>{
-  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+	img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+	img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
 });
 
 /* Mobile menu toggle */
 const menuBtn=document.getElementById('menu-btn');
 const mobileNav=document.getElementById('mobile-nav');
 menuBtn.addEventListener('click',()=>{
-  mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
+	mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
 });
 
 /* Center hamburger between title right edge & screen right edge */
 function positionMenuBtn(){
-  const btn=document.getElementById('menu-btn');
-  const title=document.getElementById('site-title');
-  if(window.innerWidth<=1100){
-    const titleRight=title.getBoundingClientRect().right;
-    const screenRight=window.innerWidth;
-    const midpoint=(titleRight+screenRight)/2;
-    btn.style.left=midpoint+"px";
-    btn.style.transform="translateX(-50%) translateY(-50%)";
-  }else{
-    btn.style.left="";
-    btn.style.transform="translateY(-50%)";
-    /* Reset mobile nav when back to desktop */
-    mobileNav.style.display="";
-  }
+	const btn=document.getElementById('menu-btn');
+	const title=document.getElementById('site-title');
+	if(window.innerWidth<=1100){
+		const titleRight=title.getBoundingClientRect().right;
+		const screenRight=window.innerWidth;
+		const midpoint=(titleRight+screenRight)/2;
+		btn.style.left=midpoint+"px";
+		btn.style.transform="translateX(-50%) translateY(-50%)";
+	}else{
+		btn.style.left="";
+		btn.style.transform="translateY(-50%)";
+		/* Reset mobile nav when back to desktop */
+		mobileNav.style.display="";
+	}
 }
 window.addEventListener('resize',positionMenuBtn);
 window.addEventListener('load',positionMenuBtn);
+
+/* Coming Soon Popup */
+const popup = document.getElementById('popup');
+const popupClose = document.getElementById('popup-close');
+const comingSoonLinks = document.querySelectorAll('.coming-soon-link');
+
+comingSoonLinks.forEach(link => {
+	link.addEventListener('click', (e) => {
+		e.preventDefault();
+		popup.classList.add('active');
+	});
+});
+
+popupClose.addEventListener('click', () => {
+	popup.classList.remove('active');
+});
+
+popup.addEventListener('click', (e) => {
+	if (e.target === popup) {
+		popup.classList.remove('active');
+	}
+});
 </script>
 </body>
 </html>
