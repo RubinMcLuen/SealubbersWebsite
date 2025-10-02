@@ -10,23 +10,23 @@
 <!-- End Cloudflare Web Analytics -->
 <style>
 :root {
-  --space: 2rem;
-  --gold: #d4af37;
-  --navy: #232a6f;
-  --navy-d: #1f224f;
+	--space: 2rem;
+	--gold: #d4af37;
+	--navy: #232a6f;
+	--navy-d: #1f224f;
 }
 
 html, body {height: 100%;}
 body {
-  margin: 0;
-  overflow-x: hidden;
-  font-family: system-ui, sans-serif;
-  color: #fff;
-  background: var(--navy);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	margin: 0;
+	overflow-x: hidden;
+	font-family: system-ui, sans-serif;
+	color: #fff;
+	background: var(--navy);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 footer {margin-top: auto;}
 *, *::before, *::after {user-select:none;box-sizing:border-box;}
@@ -36,310 +36,268 @@ section {padding: var(--space) 0;}
 .separator {width: 100%; height: 4px; background: var(--gold); margin: var(--space) 0;}
 
 /* =========================
-   Header
-   ========================= */
+		Header
+		========================= */
 header {
-  padding: 2rem 0;
-  position: relative;
+	padding: 2rem 0;
+	position: relative;
 }
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 70px;
-  position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	height: 70px;
+	position: relative;
 }
 .nav-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 .site-title {
-  width: clamp(500px, 65%, 800px);
-  height: auto;
-  transition: transform 0.2s;
-  display: block;
-  margin: 0 auto;
+	width: clamp(500px, 65%, 800px);
+	height: auto;
+	transition: transform 0.2s;
+	display: block;
+	margin: 0 auto;
 }
 .site-title:hover {transform: scale(1.05);}
 .nav-left {
-  position: absolute;
-  right: 50%;
-  transform: translateX(-320px) translateY(-50%);
-  top: 50%;
-  display: flex;
-  gap: 4rem;
+	position: absolute;
+	right: 50%;
+	transform: translateX(-320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
 }
 .nav-right {
-  position: absolute;
-  left: 50%;
-  transform: translateX(320px) translateY(-50%);
-  top: 50%;
-  display: flex;
-  gap: 4rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
 }
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.25rem;
-  white-space: nowrap;
-  transition: color 0.2s;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.25rem;
+	white-space: nowrap;
+	transition: color 0.2s;
 }
 .nav-links a:hover {color: var(--gold);}
 
 /* Mobile merged nav hidden by default */
 .nav-all {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 0.5rem;
 }
 .nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
 
 /* Hamburger button */
 .menu-btn {
-  display: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 .menu-btn span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: #fff;
-  margin: 6px 0;
-  transition: 0.3s;
+	display: block;
+	width: 28px;
+	height: 3px;
+	background: #fff;
+	margin: 6px 0;
+	transition: 0.3s;
 }
 
 /* Mobile styles */
 @media (max-width: 1100px) {
-  .nav-left, .nav-right { display: none; }
-  .nav-container { height: auto; }
-  .nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
-  .site-title { width: clamp(300px, 80%, 500px); }
-  .menu-btn { display: block; }
-  header { padding: 1.5rem 0 0.75rem; }
+	.nav-left, .nav-right { display: none; }
+	.nav-container { height: auto; }
+	.nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
+	.site-title { width: clamp(300px, 80%, 500px); }
+	.menu-btn { display: block; }
+	header { padding: 1.5rem 0 0.75rem; }
 }
 
 /* =========================
-   Social bar
-   ========================= */
+		Social bar
+		========================= */
 .social-section {background: var(--navy-d); padding: 0.75rem 0;}
 .social {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 .social img {height: 48px; transition: transform .2s;}
 .social img:hover {transform: scale(1.1);}
 
 /* =========================
-   Parchment
-   ========================= */
+		Parchment
+		========================= */
 .parchment {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  line-height: 0;
-  margin-bottom: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	line-height: 0;
+	margin-bottom: 2rem;
 }
 .parchment-top,
 .parchment-bottom {
-  display: block;
-  width: 100%;
-  height: auto;
-  image-rendering: pixelated;
+	display: block;
+	width: 100%;
+	height: auto;
+	image-rendering: pixelated;
 }
 .parchment-middle {
-  background-image: url("page_middle.png");
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  image-rendering: pixelated;
-  display: block;
-  width: 100%;
-  position: relative;
+	background-image: url("page_middle.png");
+	background-repeat: repeat-y;
+	background-size: 100% auto;
+	image-rendering: pixelated;
+	display: block;
+	width: 100%;
+	position: relative;
 }
 .parchment-content {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 92%;
-  max-width: 92%;
-  padding: 2rem;
-  color: #3c3629;
-  text-align: center;
-  font-size: 1.25rem;
-  line-height: 1.7;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 92%;
+	max-width: 92%;
+	padding: 2rem;
+	color: #3c3629;
+	text-align: center;
+	font-size: 1.25rem;
+	line-height: 1.7;
 }
 .parchment-content h1 {
-  font-size: 2.5rem;
-  margin: 1rem 0;
-  color: #3c3629;
+	font-size: 2.5rem;
+	margin: 1rem 0;
+	color: #3c3629;
 }
 .parchment-content h2 {
-  font-size: 1.75rem;
-  margin: 2rem 0 1rem;
-  color: #3c3629;
+	font-size: 1.75rem;
+	margin: 2rem 0 1rem;
+	color: #3c3629;
 }
 .parchment-content p {
-  margin: 0 0 1.25rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
+	margin: 0 0 1.25rem;
+	font-size: 1.1rem;
+	line-height: 1.6;
 }
 
 /* =========================
-   Footer
-   ========================= */
+		Footer
+		========================= */
 footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #ddd;}
 </style>
 </head>
 
 <body>
-<header>
-  <div class="nav-container">
-    <div class="nav-left nav-links">
-      <a href="development.html">Development</a>
-    </div>
-    <div class="nav-center">
-      <a href="index.html">
-        <img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
-      </a>
-    </div>
-    <div class="nav-right nav-links"></div>
-    <!-- Hamburger -->
-    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-all nav-links" id="mobile-nav">
-      <a href="development.html">Development</a>
-    </div>
-  </div>
-</header>
+<div id="header-placeholder"></div>
 
 <!-- Social -->
 <section class="social-section">
-  <div class="container">
-    <ul class="social">
-      <li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-      <li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-      <li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-      <li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-      <li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
-    </ul>
-  </div>
+	<div class="container">
+		<ul class="social">
+			<li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
+			<li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
+			<li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
+			<li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
+			<li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
+		</ul>
+	</div>
 </section>
 
 <!-- Beyond Content -->
 <section>
-  <div class="parchment">
-    <img src="page_top.png" alt="" class="parchment-top">
-    <div class="parchment-middle"></div>
-    <img src="page_bottom.png" alt="" class="parchment-bottom">
-    <div class="parchment-content">
-      <h1>Beyond — Post-Release Roadmap</h1>
-      <p>“Beyond” is everything that comes after full release. The goal is simple: keep Krucia growing — more people to meet, more islands to chart, more quests to chase, and new systems that deepen the game without bloating it. Updates will focus on replayability, a healthy endgame, and steady iteration with the community.</p>
+	<div class="parchment">
+		<img src="page_top.png" alt="" class="parchment-top">
+		<div class="parchment-middle"></div>
+		<img src="page_bottom.png" alt="" class="parchment-bottom">
+		<div class="parchment-content">
+			<h1>Beyond — Post-Release Roadmap</h1>
+			<p>“Beyond” is everything that comes after full release. The goal is simple: keep Krucia growing — more people to meet, more islands to chart, more quests to chase, and new systems that deepen the game without bloating it. Updates will focus on replayability, a healthy endgame, and steady iteration with the community.</p>
 
-      <h2>Near-Term: Fleshing Out Krucia</h2>
-      <p><strong>More Life in Ports</strong> — New NPC roles (cartographers, salvage brokers, fishmongers, star-seers), dynamic tavern events, traveling vendors, and rumor chains that evolve as regions shift.</p>
-      <p><strong>New Islands &amp; Biomes</strong> — Mist archipelagos, tidal flats, obsidian shoals, and shrines to the stars. Island traits like high winds, reef mazes, and starfall nights that change routes and risk.</p>
-      <p><strong>Quest Packs</strong> — Multi-step stories that intersect factions and trade lanes, plus treasure trails that stitch riddles and fragments across multiple islands.</p>
+			<h2>Near-Term: Fleshing Out Krucia</h2>
+			<p><strong>More Life in Ports</strong> — New NPC roles (cartographers, salvage brokers, fishmongers, star-seers), dynamic tavern events, traveling vendors, and rumor chains that evolve as regions shift.</p>
+			<p><strong>New Islands &amp; Biomes</strong> — Mist archipelagos, tidal flats, obsidian shoals, and shrines to the stars. Island traits like high winds, reef mazes, and starfall nights that change routes and risk.</p>
+			<p><strong>Quest Packs</strong> — Multi-step stories that intersect factions and trade lanes, plus treasure trails that stitch riddles and fragments across multiple islands.</p>
 
-      <h2>Systems Additions</h2>
-      <p><strong>Sea Monsters (Story + Bosses)</strong> — Hermit Crab Dreadnaught (shell-swap phases, sand squalls), Coral Hive-Mind (spawns reeflings, hardens by absorbing hull scrap), and Abyssal Ray (reload-slow aura, tail-whip shockwaves).</p>
-      <p><strong>Fishing 1.0</strong> — Lures, bait, and rod tiers; behavior by time, weather, current, and biome. Rare leviathans as special hunts. Catches feed cooking buffs, quests, and regional trade demands.</p>
-      <p><strong>Events at Sea</strong> — Starfall nights (meteoric salvage), fog bells (mystery convoys), and regattas (race quests).</p>
+			<h2>Systems Additions</h2>
+			<p><strong>Sea Monsters (Story + Bosses)</strong> — Hermit Crab Dreadnaught (shell-swap phases, sand squalls), Coral Hive-Mind (spawns reeflings, hardens by absorbing hull scrap), and Abyssal Ray (reload-slow aura, tail-whip shockwaves).</p>
+			<p><strong>Fishing 1.0</strong> — Lures, bait, and rod tiers; behavior by time, weather, current, and biome. Rare leviathans as special hunts. Catches feed cooking buffs, quests, and regional trade demands.</p>
+			<p><strong>Events at Sea</strong> — Starfall nights (meteoric salvage), fog bells (mystery convoys), and regattas (race quests).</p>
 
-      <h2>Endgame &amp; Replayability</h2>
-      <p><strong>Endgame Loops</strong> — Monster-hunt contracts with escalating bounties, legendary ship gauntlets, and rotating world modifiers.</p>
-      <p><strong>Stars &amp; Achievements</strong> — New star categories for regional mastery, flawless hunts, perfect trade runs, and time-trial sails. Multiple playthroughs encouraged to light the heavens fully.</p>
-      <p><strong>Scaling Challenges</strong> — “Hard seas” toggles: ironwind storms, scarce ports, harsher repairs, and rarer supplies.</p>
-      <p><strong>Weekly Rotations</strong> — Featured islands, boss spotlights, and rotating trade booms that reshape routes.</p>
+			<h2>Endgame &amp; Replayability</h2>
+			<p><strong>Endgame Loops</strong> — Monster-hunt contracts with escalating bounties, legendary ship gauntlets, and rotating world modifiers.</p>
+			<p><strong>Stars &amp; Achievements</strong> — New star categories for regional mastery, flawless hunts, perfect trade runs, and time-trial sails. Multiple playthroughs encouraged to light the heavens fully.</p>
+			<p><strong>Scaling Challenges</strong> — “Hard seas” toggles: ironwind storms, scarce ports, harsher repairs, and rarer supplies.</p>
+			<p><strong>Weekly Rotations</strong> — Featured islands, boss spotlights, and rotating trade booms that reshape routes.</p>
 
-      <h2>Balance, QoL, and Longevity</h2>
-      <p>Regular combat/economy balance passes guided by telemetry and feedback. Quality-of-life upgrades like map annotations, a route planner, loadout presets (cannons/sails), loot filters, and accessibility features (font size, colorblind palettes, aim assists). Ongoing performance and save stability improvements for large worlds and fleets.</p>
+			<h2>Balance, QoL, and Longevity</h2>
+			<p>Regular combat/economy balance passes guided by telemetry and feedback. Quality-of-life upgrades like map annotations, a route planner, loadout presets (cannons/sails), loot filters, and accessibility features (font size, colorblind palettes, aim assists). Ongoing performance and save stability improvements for large worlds and fleets.</p>
 
-      <h2>Community &amp; Live Ops</h2>
-      <p>Public roadmap with <em>Now / Next / Later</em> milestone cards. In-game feedback notes and opt-in test branches for major features. Community challenges that unlock cosmetics or limited-time events. Short lore drops from Asteros that tease incoming content.</p>
+			<h2>Community &amp; Live Ops</h2>
+			<p>Public roadmap with <em>Now / Next / Later</em> milestone cards. In-game feedback notes and opt-in test branches for major features. Community challenges that unlock cosmetics or limited-time events. Short lore drops from Asteros that tease incoming content.</p>
 
-      <h2>Content Cadence</h2>
-      <p><strong>Minor updates</strong> — Bugfixes, QoL, and 1–2 new quests or POIs.</p>
-      <p><strong>Content updates</strong> — New island sets, a monster, fishing gear tier, and questlines.</p>
-      <p><strong>Feature updates</strong> — Major systems like Fishing 1.0, Sea Monsters packs, and Endgame sets.</p>
-      <p><strong>Events</strong> — Limited-time modifiers, festive ports, and special treasure routes.</p>
+			<h2>Content Cadence</h2>
+			<p><strong>Minor updates</strong> — Bugfixes, QoL, and 1–2 new quests or POIs.</p>
+			<p><strong>Content updates</strong> — New island sets, a monster, fishing gear tier, and questlines.</p>
+			<p><strong>Feature updates</strong> — Major systems like Fishing 1.0, Sea Monsters packs, and Endgame sets.</p>
+			<p><strong>Events</strong> — Limited-time modifiers, festive ports, and special treasure routes.</p>
 
-      <h2>Far Future: Big Expansions</h2>
-      <p><strong>Multiplayer PvP Mode (Arcade Scale)</strong> — Fast sessions on a compact sea; collect cargo to “grow,” riskier lanes yield more. Safe harbors, power-up flotsam, rolling leaderboards, and cosmetic-only rewards earned through play.</p>
-      <p><strong>New Worlds Forged by Asteros</strong> — Aurora Seas (icebreakers, whale routes), Monsoon Archipelagos (seasonal winds and trade), and Crystal Atolls (light-reef puzzles, prismatic storms). Cross-world hooks: carry legend/stars, unlock interworld cosmetics and lore artifacts.</p>
+			<h2>Far Future: Big Expansions</h2>
+			<p><strong>Multiplayer PvP Mode (Arcade Scale)</strong> — Fast sessions on a compact sea; collect cargo to “grow,” riskier lanes yield more. Safe harbors, power-up flotsam, rolling leaderboards, and cosmetic-only rewards earned through play.</p>
+			<p><strong>New Worlds Forged by Asteros</strong> — Aurora Seas (icebreakers, whale routes), Monsoon Archipelagos (seasonal winds and trade), and Crystal Atolls (light-reef puzzles, prismatic storms). Cross-world hooks: carry legend/stars, unlock interworld cosmetics and lore artifacts.</p>
 
-      <h2>Conclusion</h2>
-      <p>Beyond release, Krucia keeps breathing: richer ports, stranger seas, smarter quests, fiercer monsters, and a sturdier endgame that rewards mastery. The compass points forward — and the sky still has room for more stars.</p>
-    </div>
-  </div>
+			<h2>Conclusion</h2>
+			<p>Beyond release, Krucia keeps breathing: richer ports, stranger seas, smarter quests, fiercer monsters, and a sturdier endgame that rewards mastery. The compass points forward — and the sky still has room for more stars.</p>
+		</div>
+	</div>
 </section>
 
 <footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
 
+<script src="header.js"></script>
+
 <script>
-/* Mobile menu toggle */
-const menuBtn=document.getElementById('menu-btn');
-const mobileNav=document.getElementById('mobile-nav');
-menuBtn.addEventListener('click',()=>{
-  mobileNav.style.display = mobileNav.style.display==='flex' ? 'none' : 'flex';
-});
-
-/* Position menu button */
-function positionMenuBtn(){
-  const btn=document.getElementById('menu-btn');
-  const title=document.getElementById('site-title');
-  if(window.innerWidth<=1100){
-    const titleRight=title.getBoundingClientRect().right;
-    const screenRight=window.innerWidth;
-    const midpoint=(titleRight+screenRight)/2;
-    btn.style.left=midpoint+"px";
-    btn.style.transform="translateX(-50%) translateY(-50%)";
-  }else{
-    btn.style.left="";
-    btn.style.transform="translateY(-50%)";
-    mobileNav.style.display="";
-  }
-}
-window.addEventListener('resize',positionMenuBtn);
-window.addEventListener('load',positionMenuBtn);
-
 /* Swap social icons */
 document.querySelectorAll('.social img').forEach(img=>{
-  img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
-  img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
+	img.addEventListener('mouseenter',()=>img.src=img.dataset.gold);
+	img.addEventListener('mouseleave',()=>img.src=img.dataset.white);
 });
 
 /* Adjust parchment height */
-function adjustParchmentHeight() {
-  document.querySelectorAll('.parchment').forEach(parchment=>{
-    const content=parchment.querySelector('.parchment-content');
-    const middle=parchment.querySelector('.parchment-middle');
-    const top=parchment.querySelector('.parchment-top');
-    const bottom=parchment.querySelector('.parchment-bottom');
-    if (!content||!middle||!top||!bottom) return;
-    const contentHeight=content.scrollHeight;
-    const topHeight=top.offsetHeight;
-    const bottomHeight=bottom.offsetHeight;
-    const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
-    middle.style.height=middleHeight+'px';
-  });
+function adjustParchmentHeight(){
+	document.querySelectorAll('.parchment').forEach(parchment=>{
+		const content=parchment.querySelector('.parchment-content');
+		const middle=parchment.querySelector('.parchment-middle');
+		const top=parchment.querySelector('.parchment-top');
+		const bottom=parchment.querySelector('.parchment-bottom');
+		if(!content||!middle||!top||!bottom){return;}
+		const contentHeight=content.scrollHeight;
+		const topHeight=top.offsetHeight;
+		const bottomHeight=bottom.offsetHeight;
+		const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
+		middle.style.height=middleHeight+'px';
+	});
 }
 window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
 window.addEventListener('resize',adjustParchmentHeight);
 </script>
 </body>
 </html>
+
