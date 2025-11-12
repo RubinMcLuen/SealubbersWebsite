@@ -319,55 +319,27 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 </head>
 
 <body>
-<header>
-	<div class="nav-container">
-		<div class="nav-left nav-links">
-			<a href="index.html">Home</a>
-			<a href="development.html">Development</a>
-		</div>
-		<div class="nav-center">
-			<a href="index.html">
-				<img src="title.png" alt="Sealubbers Title" class="site-title" id="site-title">
-			</a>
-		</div>
-		<div class="nav-right nav-links">
-			<a class="coming-soon-link">Testing</a>
-			<a class="coming-soon-link">Support</a>
-		</div>
-		<button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
-			<span></span><span></span><span></span>
-		</button>
-		<div class="nav-all nav-links" id="mobile-nav">
-			<a href="index.html">Home</a>
-			<a href="development.html">Development</a>
-			<a class="coming-soon-link">Testing</a>
-			<a class="coming-soon-link">Support</a>
-		</div>
-	</div>
-</header>
-
-<!-- Coming Soon Popup -->
-<div class="popup-overlay" id="popup">
-	<div class="popup-content">
-		<h2>Coming Soon</h2>
-		<p>This page is currently under development and will be available soon!</p>
-		<button class="popup-close" id="popup-close">Close</button>
-	</div>
-</div>
-
-<!-- Social -->
-<section class="social-section">
-	<div class="container">
-		<ul class="social">
-			<li><a href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener"><img src="patreonwhite.svg" data-white="patreonwhite.svg" data-gold="patreongold.svg" alt="Patreon"></a></li>
-			<li><a href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener"><img src="discordwhite.svg" data-white="discordwhite.svg" data-gold="discordgold.svg" alt="Discord"></a></li>
-			<li><a href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener"><img src="youtubewhite.svg" data-white="youtubewhite.svg" data-gold="youtubegold.svg" alt="YouTube"></a></li>
-			<li><a href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener"><img src="instagramwhite.svg" data-white="instagramwhite.svg" data-gold="instagramgold.svg" alt="Instagram"></a></li>
-			<li><a href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener"><img src="tiktokwhite.svg" data-white="tiktokwhite.svg" data-gold="tiktokgold.svg" alt="TikTok"></a></li>
-		</ul>
-	</div>
-</section>
-
+	<div id="site-header"></div>
+	<script>
+		(function(){
+			function loadHeader(){
+				fetch("header.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-header");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "header.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Header load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadHeader();
+			else document.addEventListener("DOMContentLoaded", loadHeader);
+		})();
+	</script>
 <!-- Beyond Content -->
 <section>
 	<div class="parchment">
@@ -412,38 +384,6 @@ footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #
 <footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
 
 <script>
-/* Mobile menu toggle */
-const menuBtn = document.getElementById('menu-btn');
-const mobileNav = document.getElementById('mobile-nav');
-menuBtn.addEventListener('click', () => {
-	mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
-});
-
-/* Position menu button */
-function positionMenuBtn(){
-	const btn = document.getElementById('menu-btn');
-	const title = document.getElementById('site-title');
-	if(window.innerWidth <= 1100){
-		const titleRight = title.getBoundingClientRect().right;
-		const screenRight = window.innerWidth;
-		const midpoint = (titleRight + screenRight) / 2;
-		btn.style.left = midpoint + "px";
-		btn.style.transform = "translateX(-50%) translateY(-50%)";
-	}else{
-		btn.style.left = "";
-		btn.style.transform = "translateY(-50%)";
-		mobileNav.style.display = "";
-	}
-}
-window.addEventListener('resize', positionMenuBtn);
-window.addEventListener('load', positionMenuBtn);
-
-/* Swap social icons */
-document.querySelectorAll('.social img').forEach(img=>{
-	img.addEventListener('mouseenter', () => img.src = img.dataset.gold);
-	img.addEventListener('mouseleave', () => img.src = img.dataset.white);
-});
-
 /* Adjust parchment height */
 function adjustParchmentHeight() {
 	document.querySelectorAll('.parchment').forEach(parchment=>{
@@ -461,28 +401,6 @@ function adjustParchmentHeight() {
 }
 window.addEventListener('load', () => setTimeout(adjustParchmentHeight, 100));
 window.addEventListener('resize', adjustParchmentHeight);
-
-/* Coming Soon Popup */
-const popup = document.getElementById('popup');
-const popupClose = document.getElementById('popup-close');
-const comingSoonLinks = document.querySelectorAll('.coming-soon-link');
-
-comingSoonLinks.forEach(link => {
-	link.addEventListener('click', (e) => {
-		e.preventDefault();
-		popup.classList.add('active');
-	});
-});
-
-popupClose.addEventListener('click', () => {
-	popup.classList.remove('active');
-});
-
-popup.addEventListener('click', (e) => {
-	if (e.target === popup) {
-		popup.classList.remove('active');
-	}
-});
 </script>
 </body>
 </html>
