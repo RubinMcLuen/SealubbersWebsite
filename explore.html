@@ -198,8 +198,6 @@ footer {background:var(--navy-d); padding:2rem 0; font-size:.875rem; color:#ddd;
 	<a href="loot.html" class="page-nav-link"><div class="page-nav-text" style="text-align:right;"><span class="page-nav-label">Next Up</span><span class="page-nav-title">Loot</span></div><span class="page-nav-arrow">→</span></a>
 </nav>
 
-<footer><div class="container">© 2025 Sealubbers. All rights reserved.</div></footer>
-
 <script>
 function adjustParchmentHeight(){
 	document.querySelectorAll('.parchment').forEach(parchment=>{
@@ -219,5 +217,28 @@ window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
 window.addEventListener('resize',adjustParchmentHeight);
 </script>
 
+
+<!-- Shared footer mount -->
+<div id="site-footer"></div>
+<script>
+  (function(){
+    function loadFooter(){
+      fetch("footer.html", { cache: "no-cache" })
+        .then(function(r){ return r.text(); })
+        .then(function(html){
+          var mount = document.getElementById("site-footer");
+          if (!mount) return;
+          mount.innerHTML = html;
+          var s = document.createElement("script");
+          s.src = "footer.js";
+          s.defer = true;
+          document.body.appendChild(s);
+        })
+        .catch(function(e){ console.error("Footer load failed:", e); });
+    }
+    if (document.readyState !== "loading") loadFooter();
+    else document.addEventListener("DOMContentLoaded", loadFooter);
+  })();
+</script>
 </body>
 </html>
