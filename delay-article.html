@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo Release Delayed - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<style>
+:root {
+	--gold: #d4af37;
+	--navy: #232a6f;
+	--navy-d: #1f224f;
+	--ink: #0e122f;
+}
+
+html, body {height: 100%;}
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	background: linear-gradient(180deg, #1a2060 0%, #121742 100%);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+footer {margin-top: auto;}
+*, *::before, *::after {box-sizing: border-box;}
+
+.post-wrap {
+	max-width: 860px;
+	margin: 2rem auto 4rem;
+	padding: 0 1rem;
+}
+
+.post-card {
+	background: #f7f8ff;
+	color: var(--ink);
+	border-radius: 16px;
+	padding: clamp(1.5rem, 3vw, 3rem);
+	box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+	text-align: left;
+	border: 1px solid rgba(35, 42, 111, 0.12);
+}
+
+.post-tag {
+	display: inline-block;
+	background: rgba(31, 34, 79, 0.08);
+	color: #1f224f;
+	padding: 0.35rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+.post-title {
+	margin: 1rem 0 0.75rem;
+	font-size: clamp(1.9rem, 4vw, 2.8rem);
+	line-height: 1.15;
+	color: #131844;
+}
+
+.post-meta {
+	margin: 0 0 2rem;
+	color: #4b507c;
+	font-weight: 600;
+}
+
+.post-card p {
+	margin: 0 0 1.2rem;
+	font-size: 1.1rem;
+	line-height: 1.7;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	margin-top: 1rem;
+	color: #1f224f;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.back-link:hover {
+	color: #000;
+}
+</style>
+</head>
+<body>
+	<div id="site-header"></div>
+	<script>
+		(function(){
+			function loadHeader(){
+				fetch("header.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-header");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "header.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Header load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadHeader();
+			else document.addEventListener("DOMContentLoaded", loadHeader);
+		})();
+	</script>
+
+	<main class="post-wrap">
+		<article class="post-card">
+			<span class="post-tag">Development Update</span>
+			<h1 class="post-title">I'm Delaying the Sealubbers Demo Release</h1>
+			<p class="post-meta">Posted December 4, 2025 by Sealubbers</p>
+			<p>I originally aimed to release the demo by the end of 2025. Over the last stretch of development, I've run into more delays than expected and I haven't hit the deadlines I set for myself.</p>
+			<p>I don't want to give a specific replacement date until I'm sure I can actually deliver it. Right now the priority is finishing core systems properly, improving performance, and making sure the demo feels stable and polished when it arrives.</p>
+			<p>Thank you for sticking with the project and for all the support so far. I'll share the next milestone as soon as I can commit to it with confidence.</p>
+			<a class="back-link" href="development.html">← Back to Captain's Log</a>
+		</article>
+	</main>
+
+	<div id="site-footer"></div>
+	<script>
+		(function(){
+			function loadFooter(){
+				fetch("footer.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-footer");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "footer.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Footer load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadFooter();
+			else document.addEventListener("DOMContentLoaded", loadFooter);
+		})();
+	</script>
+</body>
+</html>
