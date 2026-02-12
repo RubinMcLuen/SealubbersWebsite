@@ -295,6 +295,108 @@ header {
 }
 .roadmap-tile:hover .tooltip {opacity:1;visibility:visible;top:-45px;}
 
+
+/* =========================
+   Captain's Logbook (List)
+   ========================= */
+
+.logbook-title {
+	font-size: 2.5rem;
+	color: var(--gold);
+	margin-top: 4rem;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+	text-align: center;
+}
+
+.logbook-sub {
+	font-size: 1.15rem;
+	color: #ddd;
+	margin-bottom: 2rem;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.logbook-divider {
+	width: 100%;
+	height: 3px;
+	background: var(--gold);
+	margin: 2rem auto 3rem;
+	opacity: 0.9;
+	border-radius: 1px;
+}
+
+/* Log list container */
+.log-list {
+	max-width: 1000px;
+	margin: 0 auto 4rem;
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+/* Log entry */
+.log-entry {
+	display: flex;
+	gap: 1.5rem;
+	background: var(--navy-d);
+	border: 2px solid var(--gold);
+	border-radius: 10px;
+	padding: 1rem;
+	text-decoration: none;
+	color: #fff;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.log-entry:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Thumbnail */
+.log-thumb {
+	width: 160px;
+	height: 110px;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+/* Text content */
+.log-text {
+	text-align: left;
+	flex-grow: 1;
+}
+
+.log-text h3 {
+	margin: 0;
+	font-size: 1.4rem;
+	color: var(--gold);
+}
+
+.log-text p {
+	margin: 0.4rem 0 1rem;
+	font-size: 1rem;
+	color: #ddd;
+}
+
+.log-date {
+	font-size: 0.9rem;
+	color: #aaa;
+}
+
+@media (max-width: 650px) {
+	.log-entry {
+		flex-direction: column;
+	}
+	.log-thumb {
+		width: 100%;
+		height: 160px;
+	}
+}
+
 footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 </style>
 </head>
@@ -321,6 +423,7 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 			else document.addEventListener("DOMContentLoaded", loadHeader);
 		})();
 	</script>
+
 <!-- Roadmap Section -->
 <section class="roadmap-section">
 	<div class="roadmap-wrap">
@@ -362,6 +465,46 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 			<a class="roadmap-tile" href="loot.html"><img src="RoadmapTile6.png" alt="Loot"><div class="tooltip">Treasure, rewards, and progression</div></a>
 			<a class="roadmap-tile" href="progress.html"><img src="RoadmapTile7.png" alt="Progress"><div class="tooltip">Leveling and long-term goals</div></a>
 			<a class="roadmap-tile" href="beyond.html"><img src="RoadmapTile8.png" alt="Beyond"><div class="tooltip">Future content and expansions</div></a>
+		</div>
+
+		<!-- Captain's Logbook -->
+		<h2 class="logbook-title">Captain’s Logbook</h2>
+		<p class="logbook-sub">A running chronicle of discoveries, challenges, and tales from the making of Sealubbers.</p>
+
+		<div class="logbook-divider"></div>
+
+		<div class="log-list">
+
+			<!-- ENTRY 1 -->
+			<a href="blog-post-1.html" class="log-entry">
+				<img src="BlogThumb1.png" class="log-thumb" alt="">
+				<div class="log-text">
+					<h3>Charting the Seas of Progress</h3>
+					<p>How Krucia is expanding beneath the waves, from trenches to coral passages.</p>
+					<span class="log-date">November 25, 2025</span>
+				</div>
+			</a>
+
+			<!-- ENTRY 2 -->
+			<a href="blog-post-2.html" class="log-entry">
+				<img src="BlogThumb2.png" class="log-thumb" alt="">
+				<div class="log-text">
+					<h3>Kelp, Coral & Chaos</h3>
+					<p>Creating underwater life that feels alive without breaking pixel-art constraints.</p>
+					<span class="log-date">November 20, 2025</span>
+				</div>
+			</a>
+
+			<!-- ENTRY 3 -->
+			<a href="blog-post-3.html" class="log-entry">
+				<img src="BlogThumb3.png" class="log-thumb" alt="">
+				<div class="log-text">
+					<h3>Forging the Pirate Fleet</h3>
+					<p>New ships, new mechanics, and refining the feel of sailing combat.</p>
+					<span class="log-date">November 12, 2025</span>
+				</div>
+			</a>
+
 		</div>
 	</div>
 </section>
