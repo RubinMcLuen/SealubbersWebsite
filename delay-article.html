@@ -10,21 +10,37 @@
 :root {
 	--gold: #d4af37;
 	--navy: #232a6f;
-	--navy-d: #1f224f;
-	--ink: #0e122f;
+	--navy-d: #081524;
+	--bg: #07111f;
+	--bg-top: #10294a;
+	--text: #e8eef8;
+	--muted: #9db0c8;
+	--line: rgba(212, 175, 55, 0.18);
 }
 
 html, body {height: 100%;}
 body {
 	margin: 0;
 	font-family: system-ui, sans-serif;
-	background: var(--navy);
+	background:
+		radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+		linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 38%, #050c16 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 900px, 100% 100%;
+	background-color: #050c16;
 	color: #fff;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 }
 footer {margin-top: auto;}
+.site-footer { background: linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1)) !important; border-top: 1px solid var(--line); }
+.footer-links a,
+.footer-links a:link,
+.footer-links a:visited { color: var(--muted) !important; }
+.footer-links a:hover { color: #fff6d7 !important; }
+.copyright { color: #8196b0 !important; }
 *, *::before, *::after {box-sizing: border-box;}
 
 header {
@@ -135,7 +151,7 @@ header {
 .popup-overlay.active {display: flex;}
 
 .popup-content {
-	background: var(--navy-d);
+	background: linear-gradient(180deg, rgba(18, 36, 59, 0.98), rgba(10, 21, 36, 0.98));
 	border: 3px solid var(--gold);
 	border-radius: 12px;
 	padding: 2rem 3rem;
@@ -182,8 +198,10 @@ header {
 .popup-close:hover {transform: scale(1.05);}
 
 .social-section {
-	background: var(--navy-d);
+	background: linear-gradient(180deg, rgba(10, 21, 36, 0.98), rgba(7, 17, 31, 0.98));
 	padding: 0.75rem 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+	border-bottom: 1px solid var(--line);
 }
 
 .container {
@@ -229,24 +247,24 @@ header {
 }
 
 .post-card {
-	background: #f7f8ff;
-	color: var(--ink);
-	border-radius: 16px;
+	background: linear-gradient(180deg, rgba(18, 36, 59, 0.98), rgba(10, 21, 36, 0.98));
+	color: var(--text);
+	border-radius: 24px;
 	padding: clamp(1.5rem, 3vw, 3rem);
 	box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
 	text-align: left;
-	border: 1px solid rgba(35, 42, 111, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .post-tag {
 	display: inline-block;
-	background: rgba(31, 34, 79, 0.08);
-	color: #1f224f;
+	background: rgba(212, 175, 55, 0.14);
+	color: #f4d77a;
 	padding: 0.35rem 0.7rem;
 	border-radius: 999px;
 	font-size: 0.82rem;
 	font-weight: 700;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
 
@@ -254,12 +272,12 @@ header {
 	margin: 1rem 0 0.75rem;
 	font-size: clamp(1.9rem, 4vw, 2.8rem);
 	line-height: 1.15;
-	color: #131844;
+	color: #fff6d7;
 }
 
 .post-meta {
 	margin: 0 0 2rem;
-	color: #4b507c;
+	color: var(--muted);
 	font-weight: 600;
 }
 
@@ -267,6 +285,7 @@ header {
 	margin: 0 0 1.2rem;
 	font-size: 1.1rem;
 	line-height: 1.7;
+	color: var(--text);
 }
 
 .back-link {
@@ -274,13 +293,13 @@ header {
 	align-items: center;
 	gap: 0.45rem;
 	margin-top: 1rem;
-	color: #1f224f;
+	color: #f4d77a;
 	font-weight: 700;
 	text-decoration: none;
 }
 
 .back-link:hover {
-	color: #000;
+	color: #fff6d7;
 }
 </style>
 </head>

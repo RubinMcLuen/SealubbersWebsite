@@ -9,15 +9,34 @@
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
 <!-- End Cloudflare Web Analytics -->
 <style>
-:root{--space:2rem;--gold:#d4af37;--navy:#232a6f;--navy-d:#1f224f;}
+:root{
+	--space:2rem;
+	--gold:#d4af37;
+	--navy:#232a6f;
+	--navy-d:#081524;
+	--bg:#07111f;
+	--bg-top:#10294a;
+	--panel:#0d1b2e;
+	--panel-2:#12243b;
+	--text:#e8eef8;
+	--muted:#9db0c8;
+	--line:rgba(212,175,55,.18);
+	--shadow:0 24px 60px rgba(0,0,0,.45);
+}
 
 html, body {height: 100%;}
 body {
 	margin: 0;
 	overflow-x: hidden;
 	font-family: system-ui, sans-serif;
-	color: #fff;
-	background: var(--navy);
+	color: var(--text);
+	background:
+		radial-gradient(circle at top, rgba(212,175,55,.12), transparent 28%),
+		linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 38%, #050c16 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 900px, 100% 100%;
+	background-color: #050c16;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -28,7 +47,7 @@ footer {margin-top: auto;}
 
 .container{max-width:1000px;margin:0 auto;padding:0 1rem;}
 section{padding:var(--space) 0;}
-.separator{width:100%;height:4px;background:var(--gold);margin:var(--space) 0;}
+.separator{width:100%;height:1px;background:linear-gradient(90deg, transparent, rgba(212,175,55,.55), transparent);margin:var(--space) 0;}
 .blog-section > .separator {
 	margin: 0 0 calc(var(--space) * 1.35) 0;
 }
@@ -166,7 +185,7 @@ header {
 	display: flex;
 }
 .popup-content {
-	background: var(--navy-d);
+	background: linear-gradient(180deg, rgba(18,36,59,.98), rgba(10,21,36,.98));
 	border: 3px solid var(--gold);
 	border-radius: 12px;
 	padding: 2rem 3rem;
@@ -212,7 +231,12 @@ header {
 /* =========================
 	 Social bar
 	 ========================= */
-.social-section {background: var(--navy-d);padding: 0.75rem 0;}
+.social-section {
+	background: linear-gradient(180deg, rgba(10,21,36,.98), rgba(7,17,31,.98));
+	padding: 0.75rem 0;
+	border-top: 1px solid rgba(255,255,255,.04);
+	border-bottom: 1px solid var(--line);
+}
 .social {display:flex;justify-content:center;gap:1.5rem;margin:0;padding:0;list-style:none;}
 .social img{height:48px;transition:transform .2s;}
 .social img:hover{transform:scale(1.1);}
@@ -220,8 +244,17 @@ header {
 /* =========================
 	 Description
 	 ========================= */
-.description p{margin:0 0 1.25rem;font-size:1.125rem;}
-.btn{display:inline-block;background:var(--gold);color:#000;font-weight:700;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;}
+.description p{margin:0 0 1.25rem;font-size:1.125rem;color:var(--text);}
+.btn{
+	display:inline-block;
+	background:var(--gold);
+	color:#000;
+	font-weight:700;
+	padding:.85rem 1.6rem;
+	border-radius:999px;
+	text-decoration:none;
+	box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
 
 /* =========================
 	 Screenshots
@@ -229,8 +262,15 @@ header {
 .screenshots{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:var(--space) auto;}
 .screenshots figure{margin:0;cursor:pointer;transition:transform .3s;}
 .screenshots figure:hover{transform:scale(1.03);}
-.screenshots img{width:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.4);}
-.screenshots figcaption{margin-top:.75rem;font-size:1.125rem;}
+.screenshots img{
+	width:100%;
+	aspect-ratio:16/9;
+	border-radius:16px;
+	object-fit:cover;
+	box-shadow:0 14px 34px rgba(0,0,0,.35);
+	border:1px solid rgba(255,255,255,.06);
+}
+.screenshots figcaption{margin-top:.75rem;font-size:1.125rem;color:var(--muted);}
 @media(max-width:900px){.screenshots{grid-template-columns:1fr;}}
 
 /* =========================
@@ -238,7 +278,7 @@ header {
    ========================= */
 .blog-section{padding:0 0 var(--space) 0;}
 .blog-title{font-size:2rem;color:var(--gold);text-align:left;margin-top:0;margin-bottom:.5rem;}
-.blog-subtitle{color:#ddd;font-size:1.15rem;text-align:left;margin:0 0 1.5rem;line-height:1.4;}
+.blog-subtitle{color:var(--muted);font-size:1.15rem;text-align:left;margin:0 0 1.5rem;line-height:1.4;}
 
 .blog-grid{
 	display:grid;
@@ -258,15 +298,16 @@ header {
 }
 
 .blog-card{
-	background:var(--navy-d);
-	border:2px solid rgba(212,175,55,.25);
-	border-radius:8px;
+	background:linear-gradient(180deg, rgba(18,36,59,.98), rgba(10,21,36,.98));
+	border:1px solid rgba(255,255,255,.06);
+	border-radius:18px;
 	overflow:hidden;
 	text-align:left;
 	transition:.25s;
+	box-shadow:0 14px 34px rgba(0,0,0,.22);
 }
 .blog-card:hover{
-	transform:scale(1.03);
+	transform:translateY(-4px);
 	border-color:var(--gold);
 }
 .blog-card:only-child{
@@ -283,9 +324,9 @@ header {
 	object-fit:cover;
 }
 .blog-info{padding:1rem 1.25rem 1.5rem;}
-.blog-meta{color:#b8b8b8;margin-bottom:.4rem;font-size:.9rem;}
-.blog-card h3{color:#fff;margin:.25rem 0 .5rem;font-size:1.3rem;}
-.blog-card p{color:#ccc;margin:0;line-height:1.4;}
+.blog-meta{color:var(--muted);margin-bottom:.4rem;font-size:.9rem;}
+.blog-card h3{color:#fff6d7;margin:.25rem 0 .5rem;font-size:1.3rem;}
+.blog-card p{color:var(--text);margin:0;line-height:1.5;}
 
 .blog-more{text-align:center;margin-top:2rem;}
 .blog-more-btn{
@@ -302,14 +343,24 @@ header {
 /* =========================
 	 FAQ
 	 ========================= */
-#faq-title{cursor:pointer;font-size:2rem;color:var(--gold);padding:.5rem 1rem;border:2px solid var(--gold);border-radius:4px;display:inline-block;margin-bottom:1rem;transition:background .2s;}
-#faq-title:hover{background:rgba(212,175,55,.2);}
+#faq-title{
+	cursor:pointer;
+	font-size:2rem;
+	color:var(--gold);
+	padding:.65rem 1.15rem;
+	border:1px solid rgba(212,175,55,.45);
+	border-radius:999px;
+	display:inline-block;
+	margin-bottom:1rem;
+	transition:background .2s,border-color .2s;
+}
+#faq-title:hover{background:rgba(212,175,55,.12);border-color:var(--gold);}
 #faq-title::after{content:"+";margin-left:.5rem;font-weight:700;}
 #faq-title.open::after{content:"-";}
 #faq-content{display:none;text-align:center;}
 #faq-content dl{display:inline-block;text-align:left;}
 #faq-content dt{margin:.75rem 0 .5rem;font-weight:700;}
-#faq-content dd{margin:0 0 .5rem 1rem;color:#ddd;}
+#faq-content dd{margin:0 0 .5rem 1rem;color:var(--muted);}
 
 /* =========================
 	 Subscribe
@@ -333,13 +384,35 @@ header {
 /* =========================
 	 Contact
 	 ========================= */
-.contact-box{display:inline-block;background:var(--navy-d);padding:1rem 1.5rem;border-radius:8px;}
+.contact-box{
+	display:inline-block;
+	background:linear-gradient(180deg, rgba(18,36,59,.98), rgba(10,21,36,.98));
+	padding:1rem 1.5rem;
+	border-radius:16px;
+	border:1px solid rgba(255,255,255,.06);
+	box-shadow:0 14px 34px rgba(0,0,0,.18);
+}
 .contact-box a{color:var(--gold);text-decoration:none;}
 
 /* =========================
 	 Footer
 	 ========================= */
-footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
+footer{background:linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1));padding:2rem 0;font-size:.875rem;color:var(--muted);}
+.site-footer {
+	background: linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1)) !important;
+	border-top: 1px solid var(--line);
+}
+.footer-links a,
+.footer-links a:link,
+.footer-links a:visited {
+	color: var(--muted) !important;
+}
+.footer-links a:hover {
+	color: #fff6d7 !important;
+}
+.copyright {
+	color: #8196b0 !important;
+}
 
 /* =========================
 	 Animation
@@ -406,6 +479,17 @@ footer{background:var(--navy-d);padding:2rem 0;font-size:.875rem;color:#ddd;}
 		</p>
 
 		<div class="blog-grid">
+
+			<article class="blog-card">
+				<a href="development-update-1.html">
+					<img src="ss1.png" alt="Sealubbers development update">
+					<div class="blog-info">
+						<div class="blog-meta">24 March 2026 • Development Update</div>
+						<h3>Sealubbers Development Update 1</h3>
+						<p>A full progress update covering rebuilt core systems, new islands, crew features, tavern NPCs, quests, improved ship AI, and combat improvements.</p>
+					</div>
+				</a>
+			</article>
 
 			<article class="blog-card">
 				<a href="delay-article.html">
