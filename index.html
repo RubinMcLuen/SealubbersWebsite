@@ -60,6 +60,9 @@ section{padding:var(--space) 0;}
 header {
 	padding: 2rem 0;
 	position: relative;
+	background: linear-gradient(180deg, rgba(9, 18, 31, 0.98), rgba(8, 18, 31, 0.82));
+	border-bottom: 1px solid var(--line);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 .nav-container {
 	max-width: 1200px;
@@ -366,12 +369,22 @@ header {
 	 Subscribe
 	 ========================= */
 .subscribe-section{padding:0;}
+.subscribe-shell{
+	max-width:1000px;
+	margin:0 auto;
+	padding:2rem 1rem;
+	display:grid;
+	grid-template-columns:minmax(0, 430px) minmax(0, 1fr);
+	gap:1.5rem;
+	align-items:stretch;
+}
 .subscribe-wrapper{
-	padding:2rem 0;
+	padding:0;
 	display:flex;
 	justify-content:center;
 	align-items:center;
 	width:100%;
+	min-height:100%;
 }
 .subscribe-wrapper iframe {
 	width: 100% !important;
@@ -379,6 +392,76 @@ header {
 	height: 182px !important;
 	margin: 0 auto;
 	display: block;
+}
+.social-join{
+	background:linear-gradient(180deg, rgba(18,36,59,.98), rgba(10,21,36,.98));
+	border:1px solid rgba(255,255,255,.06);
+	border-radius:18px;
+	box-shadow:0 14px 34px rgba(0,0,0,.2);
+	padding:1.4rem;
+	text-align:left;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	gap:.9rem;
+}
+.social-kicker{
+	margin:0;
+	font-size:.8rem;
+	font-weight:800;
+	letter-spacing:.1em;
+	text-transform:uppercase;
+	color:var(--gold);
+}
+.social-join p{
+	margin:0;
+	color:var(--muted);
+	line-height:1.6;
+	max-width:36ch;
+}
+.social-links{
+	display:grid;
+	grid-template-columns:repeat(5, minmax(0, 1fr));
+	gap:.85rem;
+}
+.social-link{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	gap:.55rem;
+	padding:.9rem .65rem;
+	border-radius:14px;
+	background:rgba(255,255,255,.03);
+	border:1px solid rgba(255,255,255,.06);
+	text-decoration:none;
+	color:var(--text);
+	transition:transform .2s,border-color .2s;
+}
+.social-link:hover{
+	transform:translateY(-2px);
+	border-color:rgba(212,175,55,.45);
+}
+.social-link img{
+	height:34px;
+	width:auto;
+}
+.social-link span{
+	font-size:.92rem;
+	font-weight:700;
+}
+@media (max-width: 900px) {
+	.subscribe-shell{
+		grid-template-columns:1fr;
+	}
+	.social-links{
+		grid-template-columns:repeat(3, minmax(0, 1fr));
+	}
+}
+@media (max-width: 640px) {
+	.social-links{
+		grid-template-columns:repeat(2, minmax(0, 1fr));
+	}
 }
 
 /* =========================
@@ -482,7 +565,7 @@ footer{background:linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1));pa
 
 			<article class="blog-card">
 				<a href="development-update-1.html">
-					<img src="ss1.png" alt="Sealubbers development update">
+					<img src="assets/Blubberig.png" alt="Blubberig concept art">
 					<div class="blog-info">
 						<div class="blog-meta">24 March 2026 • Development Update</div>
 						<h3>Sealubbers Development Update 1</h3>
@@ -504,15 +587,43 @@ footer{background:linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1));pa
 <!-- Subscribe -->
 <section class="subscribe-section">
 	<div class="separator"></div>
-	<div class="subscribe-wrapper">
-		<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-		<iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
-			class="beehiiv-embed"
-			data-test-id="beehiiv-embed"
-			frameborder="0"
-			scrolling="no"
-			style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
-		</iframe>
+	<div class="subscribe-shell">
+		<div class="subscribe-wrapper">
+			<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+			<iframe src="https://subscribe-forms.beehiiv.com/6816aab8-e74b-4a92-9ec1-e6691447b5ab"
+				class="beehiiv-embed"
+				data-test-id="beehiiv-embed"
+				frameborder="0"
+				scrolling="no"
+				style="width: 423px; height: 182px; margin: 0; border-radius: 0; background-color: transparent; box-shadow: 0 0 #0000;">
+			</iframe>
+		</div>
+		<div class="social-join">
+			<p class="social-kicker">Follow Along</p>
+			<p>Keep up with updates, clips, screenshots, and community news while the demo gets closer.</p>
+			<div class="social-links">
+				<a class="social-link" href="https://discord.gg/SsbYEbrrFZ" target="_blank" rel="noopener">
+					<img src="discordwhite.svg" alt="Discord">
+					<span>Discord</span>
+				</a>
+				<a class="social-link" href="https://www.youtube.com/@playsealubbers" target="_blank" rel="noopener">
+					<img src="youtubewhite.svg" alt="YouTube">
+					<span>YouTube</span>
+				</a>
+				<a class="social-link" href="https://www.instagram.com/sealubbers" target="_blank" rel="noopener">
+					<img src="instagramwhite.svg" alt="Instagram">
+					<span>Instagram</span>
+				</a>
+				<a class="social-link" href="https://www.tiktok.com/@sealubbers" target="_blank" rel="noopener">
+					<img src="tiktokwhite.svg" alt="TikTok">
+					<span>TikTok</span>
+				</a>
+				<a class="social-link" href="https://www.patreon.com/sealubbers" target="_blank" rel="noopener">
+					<img src="patreonwhite.svg" alt="Patreon">
+					<span>Patreon</span>
+				</a>
+			</div>
+		</div>
 	</div>
 	<div class="separator"></div>
 </section>
@@ -524,13 +635,13 @@ footer{background:linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1));pa
 		<div id="faq-content">
 			<dl>
 				<dt>When can I play Sealubbers?</dt>
-				<dd>The demo is delayed beyond my original end-of-2025 goal. I'm focusing on finishing core features and polish first, then I'll share a date when I can confidently hit it.</dd>
+				<dd>The demo is delayed beyond my original goal which was the end of 2025. I'll share a date as soon as possible, when I can confidently hit it.</dd>
 				<dt>What platforms will Sealubbers support?</dt>
 				<dd>I want to release the game on PC, Mac, iOS, and Android. Possibly on console.</dd>
 				<dt>How much will Sealubbers cost?</dt>
-				<dd>The game will be free-to-play. There will be cosmetics available for purchase, but nothing that affects gameplay.</dd>
+				<dd>The game will be entirely free-to-play. No microtransactions either.</dd>
 				<dt>Is there multiplayer or co-op?</dt>
-				<dd>Not in the initial demo. Right now I'm prioritizing single-player stability and content, then I'll revisit multiplayer plans afterward.</dd>
+				<dd>No, this is a single player adventure. I'm interested in making a pvp mode in the future though.</dd>
 			</dl>
 		</div>
 	</div>

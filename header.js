@@ -3,12 +3,6 @@
 	function onReady(fn){ if(document.readyState!=="loading"){fn()} else {document.addEventListener("DOMContentLoaded",fn)} }
 
 	onReady(function(){
-		// Swap social icons to gold on hover
-		document.querySelectorAll('.social img').forEach(function(img){
-			img.addEventListener('mouseenter', function(){ img.src = img.dataset.gold; });
-			img.addEventListener('mouseleave', function(){ img.src = img.dataset.white; });
-		});
-
 		// Mobile menu toggle
 		var menuBtn = document.getElementById('menu-btn');
 		var mobileNav = document.getElementById('mobile-nav');
@@ -39,27 +33,5 @@
 		window.addEventListener('resize', positionMenuBtn);
 		window.addEventListener('load', positionMenuBtn);
 		positionMenuBtn();
-
-		// Coming Soon Popup
-		var popup = document.getElementById('popup');
-		var popupClose = document.getElementById('popup-close');
-		var comingSoonLinks = document.querySelectorAll('.coming-soon-link');
-
-		if (popup && popupClose) {
-			comingSoonLinks.forEach(function(link){
-				link.addEventListener('click', function(e){
-					e.preventDefault();
-					popup.classList.add('active');
-				});
-			});
-
-			popupClose.addEventListener('click', function(){
-				popup.classList.remove('active');
-			});
-
-			popup.addEventListener('click', function(e){
-				if (e.target === popup) { popup.classList.remove('active'); }
-			});
-		}
 	});
 })();

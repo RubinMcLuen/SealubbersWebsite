@@ -43,6 +43,9 @@ footer {margin-top: auto;}
 header {
 	padding: 2rem 0;
 	position: relative;
+	background: linear-gradient(180deg, rgba(9, 18, 31, 0.98), rgba(8, 18, 31, 0.82));
+	border-bottom: 1px solid var(--line);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
 .nav-container {
@@ -292,7 +295,7 @@ header {
 	margin: 1rem 0 0.85rem;
 	font-size: clamp(2.2rem, 5vw, 3.4rem);
 	line-height: 1.05;
-	color: #fff6d7;
+	color: var(--gold);
 }
 
 .post-meta {
@@ -367,15 +370,6 @@ h2.section-title {
 	color: #f4d77a;
 }
 
-.note {
-	margin: 1.2rem 0 0;
-	padding: 1rem 1.1rem;
-	background: rgba(255, 255, 255, 0.03);
-	border-left: 3px solid rgba(212, 175, 55, 0.55);
-	border-radius: 10px;
-	color: var(--muted);
-}
-
 .back-link {
 	display: inline-flex;
 	align-items: center;
@@ -430,7 +424,7 @@ h2.section-title {
 		<article class="post-card">
 			<span class="post-tag">Development Update</span>
 			<h1 class="post-title">Sealubbers Development Update 1</h1>
-			<p class="post-meta">Posted March 24, 2026 by Sealubbers</p>
+			<p class="post-meta">Posted March 30, 2026 by Captain Rubin</p>
 
 			<p class="intro">Ahoy Mateys</p>
 			<p>I owe you an apology. About six months ago I said the Sealubbers demo would release by the end of 2025. That obviously didn't happen. On top of that, I've been pretty quiet for the last few months, which only made things worse.</p>
@@ -444,21 +438,25 @@ h2.section-title {
 			<p>I created drafts for two new islands.</p>
 			<figure class="media">
 				<img src="assets/PortAbera.png" alt="Port Abera concept art">
-				<figcaption><span class="eyebrow">Port Abera</span><br>Caption: Port Abera, a Royal Navy outpost known for its wealth. At its center, the governor is working to outgrow the crown itself, eliminating piracy in the region while exploiting every resource he can to build his own power. Through strict trade control and relentless naval expansion, he is turning the port into a foundation for influence that may soon rival the navy's command.</figcaption>
+				<figcaption><span class="eyebrow">Port Abera</span><br>Port Abera, a Royal Navy outpost known for its wealth. At its center, the governor is working to outgrow the crown itself, eliminating piracy in the region while exploiting every resource he can to build his own power. Through strict trade control and relentless naval expansion, he is turning the port into a foundation for influence that may soon rival the navy's command. (This is still an early sketch, it will look much nicer)</figcaption>
 			</figure>
 			<figure class="media">
 				<img src="assets/Blubberig.png" alt="Blubberig concept art">
-				<figcaption><span class="eyebrow">Blubberig</span><br>Caption: Blubberig, a Pirate Fleet outpost built around a colossal whale carcass, began as a chaotic scramble between rival crews racing to strip it for oil and bone. No one could claim it, and no one would leave, so the scaffolding became permanent. With no ruler and constant infighting, control shifts between factions, but the value of the whale binds them all to the same fragile stronghold.</figcaption>
+				<figcaption><span class="eyebrow">Blubberig</span><br>Blubberig, a Pirate Fleet outpost built around a colossal whale carcass, began as a chaotic scramble between rival crews racing to strip it for oil and bone. No one could claim it, and no one would leave, so the scaffolding became permanent. With no ruler and constant infighting, control shifts between factions, but the value of the whale binds them all to the same fragile stronghold.</figcaption>
 			</figure>
 
 			<h3 class="section-title">Crew and Characters</h3>
 			<p>I added 20 unique crew mates with their own combat abilities and dialogue. I also finished the hiring system. When you recruit someone, they run to your ship, get added to your crew dossier, and appear onboard doing idle activities. They now affect your ship's stats and appear during boarding battles.</p>
+			<figure class="media">
+				<img src="assets/CrewMenu.png" alt="Crew dossier menu screenshot">
+				<figcaption><span class="eyebrow">Crew Dossier</span><br>The crew dossier now lets you flip through your recruits, view their stats, read their descriptions, and see the unique ship or combat ability each crew mate brings with them.</figcaption>
+			</figure>
 
 			<h3 class="section-title">Taverns and NPCs</h3>
 			<p>The Kelptown Inn has been completely redone and now includes a lighting system. NPCs in taverns now move around, sit at tables, and converse with each other instead of standing still. I'm really happy with how this turned out, it's at the level of polish I'm going for with the game.</p>
 			<figure class="media">
 				<img src="assets/KelptownInn.png" alt="Kelptown Inn screenshot">
-				<figcaption><span class="eyebrow">Kelptown Inn</span><br>Updated lighting, movement, and tavern interactions.</figcaption>
+				<figcaption><span class="eyebrow">Kelptown Inn</span><br>The inn has really come to life with the new lighting system and NPC behaviors.</figcaption>
 			</figure>
 
 			<h3 class="section-title">Quests</h3>
@@ -471,7 +469,7 @@ h2.section-title {
 			<p>I built a system where ships follow mathematical functions as paths. This allows them to move in more natural and varied ways. With this system, your ship can autopilot around obstacles when docking and move in a smooth, natural route. Enemy ships can evade, navigate around hazards, and position themselves for broadsides more reliably.</p>
 			<figure class="media">
 				<img src="assets/ShipAI.png" alt="Ship movement and AI screenshot">
-				<figcaption><span class="eyebrow">Ship AI</span><br>Pathing, docking autopilot, and enemy positioning behavior.</figcaption>
+				<figcaption><span class="eyebrow">Ship AI</span><br>This debug view shows one of the mathematical routes ships can follow, letting them sail along smoother curves and approach targets with more natural movement.</figcaption>
 			</figure>
 
 			<h3 class="section-title">Combat and Loot</h3>
@@ -480,7 +478,7 @@ h2.section-title {
 				<video autoplay muted loop playsinline controls preload="metadata" aria-label="Combat and loot video">
 					<source src="assets/Gold.mp4" type="video/mp4">
 				</video>
-				<figcaption><span class="eyebrow">Combat and Loot</span><br>Defeated ships breaking apart into collectible rewards.</figcaption>
+				<figcaption><span class="eyebrow">Combat and Loot</span><br>When you sail over floating gold, it now flies up into the HUD so collecting loot feels very satisfying</figcaption>
 			</figure>
 
 			<h3 class="section-title">World Detail and Feel</h3>
@@ -490,7 +488,7 @@ h2.section-title {
 			<p>Once I rebuilt a lot of the core systems, development started moving much faster. It's now much easier to add new features and expand the game without everything breaking. There's still a lot left to do, especially with combat and artwork, but progress is going very steadily.</p>
 			<p>Sealubbers is a large project for one person, and sometimes that means progress happens slower than I'd like. But I'm very committed to making the game the right way instead of rushing something out that doesn't live up to what it should be.</p>
 			<p>Going forward I'm going to try to share more frequent updates so you can see what's being worked on, even when things are rough.</p>
-			<p class="note">Thank you to everyone who's stuck around and continues to support the project. It genuinely means a lot.</p>
+			<p>Thank you to everyone who's stuck around and continues to support the project. It genuinely means a lot.</p>
 			<p>More updates soon.</p>
 
 			<a class="back-link" href="development.html">&larr; Back to Captain's Log</a>
