@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explore - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+:root {
+	--space: 2rem;
+	--gold: #d4af37;
+	--navy: #232a6f;
+	--navy-d: #081524;
+	--bg: #07111f;
+	--bg-top: #10294a;
+	--panel: #0d1b2e;
+	--panel-2: #12243b;
+	--text: #e8eef8;
+	--muted: #9db0c8;
+	--line: rgba(212, 175, 55, 0.18);
+	--shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+	--gap: 1.5rem;
+}
+
+html, body {height: 100%;}
+body {
+	margin: 0;
+	overflow-x: hidden;
+	font-family: system-ui, sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+		linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 38%, #050c16 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 900px, 100% 100%;
+	background-color: #050c16;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+footer {margin-top: auto;}
+.site-footer { background: linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1)) !important; border-top: 1px solid var(--line); }
+.footer-links a,
+.footer-links a:link,
+.footer-links a:visited { color: var(--muted) !important; }
+.footer-links a:hover { color: #fff6d7 !important; }
+.copyright { color: #8196b0 !important; }
+*, *::before, *::after {user-select:none;box-sizing:border-box;}
+
+.container {max-width: 1000px; margin: 0 auto; padding: 0 1rem;}
+section {padding: var(--space) 0;}
+.separator {width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.55), transparent); margin: var(--space) 0;}
+
+/* =========================
+	 Header
+	 ========================= */
+header {padding: 2rem 0; position: relative; background: linear-gradient(180deg, rgba(9, 18, 31, 0.98), rgba(8, 18, 31, 0.82)); border-bottom: 1px solid var(--line); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);}
+.nav-container {max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 70px; position: relative;}
+.nav-center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;}
+.site-title {width: clamp(500px, 65%, 800px); height: auto; transition: transform 0.2s; display: block; margin: 0 auto;}
+.site-title:hover {transform: scale(1.05);}
+.nav-left {position: absolute; right: 50%; transform: translateX(-320px) translateY(-50%); top: 50%; display: flex; gap: 4rem;}
+.nav-right {position: absolute; left: 50%; transform: translateX(320px) translateY(-50%); top: 50%; display: flex; gap: 4rem;}
+.nav-links a {color: #fff; text-decoration: none; font-weight: 600; font-size: 1.25rem; white-space: nowrap; transition: color 0.2s;}
+.nav-links a:hover {color: var(--gold);}
+
+/* Mobile nav */
+.nav-all {display: none; flex-direction: column; align-items: center; margin-top: 0.5rem;}
+.nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
+.menu-btn {display: none; position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;}
+.menu-btn span {display: block; width: 28px; height: 3px; background: #fff; margin: 6px 0; transition: 0.3s;}
+@media (max-width: 1100px) {
+	.nav-left, .nav-right {display: none;}
+	.nav-container {height: auto;}
+	.nav-center {position: static; transform: none; margin-bottom: 0.5rem;}
+	.site-title {width: clamp(300px, 80%, 500px);}
+	.menu-btn {display: block;}
+	header {padding: 1.5rem 0 0.75rem;}
+}
+
+/* =========================
+	 Popup
+	 ========================= */
+.popup-overlay {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;}
+.popup-overlay.active {display:flex;}
+.popup-content {background:var(--navy-d); border:3px solid var(--gold); border-radius:12px; padding:2rem 3rem; text-align:center; max-width:400px; animation:popupSlide 0.3s ease-out;}
+@keyframes popupSlide {from{transform:translateY(-50px);opacity:0;} to{transform:translateY(0);opacity:1;}}
+.popup-content h2 {color:var(--gold); margin:0 0 1rem; font-size:2rem;}
+.popup-content p {color:#ddd; margin:0 0 1.5rem; font-size:1.1rem;}
+.popup-close {background:var(--gold); color:var(--navy); border:none; padding:0.75rem 2rem; font-size:1rem; font-weight:600; border-radius:6px; cursor:pointer; transition:transform 0.2s;}
+.popup-close:hover {transform:scale(1.05);}
+
+/* =========================
+	 Social
+	 ========================= */
+.social-section {background: linear-gradient(180deg, rgba(10, 21, 36, 0.98), rgba(7, 17, 31, 0.98)); padding: 0.75rem 0; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid var(--line);}
+.social {display:flex; justify-content:center; gap:1.5rem; margin:0; padding:0; list-style:none;}
+.social img {height:48px; transition:transform .2s;}
+.social img:hover {transform:scale(1.1);}
+
+/* =========================
+	 Parchment
+	 ========================= */
+.parchment {max-width:1200px; margin:0 auto; position:relative; line-height:0; margin-bottom:2rem;}
+.parchment-top,.parchment-bottom {display:block; width:100%; height:auto; image-rendering:pixelated;}
+.parchment-middle {background-image:url("page_middle.png"); background-repeat:repeat-y; background-size:100% auto; image-rendering:pixelated; display:block; width:100%; position:relative;}
+.parchment-content {position:absolute; top:0; left:50%; transform:translateX(-50%); width:92%; padding:2rem; color:#3c3629; text-align:center; font-size:1.25rem; line-height:1.7;}
+.parchment-content h1 {font-size:2.5rem; margin:1rem 0; color:#3c3629;}
+.parchment-content p {margin:0 0 1.25rem; font-size:1.1rem; line-height:1.6;}
+
+/* =========================
+	 Quests
+	 ========================= */
+.quest-grid {display:grid; grid-template-columns:1fr 4px 1fr; gap:2rem; margin-top:2rem; text-align:left;}
+.quest-divider {background:#3c3629; width:4px; border-radius:6px;}
+.quest-lead {margin:0 0 0.75rem; font-size:1.2rem; font-weight:bold;}
+.quest-list {list-style:none; padding:0; margin:0;}
+.quest-list li {margin:0.9rem 0; font-size:1.1rem; line-height:1.6; padding-left:2rem; position:relative;}
+.quest-list li::before {content:""; position:absolute; left:0; top:0.9em; width:14px; height:3px; background:#3c3629; border-radius:2px;}
+@media(max-width:1050px){.quest-grid{grid-template-columns:1fr;}.quest-divider{display:none;}}
+
+/* =========================
+	 Page Nav
+	 ========================= */
+.page-nav {display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:1rem auto 2rem; padding:0 3rem; gap:2rem;}
+.page-nav-link {display:flex; align-items:center; gap:0.75rem; text-decoration:none; color:var(--gold); font-size:1.1rem; font-weight:600; transition:transform 0.2s, color 0.2s; padding:0.75rem 1.25rem; border:2px solid var(--gold); border-radius:8px; background:rgba(212,175,55,0.1);}
+.page-nav-link:hover {transform:translateY(-2px); background:rgba(212,175,55,0.2);}
+.page-nav-arrow {font-size:1.5rem; line-height:1;}
+.page-nav-text {display:flex; flex-direction:column; gap:0.25rem;}
+.page-nav-label {font-size:0.85rem; opacity:0.8; text-transform:uppercase; letter-spacing:0.5px;}
+.page-nav-title {font-size:1.1rem;}
+@media(max-width:600px){.page-nav{flex-direction:column;gap:1rem;}.page-nav-link{width:100%;justify-content:center;}}
+
+/* =========================
+	 Footer
+	 ========================= */
+footer {background:var(--navy-d); padding:2rem 0; font-size:.875rem; color:#ddd;}
+</style>
+</head>
+<body>
+	<div id="site-header"></div>
+	<script>
+		(function(){
+			function loadHeader(){
+				fetch("header.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-header");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "header.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Header load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadHeader();
+			else document.addEventListener("DOMContentLoaded", loadHeader);
+		})();
+	</script>
+
+<!-- Explore -->
+<section>
+	<div class="parchment">
+		<img src="page_top.png" class="parchment-top">
+		<div class="parchment-middle"></div>
+		<img src="page_bottom.png" class="parchment-bottom">
+		<div class="parchment-content">
+			<h1>Exploration in Krucia</h1>
+			<p>The seas of Krucia are open from the beginning. Your map starts blank and fills in as you discover islands, ports, landmarks, and hazards. There are no locked areas, only natural dangers such as storms, reefs, fog, and enemy ships.</p>
+
+			<h1>Quests</h1>
+			<div class="quest-grid">
+				<div>
+					<p class="quest-lead"><b>Quests can appear in many ways:</b></p>
+					<ul class="quest-list">
+						<li><b>NPC interactions</b>: tavern keepers spreading rumors, sailors offering odd jobs, townsfolk with local troubles, or personal requests from crew members.</li>
+						<li><b>World events</b>: shipwrecks, drifting barrels, or notes washed up on shore.</li>
+						<li><b>Factions</b>: tasks that can change their strength, territory, and relationship with you.</li>
+						<li><b>Exploration triggers</b>: discovering ruins, entering uncharted seas, or stumbling on mysterious artifacts.</li>
+					</ul>
+				</div>
+				<div class="quest-divider"></div>
+				<div>
+					<p class="quest-lead"><b>Quest types include:</b></p>
+					<ul class="quest-list">
+						<li><b>Combat</b>: raiding ships, defending settlements, escorting vulnerable ships.</li>
+						<li><b>Trade and delivery</b>: transporting valuable goods, smuggling contraband, or outpacing rival merchants.</li>
+						<li><b>Exploration</b>: investigating ruins, mapping new islands, or charting dangerous waters for pay.</li>
+						<li><b>Faction influence</b>: choosing sides in conflicts, tipping the balance of power.</li>
+						<li><b>Personal stories</b>: crew members with unique requests or problems to solve.</li>
+					</ul>
+				</div>
+			</div>
+
+			<h1>Charting the Seas</h1>
+			<p>As you sail, your discoveries are added to your map. Ports, landmarks, and hazards only appear once you've encountered them. Charting is a way to track progress and make navigation easier, and it also ties directly into quests and treasure hunts.</p>
+
+			<h1>Treasure</h1>
+			<p>Treasure hunting requires piecing together clues that often appear incomplete at first. Map fragments must be combined to reveal full routes. Riddles and carvings point toward landmarks, requiring you to match hints with geography. Songs and rumors contain directions or coded references hidden in their phrasing. Environmental signs such as unusual rock formations, star patterns, or symbols carved into wood all serve as breadcrumbs on the trail.</p>
+			<p>Solving treasure clues can send you across multiple islands and through different types of environments before the final cache is revealed. The challenge is not only finding the right place but recognizing what the clue is actually pointing to.</p>
+
+			<h1>Landmarks</h1>
+			<p>Landmarks are major points of interest across Krucia, serving as both navigation tools and gameplay features. They can mark quest locations, hide treasure, or act as hubs of activity.</p>
+			<p>Natural landmarks include volcanoes that alter nearby seas, sprawling coral reefs, towering cliffs, whirlpools, and unique biomes. Man-made landmarks feature ancient forts, toppled statues, star shrines, and abandoned harbors. Dynamic landmarks such as ship graveyards grow after battles, while temporary camps may disappear on later visits.</p>
+			<p>Charting landmarks gives structure to your map, creating recognizable points to navigate by and anchoring quests, treasures, and story events.</p>
+		</div>
+	</div>
+</section>
+
+<nav class="page-nav">
+	<a href="crew.html" class="page-nav-link"><span class="page-nav-arrow">←</span><div class="page-nav-text"><span class="page-nav-label">Return to</span><span class="page-nav-title">Crew</span></div></a>
+	<a href="loot.html" class="page-nav-link"><div class="page-nav-text" style="text-align:right;"><span class="page-nav-label">Next Up</span><span class="page-nav-title">Loot</span></div><span class="page-nav-arrow">→</span></a>
+</nav>
+
+<script>
+function adjustParchmentHeight(){
+	document.querySelectorAll('.parchment').forEach(parchment=>{
+		const content=parchment.querySelector('.parchment-content');
+		const middle=parchment.querySelector('.parchment-middle');
+		const top=parchment.querySelector('.parchment-top');
+		const bottom=parchment.querySelector('.parchment-bottom');
+		if(!content||!middle||!top||!bottom) return;
+		const contentHeight=content.scrollHeight;
+		const topHeight=top.offsetHeight;
+		const bottomHeight=bottom.offsetHeight;
+		const middleHeight=Math.max(100,contentHeight-topHeight-bottomHeight);
+		middle.style.height=middleHeight+'px';
+	});
+}
+window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
+window.addEventListener('resize',adjustParchmentHeight);
+</script>
+
+
+<!-- Shared footer mount -->
+<div id="site-footer"></div>
+<script>
+  (function(){
+    function loadFooter(){
+      fetch("footer.html", { cache: "no-cache" })
+        .then(function(r){ return r.text(); })
+        .then(function(html){
+          var mount = document.getElementById("site-footer");
+          if (!mount) return;
+          mount.innerHTML = html;
+          var s = document.createElement("script");
+          s.src = "footer.js";
+          s.defer = true;
+          document.body.appendChild(s);
+        })
+        .catch(function(e){ console.error("Footer load failed:", e); });
+    }
+    if (document.readyState !== "loading") loadFooter();
+    else document.addEventListener("DOMContentLoaded", loadFooter);
+  })();
+</script>
+</body>
+</html>

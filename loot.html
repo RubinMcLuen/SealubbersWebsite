@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loot - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+:root {
+	--space: 2rem;
+	--gold: #d4af37;
+	--navy: #232a6f;
+	--navy-d: #081524;
+	--bg: #07111f;
+	--bg-top: #10294a;
+	--panel: #0d1b2e;
+	--panel-2: #12243b;
+	--text: #e8eef8;
+	--muted: #9db0c8;
+	--line: rgba(212, 175, 55, 0.18);
+	--shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+	--gap: 1.5rem;
+}
+
+html, body {height: 100%;}
+body {
+	margin: 0;
+	overflow-x: hidden;
+	font-family: system-ui, sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+		linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 38%, #050c16 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 900px, 100% 100%;
+	background-color: #050c16;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+footer {margin-top: auto;}
+.site-footer { background: linear-gradient(180deg, rgba(7,17,31,.98), rgba(4,10,19,1)) !important; border-top: 1px solid var(--line); }
+.footer-links a,
+.footer-links a:link,
+.footer-links a:visited { color: var(--muted) !important; }
+.footer-links a:hover { color: #fff6d7 !important; }
+.copyright { color: #8196b0 !important; }
+*, *::before, *::after {user-select:none;box-sizing:border-box;}
+
+.container {max-width: 1000px; margin: 0 auto; padding: 0 1rem;}
+section {padding: var(--space) 0;}
+.separator {width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.55), transparent); margin: var(--space) 0;}
+
+/* =========================
+	 Header
+	 ========================= */
+header {padding: 2rem 0; position: relative; background: linear-gradient(180deg, rgba(9, 18, 31, 0.98), rgba(8, 18, 31, 0.82)); border-bottom: 1px solid var(--line); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);}
+.nav-container {max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 70px; position: relative;}
+.nav-center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;}
+.site-title {width: clamp(500px, 65%, 800px); height: auto; transition: transform 0.2s; display: block; margin: 0 auto;}
+.site-title:hover {transform: scale(1.05);}
+.nav-left {position: absolute; right: 50%; transform: translateX(-320px) translateY(-50%); top: 50%; display: flex; gap: 4rem;}
+.nav-right {position: absolute; left: 50%; transform: translateX(320px) translateY(-50%); top: 50%; display: flex; gap: 4rem;}
+.nav-links a {color: #fff; text-decoration: none; font-weight: 600; font-size: 1.25rem; white-space: nowrap; transition: color 0.2s;}
+.nav-links a:hover {color: var(--gold);}
+.nav-all {display: none; flex-direction: column; align-items: center; margin-top: 0.5rem;}
+.nav-all a {margin: 0.5rem 0; font-size: 1.1rem;}
+.menu-btn {display: none; position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;}
+.menu-btn span {display: block; width: 28px; height: 3px; background: #fff; margin: 6px 0; transition: 0.3s;}
+@media (max-width: 1100px) {
+	.nav-left, .nav-right { display: none; }
+	.nav-container { height: auto; }
+	.nav-center { position: static; transform: none; margin-bottom: 0.5rem; }
+	.site-title { width: clamp(300px, 80%, 500px); }
+	.menu-btn { display: block; }
+	header { padding: 1.5rem 0 0.75rem; }
+}
+
+/* =========================
+	 Coming Soon Popup
+	 ========================= */
+.popup-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;}
+.popup-overlay.active {display: flex;}
+.popup-content {background: var(--navy-d); border: 3px solid var(--gold); border-radius: 12px; padding: 2rem 3rem; text-align: center; max-width: 400px; animation: popupSlide 0.3s ease-out;}
+@keyframes popupSlide {from {transform: translateY(-50px);opacity: 0;} to {transform: translateY(0);opacity: 1;}}
+.popup-content h2 {color: var(--gold); margin: 0 0 1rem; font-size: 2rem;}
+.popup-content p {color: #ddd; margin: 0 0 1.5rem; font-size: 1.1rem;}
+.popup-close {background: var(--gold); color: var(--navy); border: none; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: transform 0.2s;}
+.popup-close:hover {transform: scale(1.05);}
+
+/* =========================
+	 Social bar
+	 ========================= */
+.social-section {background: linear-gradient(180deg, rgba(10, 21, 36, 0.98), rgba(7, 17, 31, 0.98)); padding: 0.75rem 0; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid var(--line);}
+.social {display: flex; justify-content: center; gap: 1.5rem; margin: 0; padding: 0; list-style: none;}
+.social img {height: 48px; transition: transform .2s;}
+.social img:hover {transform: scale(1.1);}
+
+/* =========================
+	 Parchment
+	 ========================= */
+.parchment {max-width: 1200px; margin: 0 auto 2rem; position: relative; line-height: 0;}
+.parchment-top, .parchment-bottom {display: block; width: 100%; height: auto; image-rendering: pixelated;}
+.parchment-middle {background-image: url("page_middle.png"); background-repeat: repeat-y; background-size: 100% auto; image-rendering: pixelated; display: block; width: 100%; position: relative;}
+.parchment-content {position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 92%; max-width: 92%; padding: 2rem; color: #3c3629; text-align: center; font-size: 1.25rem; line-height: 1.7;}
+.parchment-content h1 {font-size: 2.5rem; margin: 1rem 0; color: #3c3629;}
+.parchment-content h2 {font-size: 1.75rem; margin: 2rem 0 1rem; color: #3c3629;}
+.parchment-content p {margin: 0 0 1.25rem; font-size: 1.1rem; line-height: 1.6;}
+
+/* =========================
+	 Loot grid
+	 ========================= */
+.loot-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1.5rem;}
+.loot-item {text-align: center;}
+.loot-item strong {display: block; margin-bottom: 0.5rem;}
+@media (max-width: 900px) {.loot-grid {grid-template-columns: repeat(2, 1fr);}}
+@media (max-width: 600px) {.loot-grid {grid-template-columns: 1fr;}}
+
+/* =========================
+	 Page Navigation
+	 ========================= */
+.page-nav {display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 1rem auto 2rem; padding: 0 3rem; gap: 2rem;}
+.page-nav-link {display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--gold); font-size: 1.1rem; font-weight: 600; transition: transform 0.2s, color 0.2s; padding: 0.75rem 1.25rem; border: 2px solid var(--gold); border-radius: 8px; background: rgba(212,175,55,0.1);}
+.page-nav-link:hover {transform: translateY(-2px); background: rgba(212,175,55,0.2);}
+.page-nav-arrow {font-size: 1.5rem; line-height: 1;}
+.page-nav-text {display: flex; flex-direction: column; gap: 0.25rem;}
+.page-nav-label {font-size: 0.85rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px;}
+.page-nav-title {font-size: 1.1rem;}
+@media (max-width: 600px) {.page-nav {flex-direction: column; gap: 1rem;} .page-nav-link {width: 100%; justify-content: center;}}
+
+/* =========================
+	 Footer
+	 ========================= */
+footer {background: var(--navy-d); padding: 2rem 0; font-size: .875rem; color: #ddd;}
+</style>
+</head>
+
+<body>
+	<div id="site-header"></div>
+	<script>
+		(function(){
+			function loadHeader(){
+				fetch("header.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-header");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "header.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Header load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadHeader();
+			else document.addEventListener("DOMContentLoaded", loadHeader);
+		})();
+	</script>
+<!-- Loot Content -->
+<section>
+	<div class="parchment">
+		<img src="page_top.png" alt="" class="parchment-top">
+		<div class="parchment-middle"></div>
+		<img src="page_bottom.png" alt="" class="parchment-bottom">
+		<div class="parchment-content">
+			<h1>Loot Mechanics in Sealubbers</h1>
+
+			<h2>Overview</h2>
+			<p>Every battle, chest, and quest in Krucia provides rewards that drive progression. Loot strengthens your captain and crew, unlocks upgrades, and expands your options at sea.</p>
+
+			<h2>Sources of Loot</h2>
+			<p>Loot can be obtained from many places. Defeating enemy ships, opening treasure chests on islands or beneath the waves, completing quests, exploring shipwrecks and caves, and even random sea events such as drifting barrels or washed-up crates can all yield valuable rewards.</p>
+
+			<h2>Core Loot Types</h2>
+			<div class="loot-grid">
+				<div class="loot-item">
+					<strong>Gold</strong>
+					<p>Used for hiring crew, purchasing upgrades, unlocking quests, cosmetics, enchantments, and pursuing the main objective.</p>
+				</div>
+				<div class="loot-item">
+					<strong>Schematics</strong>
+					<p>Plans for ship upgrades, unlocking cannons, sails, hull reinforcements, and other permanent improvements.</p>
+				</div>
+				<div class="loot-item">
+					<strong>Enchantments</strong>
+					<p>Permanent stat boosts for crew, improving combat, sailing, and abilities.</p>
+				</div>
+				<div class="loot-item">
+					<strong>Cosmetics</strong>
+					<p>Visual customization for ship, captain, and crew. Purely aesthetic.</p>
+				</div>
+				<div class="loot-item">
+					<strong>Resources</strong>
+					<p>Trade goods with varying values between islands. Profitable when sold at the right port.</p>
+				</div>
+				<div class="loot-item">
+					<strong>Consumables / Temporary Buffs</strong>
+					<p>Short-term benefits for ship or crew, useful in battles, storms, or long voyages.</p>
+				</div>
+			</div>
+
+			<h2>Experience Rewards</h2>
+			<p>In addition to physical items, you also gain experience. You and your crew members gain XP from battles and quests, allowing them to level up, improve their stats, and strengthen their gifts over time.</p>
+
+			<h2>Loot Rarity and Distribution</h2>
+			<p>The rarity and distribution of loot vary across the seas. Common rewards like gold and resources are frequent, while schematics, enchantments, and cosmetics are rarer and more exciting. Some items are tied to specific enemies, regions, or quests, making them more difficult to obtain.</p>
+		</div>
+	</div>
+</section>
+
+<!-- Page Navigation -->
+<nav class="page-nav">
+	<a href="explore.html" class="page-nav-link">
+		<span class="page-nav-arrow">←</span>
+		<div class="page-nav-text">
+			<span class="page-nav-label">Return to</span>
+			<span class="page-nav-title">Explore</span>
+		</div>
+	</a>
+	<a href="combat.html" class="page-nav-link">
+		<div class="page-nav-text" style="text-align: right;">
+			<span class="page-nav-label">Next Up</span>
+			<span class="page-nav-title">Combat</span>
+		</div>
+		<span class="page-nav-arrow">→</span>
+	</a>
+</nav>
+
+<script>
+/* Adjust parchment height */
+function adjustParchmentHeight() {
+	document.querySelectorAll('.parchment').forEach(parchment=>{
+		const content=parchment.querySelector('.parchment-content');
+		const middle=parchment.querySelector('.parchment-middle');
+		const top=parchment.querySelector('.parchment-top');
+		const bottom=parchment.querySelector('.parchment-bottom');
+		if (!content||!middle||!top||!bottom) return;
+		const contentHeight=content.scrollHeight;
+		const topHeight=top.offsetHeight;
+		const bottomHeight=bottom.offsetHeight;
+		const middleHeight=Math.max(100, contentHeight - topHeight - bottomHeight);
+		middle.style.height=middleHeight+'px';
+	});
+}
+window.addEventListener('load',()=>setTimeout(adjustParchmentHeight,100));
+window.addEventListener('resize',adjustParchmentHeight);
+</script>
+
+<!-- Shared footer mount -->
+<div id="site-footer"></div>
+<script>
+  (function(){
+    function loadFooter(){
+      fetch("footer.html", { cache: "no-cache" })
+        .then(function(r){ return r.text(); })
+        .then(function(html){
+          var mount = document.getElementById("site-footer");
+          if (!mount) return;
+          mount.innerHTML = html;
+          var s = document.createElement("script");
+          s.src = "footer.js";
+          s.defer = true;
+          document.body.appendChild(s);
+        })
+        .catch(function(e){ console.error("Footer load failed:", e); });
+    }
+    if (document.readyState !== "loading") loadFooter();
+    else document.addEventListener("DOMContentLoaded", loadFooter);
+  })();
+</script>
+</body>
+</html>
