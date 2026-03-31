@@ -343,6 +343,13 @@ h2.section-title {
 	height: auto;
 }
 
+.media video {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: #000;
+}
+
 .media figcaption {
 	padding: 0.95rem 1.1rem 1.1rem;
 	font-size: 0.98rem;
@@ -470,7 +477,9 @@ h2.section-title {
 			<h3 class="section-title">Combat and Loot</h3>
 			<p>Defeated ships now break apart into loot. Gold and items scatter into the water and you sail over to collect them. Boarding combat has also been improved. Your crew fights automatically in a way that looks natural. Then you can move them around and use their special abilities as the captain. There is also a victory screen for these fights too. I'm still working on balancing the difficulty of these battles and adding environmental interactions.</p>
 			<figure class="media">
-				<img src="assets/Gold.gif" alt="Combat and loot animation">
+				<video autoplay muted loop playsinline controls preload="metadata" aria-label="Combat and loot video">
+					<source src="assets/Gold.mp4" type="video/mp4">
+				</video>
 				<figcaption><span class="eyebrow">Combat and Loot</span><br>Defeated ships breaking apart into collectible rewards.</figcaption>
 			</figure>
 
