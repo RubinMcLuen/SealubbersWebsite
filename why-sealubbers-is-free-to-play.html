@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why Sealubbers Is Free to Play - Sealubbers</title>
+<link rel="icon" href="icon.png" />
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d914f9d1e755465fa3fe3f640aa25dd4"}'></script>
+<style>
+:root {
+	--gold: #d4af37;
+	--navy: #232a6f;
+	--navy-d: #081524;
+	--bg: #07111f;
+	--bg-top: #10294a;
+	--panel: #0d1b2e;
+	--panel-2: #12243b;
+	--text: #e8eef8;
+	--muted: #9db0c8;
+	--line: rgba(212, 175, 55, 0.18);
+	--shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+html, body {height: 100%;}
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	background:
+		radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+		linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 38%, #050c16 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 900px, 100% 100%;
+	background-color: #050c16;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+footer {margin-top: auto;}
+*, *::before, *::after {box-sizing: border-box;}
+
+header {
+	padding: 2rem 0;
+	position: relative;
+	background: linear-gradient(180deg, rgba(9, 18, 31, 0.98), rgba(8, 18, 31, 0.82));
+	border-bottom: 1px solid var(--line);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	height: 70px;
+	position: relative;
+}
+
+.nav-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.site-title {
+	width: clamp(500px, 65%, 800px);
+	height: auto;
+	transition: transform 0.2s;
+	display: block;
+	margin: 0 auto;
+}
+
+.site-title:hover {transform: scale(1.05);}
+
+.nav-left {
+	position: absolute;
+	right: 50%;
+	transform: translateX(-320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
+}
+
+.nav-right {
+	position: absolute;
+	left: 50%;
+	transform: translateX(320px) translateY(-50%);
+	top: 50%;
+	display: flex;
+	gap: 4rem;
+}
+
+.nav-links a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.25rem;
+	white-space: nowrap;
+	transition: color 0.2s;
+	cursor: pointer;
+}
+
+.nav-links a:hover {color: var(--gold);}
+
+.nav-all {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+.nav-all a {
+	margin: 0.5rem 0;
+	font-size: 1.1rem;
+}
+
+.menu-btn {
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.menu-btn span {
+	display: block;
+	width: 28px;
+	height: 3px;
+	background: #fff;
+	margin: 6px 0;
+	transition: 0.3s;
+}
+
+.popup-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1000;
+	justify-content: center;
+	align-items: center;
+}
+
+.popup-overlay.active {display: flex;}
+
+.popup-content {
+	background: var(--navy-d);
+	border: 3px solid var(--gold);
+	border-radius: 12px;
+	padding: 2rem 3rem;
+	text-align: center;
+	max-width: 400px;
+	animation: popupSlide 0.3s ease-out;
+}
+
+@keyframes popupSlide {
+	from {
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.popup-content h2 {
+	color: var(--gold);
+	margin: 0 0 1rem;
+	font-size: 2rem;
+}
+
+.popup-content p {
+	color: #ddd;
+	margin: 0 0 1.5rem;
+	font-size: 1.1rem;
+}
+
+.popup-close {
+	background: var(--gold);
+	color: var(--navy);
+	border: none;
+	padding: 0.75rem 2rem;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.popup-close:hover {transform: scale(1.05);}
+
+.social-section {
+	background: linear-gradient(180deg, rgba(10, 21, 36, 0.98), rgba(7, 17, 31, 0.98));
+	padding: 0.75rem 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+	border-bottom: 1px solid var(--line);
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.social {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.social img {
+	height: 48px;
+	transition: transform .2s;
+}
+
+.social img:hover {transform: scale(1.1);}
+
+.site-footer {
+	background: linear-gradient(180deg, rgba(7, 17, 31, 0.98), rgba(4, 10, 19, 1)) !important;
+	border-top: 1px solid var(--line);
+}
+
+.footer-links a,
+.footer-links a:link,
+.footer-links a:visited {
+	color: var(--muted) !important;
+}
+
+.footer-links a:hover {
+	color: #fff6d7 !important;
+}
+
+.copyright {
+	color: #8196b0 !important;
+}
+
+@media (max-width: 1100px) {
+	.nav-left,
+	.nav-right {display: none;}
+	.nav-container {height: auto;}
+	.nav-center {
+		position: static;
+		transform: none;
+		margin-bottom: 0.5rem;
+	}
+	.site-title {width: clamp(300px, 80%, 500px);}
+	.menu-btn {display: block;}
+	header {padding: 1.5rem 0 0.75rem;}
+}
+
+.post-wrap {
+	max-width: 860px;
+	margin: 2rem auto 4rem;
+	padding: 0 1rem 2rem;
+}
+
+.post-card {
+	background: linear-gradient(180deg, rgba(18, 36, 59, 0.98), rgba(10, 21, 36, 0.98));
+	color: var(--text);
+	border-radius: 24px;
+	padding: clamp(1.5rem, 3vw, 3.2rem);
+	box-shadow: var(--shadow);
+	text-align: left;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.post-card > :first-child {
+	margin-top: 0;
+}
+
+.post-tag {
+	display: inline-block;
+	background: rgba(212, 175, 55, 0.14);
+	color: #f4d77a;
+	padding: 0.45rem 0.8rem;
+	border-radius: 999px;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.post-title {
+	margin: 1rem 0 0.85rem;
+	font-size: clamp(2.2rem, 5vw, 3.4rem);
+	line-height: 1.05;
+	color: var(--gold);
+}
+
+.post-meta {
+	margin: 0 0 2rem;
+	color: var(--muted);
+	font-weight: 600;
+}
+
+.post-card p {
+	margin: 0 0 1.2rem;
+	font-size: 1.1rem;
+	line-height: 1.8;
+	color: var(--text);
+}
+
+.intro {
+	font-size: 1.2rem;
+	color: #fff6d7;
+}
+
+.post-card strong {
+	color: #fff6d7;
+}
+
+.section-title {
+	margin: 2.6rem 0 1rem;
+	font-size: 1.55rem;
+	color: #fff6d7;
+}
+
+h2.section-title {
+	padding-top: 1.2rem;
+	border-top: 1px solid var(--line);
+}
+
+.media {
+	margin: 1.5rem 0 2rem;
+	background: rgba(255, 255, 255, 0.02);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.media img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.media figcaption {
+	padding: 0.95rem 1.1rem 1.1rem;
+	font-size: 0.98rem;
+	line-height: 1.65;
+	color: var(--muted);
+}
+
+.eyebrow {
+	display: inline-block;
+	margin-bottom: 0.5rem;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #f4d77a;
+}
+
+.bullet-list {
+	margin: 0 0 1.4rem 1.3rem;
+	padding: 0;
+	color: var(--text);
+}
+
+.bullet-list li {
+	margin: 0 0 0.8rem;
+	font-size: 1.1rem;
+	line-height: 1.8;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	margin-top: 1.6rem;
+	color: #f4d77a;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.back-link:hover {
+	color: #fff6d7;
+}
+
+@media (max-width: 700px) {
+	.post-card {
+		border-radius: 18px;
+		padding: 1.3rem;
+	}
+
+	.post-card p,
+	.bullet-list li {
+		font-size: 1.02rem;
+		line-height: 1.75;
+	}
+}
+</style>
+</head>
+<body>
+	<div id="site-header"></div>
+	<script>
+		(function(){
+			function loadHeader(){
+				fetch("header.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-header");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "header.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Header load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadHeader();
+			else document.addEventListener("DOMContentLoaded", loadHeader);
+		})();
+	</script>
+
+	<main class="post-wrap">
+		<article class="post-card">
+			<span class="post-tag">Captain's Log</span>
+			<h1 class="post-title">Why Sealubbers Is Free to Play</h1>
+			<p class="post-meta">Posted March 31, 2026 by Captain Rubin</p>
+
+			<p class="intro">When I say Sealubbers is free to play, I do not mean free with a shop hidden behind a menu, or free until the game starts asking for money a few hours in. I mean completely free.</p>
+			<p>No microtransactions. No premium currency. No paid shortcuts. No systems built around getting you to spend. There is nothing to unlock with money, nothing to speed up with a purchase, and no point where the game quietly shifts from being something you play into something that is trying to sell to you.</p>
+			<p>At this point, that probably sounds unusual, maybe even suspicious. Players have been conditioned to expect that if something is free, there must be a catch somewhere. Especially in modern games, and even more so on mobile, there are systems designed to push you toward spending. Whether it is unlocking content, speeding things up for convenience, or buying cosmetics, the expectation is always the same: eventually, the game will ask for money.</p>
+			<p>Sealubbers will not do that. There is no catch. This decision is not accidental, and it is not temporary. It is a core part of how the game is being built. I want anyone to be able to play this game and experience it in the same way. This post is an attempt to explain why.</p>
+
+			<h2 class="section-title">Personal Philosophy</h2>
+			<p>I grew up without a lot of money, which meant I spent most of my time playing free-to-play games. Because of that, I have always had a strong appreciation for games that are accessible to anyone, regardless of whether they can afford to spend money.</p>
+			<p>At the same time, I also saw how those games were designed. I started to notice patterns in how they guided players, where friction was added, and how progression was shaped around those systems.</p>
+			<p>Sealubbers is my attempt to build something that feels straightforward and honest. A game that does not ask for anything beyond your time and attention. A game where every system exists because it improves the experience, not because it supports a revenue model.</p>
+			<p>You should not have to pay to be a pirate.</p>
+			<p>More importantly, I do not want cost to be the reason someone cannot play the game. If someone finds Sealubbers and wants to jump in, that should be enough. The fact that anyone is even interested in this game brings me so much joy.</p>
+
+			<h2 class="section-title">The Problem With Monetization</h2>
+			<p>Monetization systems shape how a game is designed, often limiting the quality of the overall experience.</p>
+			<p>Once money is involved, design decisions start to change. Progression systems, rewards, pacing, and even small moments of friction can all be influenced by the question: does this encourage spending?</p>
+			<ul class="bullet-list">
+				<li>Slower progression to sell speed-ups</li>
+				<li>Repetitive tasks designed to push convenience purchases</li>
+				<li>Rewards tuned to feel just unsatisfying enough to justify buying more</li>
+			</ul>
+			<p>Even in cases where monetization is handled carefully, it introduces a second layer of intent behind the design. Systems are no longer just about being fun, they also have to support revenue. By removing microtransactions entirely, that layer disappears.</p>
+			<p>Every decision in Sealubbers can be made for one reason: because it makes the game better. If something feels like a waste of time, it gets changed. If something is not fun, it gets removed. There is no justification for keeping a system just because it might make money.</p>
+			<p>Once I realized that, the question became simple: if I do not want monetization shaping the game, what are my actual options?</p>
+
+			<h2 class="section-title">Why Not Charge Upfront?</h2>
+			<p>The first option was to charge for the game upfront.</p>
+			<p>When I first started working on Sealubbers, I did not have much experience. I was not confident in my art, my code, or even the overall scope of the game. Asking people to pay for something at that stage did not feel right, especially when there are so many polished, high-quality games available for free.</p>
+			<p>There is also the barrier it creates. Even a small price makes people hesitate. It limits who can try the game, and it puts pressure on the experience before someone has even had a chance to play it.</p>
+			<p>Making the game free removes that entirely. My hope is that making it free to play will make it become much more popular than it would have otherwise been.</p>
+			<p>So once I ruled that out, the next option was microtransactions.</p>
+
+			<h2 class="section-title">Why Not Microtransactions?</h2>
+			<p>There are a few common types of microtransactions, and I thought through all of them.</p>
+			<p>Cosmetics-only purchases are often seen as the most acceptable form. And to be fair, they are better than most alternatives. But even then, I would rather have cosmetics be something you earn through gameplay. Unlocking something cool because you completed a difficult challenge is far more satisfying than buying it.</p>
+			<p>Memberships or subscriptions can work for certain games, especially large multiplayer ones that constantly release new content. But Sealubbers is not that kind of game, and I do not want access to be tied to an ongoing payment.</p>
+			<p>Pay-to-win systems are the worst of all. When spending money directly affects gameplay, it undermines the entire experience. Progress stops being about skill or effort and starts being about how much you are willing to pay. That is something I will never include.</p>
+			<p>Ads are another common approach, especially the model where you can pay to remove them. But that creates a worse version of the game on purpose, just to sell relief from it. It degrades the experience and turns the game into something transactional.</p>
+			<p>None of these felt right.</p>
+			<p>Every version of monetization I considered either compromised the design, the player experience, or both. So instead of trying to find the least bad option, I chose to remove the system entirely.</p>
+
+			<h2 class="section-title">Equal Experience for Every Player</h2>
+			<p>One of the benefits of having no monetization is that every player gets the same experience.</p>
+			<p>There are no advantages to buy, no content locked behind payments, and no distinction between players based on how much they have spent. Everyone engages with the same systems under the same conditions. That matters more than it might seem.</p>
+			<p>It removes a lot of the friction and skepticism that can exist in games. You do not have to wonder if something is designed to push you toward spending. You do not have to question whether someone else got ahead because they paid for it. You can just play.</p>
+
+			<h2 class="section-title">A Cleaner Game</h2>
+			<p>Without monetization, entire categories of systems disappear.</p>
+			<ul class="bullet-list">
+				<li>Shops</li>
+				<li>Premium currencies</li>
+				<li>Special offers</li>
+				<li>Limited-time anything</li>
+				<li>UI elements designed to encourage spending</li>
+			</ul>
+			<p>That results in a cleaner, more focused experience. The game does not have to divide your attention between playing and purchasing. There is no background layer trying to pull you out of the world.</p>
+
+			<h2 class="section-title">So How Does It Make Money?</h2>
+			<p>This is the obvious question.</p>
+			<p>The answer is that the game itself is not the only thing being built. Sealubbers exists alongside the content I create around it, and that has already opened up ways to support development.</p>
+			<p>The game has grown far beyond what I expected, and that allows me to make money through things like social media content and sponsorships. Since I am developing this solo, it does not take a massive budget to keep things going.</p>
+			<p>On top of that, I may introduce optional community support for people who want to contribute, and I plan to create physical merchandise tied to the world: things like posters, collectibles, and more.</p>
+			<p>The key difference is this: none of that is inside the game.</p>
+			<p>The game is not designed to extract money from players while they are playing. Instead, the goal is to make something valuable enough that people choose to support it elsewhere.</p>
+
+			<h2 class="section-title">Closing</h2>
+			<p>Choosing to make the game completely free with no microtransactions is not the easiest route, but it means I do not have to build around selling anything or hold parts of the experience back.</p>
+			<p>I can just focus on making something that feels good to play from start to finish, without hidden costs, artificial friction, or systems nudging you toward spending, just the game as it is meant to be played.</p>
+			<p>And if that sounds a little rebellious, well it is a pirate game after all.</p>
+
+			<a class="back-link" href="development.html">&larr; Back to Captain's Log</a>
+		</article>
+	</main>
+
+	<div id="site-footer"></div>
+	<script>
+		(function(){
+			function loadFooter(){
+				fetch("footer.html", { cache: "no-cache" })
+					.then(function(r){ return r.text(); })
+					.then(function(html){
+						var mount = document.getElementById("site-footer");
+						if (!mount) return;
+						mount.innerHTML = html;
+						var s = document.createElement("script");
+						s.src = "footer.js";
+						s.defer = true;
+						document.body.appendChild(s);
+					})
+					.catch(function(e){ console.error("Footer load failed:", e); });
+			}
+			if (document.readyState !== "loading") loadFooter();
+			else document.addEventListener("DOMContentLoaded", loadFooter);
+		})();
+	</script>
+</body>
+</html>
